@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Proces Hawkesa &#8212; Przetwarzanie danych złożonych</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Zasady" href="zasady.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Przetwarzanie danych złożonych</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Przetwarzanie danych złożonych
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zasady.html">
+   Zasady
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 2
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Proces Hawkesa
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pwr-ai/przetwarzanie-danych-zlozonych/master?urlpath=tree/docs/labs/hawkes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/hawkes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wstep">
+   Wstęp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicja-procesu-hawkesa">
+   Definicja procesu Hawkesa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kernele">
+   Kernele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacja-evently">
+   Instalacja evently
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symulacja-sekwencji-zdarzen">
+   Symulacja sekwencji zdarzeń
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dopasowanie-parametrow-procesu-hawkesa">
+   Dopasowanie parametrów procesu Hawkesa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predykcja-koncowej-liczby-zdarzen-w-serii">
+   Predykcja końcowej liczby zdarzeń w serii
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-hawkes-process">
+   Neural Hawkes Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rekomendowana-literatura">
+   Rekomendowana literatura:
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Proces Hawkesa</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wstep">
+   Wstęp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicja-procesu-hawkesa">
+   Definicja procesu Hawkesa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kernele">
+   Kernele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacja-evently">
+   Instalacja evently
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symulacja-sekwencji-zdarzen">
+   Symulacja sekwencji zdarzeń
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dopasowanie-parametrow-procesu-hawkesa">
+   Dopasowanie parametrów procesu Hawkesa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predykcja-koncowej-liczby-zdarzen-w-serii">
+   Predykcja końcowej liczby zdarzeń w serii
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-hawkes-process">
+   Neural Hawkes Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rekomendowana-literatura">
+   Rekomendowana literatura:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="proces-hawkesa">
+<h1>Proces Hawkesa<a class="headerlink" href="#proces-hawkesa" title="Permalink to this headline">#</a></h1>
+<section id="wstep">
+<h2>Wstęp<a class="headerlink" href="#wstep" title="Permalink to this headline">#</a></h2>
+<p>Procesy punktowe są kolekcją losowych punktów rozmieszczonych w pewnej przestrzeni (np. czas). Jednym z najprostszych procesów punktowych jest proces Poissona. Jego główną cechą jest brak pamięci, co oznacza, że zaobserwowane zdarzenia z przeszłości nie wpływają na przyszłe zdarzenia. Obserwując otaczający nas rzeczywistość, możemy zauważyć, że zdarzenia bardzo często wpływają na siebie, przez co bezpamięciowy proces Poissona jest zbyt dużym uproszczeniem. Chcąc zamodelować np. rozprzestrzenianie się posta w mediach społecznościowych musimy wziąć pod uwagę popularność informacji, która będzie rosła wraz z jego częstym udostępnianiem, a także fakt, że wraz z upływem czasu ta popularność zacznie zanikać. Idealnym narzędziem w tego typu problemach jest proces Hawkesa.</p>
+</section>
+<section id="definicja-procesu-hawkesa">
+<h2>Definicja procesu Hawkesa<a class="headerlink" href="#definicja-procesu-hawkesa" title="Permalink to this headline">#</a></h2>
+<p>Proces Hawkesa jest to proces punktowy zdefiniowany przez warunkową funkcję intensywności <span class="math notranslate nohighlight">\(\lambda(t|\mathcal{H_t})\)</span>, która zależy od wszystkich przeszłych zdarzeń <span class="math notranslate nohighlight">\(\mathcal{H_t}\)</span>. Pojawienie się nowego zdarzenia powoduje wzrost funkcji intensywności, a tym samym zwiększenie prawdopodobieństwa wystąpienia kolejnego zdarzenia. Jest to najważniejsza cecha procesu Hawkesa określana jako samo ekscytacja zdarzeń (<code class="docutils literal notranslate"><span class="pre">self-exctinig</span></code>). Dodatkowo funkcja intensywności maleje z czasem, tym samym zmniejszając wpływ starszych zdarzeń.</p>
+<p>Funkcja intensywności przyjmuje formę:</p>
+<div class="math notranslate nohighlight">
+\[ \lambda(t|\mathcal{H_t})=\lambda_0(t)+\sum_{i:t&gt;T_i}\phi(t-T_i)\]</div>
+<p>gdzie <span class="math notranslate nohighlight">\(T_i&gt;t\)</span> oznacza wszystkie zdarzenia zaobserwowane przed aktualnym czasem <span class="math notranslate nohighlight">\(t\)</span>, które mają wpływ na aktualną wartość funkcji intensywności w chwili <span class="math notranslate nohighlight">\(t\)</span>. <span class="math notranslate nohighlight">\(\lambda_0\)</span> jest funkcją intensywności bazowej, która odpowiada za losowe pojawianie się zdarzeń wywołanych przez zewnętrzne czynniki. <span class="math notranslate nohighlight">\(\phi\)</span> jest nazywane funkcją kernela, która determinuje wpływ zdarzenia <span class="math notranslate nohighlight">\(T_i\)</span> na aktualną wartość intensywności.  czasu.</p>
+</section>
+<section id="kernele">
+<h2>Kernele<a class="headerlink" href="#kernele" title="Permalink to this headline">#</a></h2>
+<p>Używając procesu Hawkesa do modelowania strumienia zdarzeń ważne jest, aby wybrać kernel, który najlepiej opisuje dla naszych danych malejący wraz z czasem wpływ zdarzeń na funkcję intensywności. Dwie najczęściej używane kernele to:</p>
+<ul class="simple">
+<li><p>funkcja eksponencjalna: <span class="math notranslate nohighlight">\(\phi_{EXP}(t) = \kappa \theta e^{-\theta t}\)</span></p></li>
+<li><p>funkcja potęgowa: <span class="math notranslate nohighlight">\(\phi_{PL}(t) = \kappa (t + c)^{-(1+\theta)}\)</span></p></li>
+</ul>
+</section>
+<section id="instalacja-evently">
+<h2>Instalacja evently<a class="headerlink" href="#instalacja-evently" title="Permalink to this headline">#</a></h2>
+<p>Do pracy z procesem Hawkesa będziemy wykorzystywali pakiet <a class="reference external" href="https://github.com/behavioral-ds/evently">evently</a>, który w prosty sposób pozwala na symulację i dopasowanie procesu Hawkesa z różnymi funkcjami kernela.</p>
+<p>Przed przystąpieniem do instalacji pakietu należy zainstalować <a class="reference external" href="https://cran.r-project.org">R</a> i <a class="reference external" href="https://www.rstudio.com">RStudio</a>.</p>
+<p>Evently instalujemy wykonując następujące komendy w RStudio:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&#39;devtools&#39;</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;devtools&#39;</span><span class="p">)</span>
+<span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&#39;behavioral-ds/evently&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: devtools
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: usethis
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipping install of &#39;evently&#39; from a github remote, the SHA1 (9be4daa8) has not changed since last install.
+  Use `force = TRUE` to force installation
+</pre></div>
+</div>
+</div>
+</div>
+<p>Powyższy kod zainstaluje dodatkowe zależności wymagane do działania evently (poweRlaw, AMPL, Ipopt).</p>
+</section>
+<section id="symulacja-sekwencji-zdarzen">
+<h2>Symulacja sekwencji zdarzeń<a class="headerlink" href="#symulacja-sekwencji-zdarzen" title="Permalink to this headline">#</a></h2>
+<p>Proces Hawkesa jest modelem generatywnym, który pozwala dla zadanych parametrów zasymulować serię zdarzeń. W tym celu używa się algorytmu przerzedzania (<code class="docutils literal notranslate"><span class="pre">thinning</span> <span class="pre">algorithm</span></code>), który opiera się na zastosowaniu <code class="docutils literal notranslate"><span class="pre">rejection</span> <span class="pre">sampling</span></code>. Głównym zadaniem algorytmu jest symulacja czasu między kolejnymi zdarzeniami zgodnie z funkcją intensywności <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">evently</span><span class="p">)</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">13</span><span class="p">)</span>
+
+<span class="n">init_par</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">K</span> <span class="o">=</span> <span class="m">0.9</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># Generowanie zupełnie nowej serii zdarzeń</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">generate_series</span><span class="p">(</span><span class="n">par</span> <span class="o">=</span> <span class="n">init_par</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;EXP&#39;</span><span class="p">),</span> <span class="n">Tmax</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">sim_no</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># Generowanie kolejnych zdarzeń na podstawie zadanej serii</span>
+<span class="n">data2</span> <span class="o">&lt;-</span> <span class="nf">generate_series</span><span class="p">(</span><span class="n">par</span> <span class="o">=</span> <span class="n">init_par</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;EXP&#39;</span><span class="p">),</span> <span class="n">Tmax</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">sim_no</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">init_history</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wygenerowane dane mają następującą postać:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span> <span class="n">n</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 5 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>magnitude</th><th scope=col>time</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>0.0000000</td></tr>
+	<tr><th scope=row>2</th><td>1</td><td>0.3800403</td></tr>
+	<tr><th scope=row>3</th><td>1</td><td>1.0019981</td></tr>
+	<tr><th scope=row>4</th><td>1</td><td>1.0245664</td></tr>
+	<tr><th scope=row>5</th><td>1</td><td>1.2399167</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code> oznacza czas wystąpienia zdarzenia względem pierwszego zdarzenia w serii, którego czas jest równy 0.</p>
+<p><code class="docutils literal notranslate"><span class="pre">magnitude</span></code> oznacza siłę oddziaływania danego zdarzenia na funkcję intensywności. W rozpatrywanym przypadku wszystkie zdarzenia są tak samo ważne. Parametr ten może być pomocny przy modelowaniu rozprzestrzeniania się postów w sieciach społecznych, gdzie jako <code class="docutils literal notranslate"><span class="pre">magnitude</span></code> możemy przyjąć liczbę obserwatorów danego użytkownika. Posty użytkowników z większą ilością obserwatorów będą się dłużej rozprzestrzeniać (więcej patrz <a class="reference external" href="https://arxiv.org/abs/1708.06401">Rizoiu et al.</a> sekcja 1.6.1)</p>
+</section>
+<section id="dopasowanie-parametrow-procesu-hawkesa">
+<h2>Dopasowanie parametrów procesu Hawkesa<a class="headerlink" href="#dopasowanie-parametrow-procesu-hawkesa" title="Permalink to this headline">#</a></h2>
+<p>Największym wyzwaniem w modelowaniu z użyciem procesu Hawkesa jest estymacja parametrów na podstawie zaobserwowanych danych. Jednym z rozwiązań tego problemu jest zastosowanie metody <code class="docutils literal notranslate"><span class="pre">Maximum</span> <span class="pre">Likelihood</span> <span class="pre">Estimation</span></code> do maksymalizacji logarytmicznej funkcji prawdopodobieństwa (<code class="docutils literal notranslate"><span class="pre">log-likelihood</span></code>), która dla procesu Hawkesa zdefiniowana jest w następujący sposób:</p>
+<div class="math notranslate nohighlight">
+\[ \log L(\Theta) = -\int_{0}^{T} \lambda(t) \,dt + \sum_{i=1}^{N(T)}\log \lambda(T_i) \]</div>
+<p>gdzie <span class="math notranslate nohighlight">\(\Theta\)</span> to zbiór parametrów procesu Hawkesa, <span class="math notranslate nohighlight">\(T\)</span> to aktualny czas, a <span class="math notranslate nohighlight">\(N(T)\)</span> to liczba zdarzeń jakie zaobserwowaliśmy do chwili <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>Ponieważ funkcja prawdopodobieństwa może być złożona i globalnie niewypukła, istnieje ryzyko, że znalezione parametry będą jedynie lokalnymi maksimami. W celu zapobiegnięcia takiej sytuacji <code class="docutils literal notranslate"><span class="pre">evently</span></code> próbuje znaleźć globalne maksimum poprzez stosowanie kilku zbiorów różnych wartości początkowych, ostatecznie zwracając parametry o największym <code class="docutils literal notranslate"><span class="pre">log-likelihood</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitted_model</span> <span class="o">&lt;-</span> <span class="nf">fit_series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="s">&#39;EXP&#39;</span><span class="p">,</span> <span class="n">observation_time</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">cores</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+<span class="n">fitted_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Model: EXP 
+- No. of cascades: 1 
+- init_par:
+  K 1.87e+00; theta 3.59e-01
+- par:
+  K 1.00e+00; theta 1.44e+00
+- Neg Log Likelihood: -14.702 
+- lower_bound:
+  K 1.00e-100; theta 1.00e-100
+- upper_bound:
+  K 1.00e+04; theta 3.00e+02
+- Convergence: 0 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poniższy wykres pokazuje funkcję intensywności dla dopasowanego procesu (czerwona linia) oraz zaobserwowane zdarzenia (czarne punkty). Każde pojawienie się zdarzenia powodowało wzrost funkcji intensywności, która następnie malała wraz z upływem czasu. Mechanizm samo ekscytacji odpowiada za pojawianie się klastrów zdarzeń.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">repr</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">14</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">7</span><span class="p">,</span> <span class="n">repr.plot.res</span> <span class="o">=</span> <span class="m">200</span><span class="p">)</span>
+<span class="nf">plot_event_series</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hawkes_16_0.png" src="../_images/hawkes_16_0.png" />
+</div>
+</div>
+</section>
+<section id="predykcja-koncowej-liczby-zdarzen-w-serii">
+<h2>Predykcja końcowej liczby zdarzeń w serii<a class="headerlink" href="#predykcja-koncowej-liczby-zdarzen-w-serii" title="Permalink to this headline">#</a></h2>
+<p>Jedną z kluczowych wartości opisującą proces Hawkesa jest współczynnik rozgałęzienia, który opisuje oczekiwaną liczbę zdarzeń wygenerowanych przez pojedyncze zdarzenie. Współczynnik rozgałęzienia jest zdefiniowany w następujący sposób:</p>
+<div class="math notranslate nohighlight">
+\[ n^* = \int_{0}^{\infty} \phi(\tau) \,d\tau \]</div>
+<p>Jeżeli <span class="math notranslate nohighlight">\(n^*&lt;1\)</span> mówimy, że proces znajduje się w reżimie podkrytycznym, a liczba wszystkich zdarzeń w serii jest ograniczona. jeżeli <span class="math notranslate nohighlight">\(n^*&gt;1\)</span> proces znajduje się w reżimie superkrytycznym z rosnącą funkcją intensywności <span class="math notranslate nohighlight">\(\lambda(t)\)</span>, przez co całkowita liczba zdarzeń jest nieograniczona.</p>
+<p>W oparciu o współczynnik rozgałęzienia możemy przewidzieć oczekiwaną liczbę zdarzeń w serii:
+$<span class="math notranslate nohighlight">\( N_\infty = \frac{1}{1-n^*} \text{, gdzie } n^*&lt;1 \)</span>$</p>
+<p>Spróbujmy przewidzieć wielkość kaskady zdarzeń z Twittera. Dane zawierają dwie kolumny:</p>
+<ul class="simple">
+<li><p>magnitude - oznaczające liczbę osób obserwujących danego użytkownika</p></li>
+<li><p>time - czas względem pierwszego zdarzenia</p></li>
+</ul>
+<p>Pierwsze zdarzenie jest postem, który zapoczątkował kaskadę zdarzeń, a wszystkie kolejne zdarzenia są retweetami pierwszego.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&#39;hawkes_example.csv&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="n">history</span> <span class="o">%&gt;%</span> <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">X</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    filter, lag
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>magnitude</th><th scope=col>time</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>40989</td><td> 0</td></tr>
+	<tr><th scope=row>2</th><td> 1445</td><td>21</td></tr>
+	<tr><th scope=row>3</th><td>  563</td><td>31</td></tr>
+	<tr><th scope=row>4</th><td>  329</td><td>33</td></tr>
+	<tr><th scope=row>5</th><td>  555</td><td>49</td></tr>
+	<tr><th scope=row>6</th><td>  513</td><td>54</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Podzielmy serię na zbiór treningowy i testowy. Zdarzenia z pierwszych 50 minut posłużą jako zbiór treningowy do dopasowania parametrów procesu Hawkesa. Pozostałe zdarzenia będą użyte jako zbiór testowy do ewaluacji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">train_history</span> <span class="o">&lt;-</span> <span class="n">history</span><span class="p">[</span><span class="nf">with</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">time</span> <span class="o">&lt;=</span> <span class="m">3000</span><span class="p">),]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dopasowujemy parametry procesu Hawkesa na podstawie zbioru treningowego:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitted_model</span> <span class="o">&lt;-</span> <span class="nf">fit_series</span><span class="p">(</span><span class="n">train_history</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="s">&#39;mEXP&#39;</span><span class="p">,</span> <span class="n">observation_time</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">train_history</span><span class="o">$</span><span class="n">time</span><span class="p">))</span>
+<span class="n">fitted_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Model: mEXP 
+- No. of cascades: 1 
+- init_par:
+  K 3.34e+00; beta 6.71e-01; theta 6.88e-02
+- par:
+  K 3.02e-01; beta 1.90e-01; theta 9.23e-03
+- Neg Log Likelihood: 539.386 
+- lower_bound:
+  K 1.00e-100; beta 1.00e-100; theta 1.00e-100
+- upper_bound:
+  K 1.00e+04; beta 1.02e+00; theta 3.00e+02
+- Convergence: 0 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sprawdźmy czy współczynnik rozgałęzienia <span class="math notranslate nohighlight">\(n^* &lt; 1\)</span> co umożliwi obliczenie wielkości kaskady.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">get_branching_factor</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.371633369287965</div></div>
+</div>
+<p>Obliczmy końcową wielkość kaskady zdarzeń:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">predict_final_popularity</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">159.981794566381</div></div>
+</div>
+<p>Przewidziana liczba zdarzeń 159 jest bliska rzeczywistej 219.</p>
+<p>Błąd względny wynosi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;%0.2f%%&quot;</span><span class="p">,</span> <span class="m">100</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="m">219-160</span><span class="p">)</span><span class="o">/</span><span class="m">219</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'26.94%'</div></div>
+</div>
+</section>
+<section id="neural-hawkes-process">
+<h2>Neural Hawkes Process<a class="headerlink" href="#neural-hawkes-process" title="Permalink to this headline">#</a></h2>
+<p>Ciekawym rozwinięciem koncepcji przedstawionego tutaj procesu Hawkesa jest <a class="reference external" href="https://proceedings.neurips.cc/paper/2017/hash/6463c88460bd63bbe256e495c63aa40b-Abstract.html">neuronowy proces Hawkesa</a>, który zastępuje funkcję kernela siecią neuronową, dzięki czemu uzyskujemy większą ekspresyjność modelu, ale tracimy interpretowalność. W literaturze można również znaleźć <a class="reference external" href="https://proceedings.mlr.press/v119/zuo20a.html">Transformer Hawkes Process</a>, który implementuje mechanizm uwagi.</p>
+</section>
+<section id="rekomendowana-literatura">
+<h2>Rekomendowana literatura:<a class="headerlink" href="#rekomendowana-literatura" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://arxiv.org/abs/1708.06401">Rizoiu, Marian-Andrei, et al. “A tutorial on hawkes processes for events in social media.” arXiv preprint arXiv:1708.06401 (2017).</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="zasady.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Zasady</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
