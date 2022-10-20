@@ -4,7 +4,9 @@ parts:
   - caption: Laboratorium 1
     chapters:
     - file: labs/zasady
-
+  - caption: Laboratorium 2
+    chapters:
+    - file: labs/hawkes
 
 #  - caption: Laboratorium 2
 #    chapters:
