@@ -55,6 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Klasyfikacja kolektywna" href="collective_classification.html" />
     <link rel="prev" title="Zasady" href="zasady.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -131,6 +132,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Proces Hawkesa
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="collective_classification.html">
+   Klasyfikacja kolektywna
   </a>
  </li>
 </ul>
@@ -572,7 +585,7 @@ $<span class="math notranslate nohighlight">\( N_\infty = \frac{1}{1-n^*} \text{
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
 
-<span class="n">history</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&#39;hawkes_example.csv&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&#39;data/hawkes/hawkes_example.csv&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
 <span class="n">history</span> <span class="o">&lt;-</span> <span class="n">history</span> <span class="o">%&gt;%</span> <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">X</span><span class="p">)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
@@ -717,6 +730,13 @@ $<span class="math notranslate nohighlight">\( N_\infty = \frac{1}{1-n^*} \text{
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Zasady</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="collective_classification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Klasyfikacja kolektywna</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

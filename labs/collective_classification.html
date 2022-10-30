@@ -1,0 +1,1140 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Klasyfikacja kolektywna &#8212; Przetwarzanie danych złożonych</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Proces Hawkesa" href="hawkes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Przetwarzanie danych złożonych</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Przetwarzanie danych złożonych
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zasady.html">
+   Zasady
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hawkes.html">
+   Proces Hawkesa
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 4
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Klasyfikacja kolektywna
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pwr-ai/przetwarzanie-danych-zlozonych/master?urlpath=tree/docs/labs/collective_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/collective_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Klasyfikacja kolektywna
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dane-nie-iid">
+     Dane nie-IID
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ogolny-schemat-klasyfikacji-kolektywnej">
+     Ogólny schemat klasyfikacji kolektywnej
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dwa-popularne-algorytmy">
+     Dwa popularne algorytmy:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iterative-classification-algorithm-ica">
+       Iterative Classification Algorithm (ICA)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#loopy-belief-propagation-lbp">
+       Loopy Belief Propagation (LBP)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#przyklad-zastosowania-algorytmu-ica">
+   Przykład zastosowania algorytmu ICA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zbior-danych">
+     Zbiór danych
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#budowa-sieci">
+     Budowa sieci
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obliczenie-cech-wezlow-miary-sieciowe">
+     Obliczenie cech węzłów - miary sieciowe
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#centralnosc-stopnia-wezla-ang-degree-centrality">
+       Centralność stopnia węzła (ang.
+       <em>
+        degree centrality
+       </em>
+       )
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bliskosc-ang-closeness">
+       Bliskość (ang.
+       <em>
+        closeness
+       </em>
+       )
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#posredniosc-ang-betweenness">
+       Pośredniość (ang.
+       <em>
+        betweenness
+       </em>
+       )
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#budowanie-rankingu">
+     Budowanie rankingu
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trenowanie-prostego-klasyfikatora-lokalnego">
+     Trenowanie prostego klasyfikatora lokalnego
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bootstrapping">
+     Bootstrapping
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iteracyjna-klasyfikacja">
+     Iteracyjna klasyfikacja
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ewaluacja-modelu">
+     Ewaluacja modelu
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rekomendowana-literatura">
+     Rekomendowana literatura
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Klasyfikacja kolektywna</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Klasyfikacja kolektywna
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dane-nie-iid">
+     Dane nie-IID
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ogolny-schemat-klasyfikacji-kolektywnej">
+     Ogólny schemat klasyfikacji kolektywnej
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dwa-popularne-algorytmy">
+     Dwa popularne algorytmy:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iterative-classification-algorithm-ica">
+       Iterative Classification Algorithm (ICA)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#loopy-belief-propagation-lbp">
+       Loopy Belief Propagation (LBP)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#przyklad-zastosowania-algorytmu-ica">
+   Przykład zastosowania algorytmu ICA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zbior-danych">
+     Zbiór danych
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#budowa-sieci">
+     Budowa sieci
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obliczenie-cech-wezlow-miary-sieciowe">
+     Obliczenie cech węzłów - miary sieciowe
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#centralnosc-stopnia-wezla-ang-degree-centrality">
+       Centralność stopnia węzła (ang.
+       <em>
+        degree centrality
+       </em>
+       )
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bliskosc-ang-closeness">
+       Bliskość (ang.
+       <em>
+        closeness
+       </em>
+       )
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#posredniosc-ang-betweenness">
+       Pośredniość (ang.
+       <em>
+        betweenness
+       </em>
+       )
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#budowanie-rankingu">
+     Budowanie rankingu
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trenowanie-prostego-klasyfikatora-lokalnego">
+     Trenowanie prostego klasyfikatora lokalnego
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bootstrapping">
+     Bootstrapping
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iteracyjna-klasyfikacja">
+     Iteracyjna klasyfikacja
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ewaluacja-modelu">
+     Ewaluacja modelu
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rekomendowana-literatura">
+     Rekomendowana literatura
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="klasyfikacja-kolektywna">
+<h1>Klasyfikacja kolektywna<a class="headerlink" href="#klasyfikacja-kolektywna" title="Permalink to this headline">#</a></h1>
+<section id="dane-nie-iid">
+<h2>Dane nie-IID<a class="headerlink" href="#dane-nie-iid" title="Permalink to this headline">#</a></h2>
+<p>Klasyczne metody uczenia maszynowego zakładają spełnienie warunku IID (ang. <em>Independent and Identically Distributed</em>), co oznacza, że dane są niezależne i pochodzą z tego samego rozkładu.</p>
+<p>Systemy złożone często jednak nie spełniają tego warunku. W sieciach społecznych może występować korelacja zachowań między jednostkami, która jest wynikiem działania dwóch mechanizmów:</p>
+<ul class="simple">
+<li><p>homofilii - osoby tworzą więzi z osobami podobnymi w pewien sposób do nich samych</p></li>
+<li><p>wpływu społecznego - więzi społeczne mogą wpływać na charakterystykę jednostki</p></li>
+</ul>
+<p>Standardowe metody klasyfikacji mogą sobie nie poradzić z relacyjnym charakterem danych, a także nie wykorzystać jego potencjału. W przypadku pracy z danymi nie-IID możemy jednak wykorzystać metody klasyfikacji kolektywnej, które nie mają ograniczeń klasycznych metod klasyfikacji.</p>
+</section>
+<section id="ogolny-schemat-klasyfikacji-kolektywnej">
+<h2>Ogólny schemat klasyfikacji kolektywnej<a class="headerlink" href="#ogolny-schemat-klasyfikacji-kolektywnej" title="Permalink to this headline">#</a></h2>
+<p>Istnieje wiele algorytmów klasyfikacji kolektywnej, jednak dla nich wszystkich możemy wyróżnić wspólny zestaw kroków uczenia w systemach nie-IID:</p>
+<ol class="simple">
+<li><p>Zbudowanie nieoetykietowanej sieci.</p></li>
+<li><p>Obliczenie oceny użyteczności węzłów (<em>utility score</em>). Najczęściej używa się miar sieciowych (np. betweenness), które zostały opisane w dalszej części.</p></li>
+<li><p>Zbudowanie rankingu węzłów na podstawie oceny użyteczności.</p></li>
+<li><p>Wybór najlepszych węzłów i odsłonięcie ich etykiet. W tym momencie otrzymujemy sieć częściowo oetykietowaną.</p></li>
+<li><p>Przeprowadzenie wewnątrzsieciowej klasyfikacji w oparciu o wybrany algorytm klasyfikacji kolektywnej.</p></li>
+<li><p>Otrzymanie etykiet nieznanych węzłów.</p></li>
+</ol>
+<p><img alt="cc" src="../_images/cc.png" /></p>
+</section>
+<section id="dwa-popularne-algorytmy">
+<h2>Dwa popularne algorytmy:<a class="headerlink" href="#dwa-popularne-algorytmy" title="Permalink to this headline">#</a></h2>
+<section id="iterative-classification-algorithm-ica">
+<h3>Iterative Classification Algorithm (ICA)<a class="headerlink" href="#iterative-classification-algorithm-ica" title="Permalink to this headline">#</a></h3>
+<p><span class="xref myst">ICA</span> jest algorytmem iteracyjnym, którego działanie możemy opisać w dwóch fazach:</p>
+<ol class="simple">
+<li><p><strong>Faza bootstrapingu</strong></p>
+<ul class="simple">
+<li><p>Wytrenuj lokalny klasyfikator na znanych węzłach, które zostały odsłonięte.</p></li>
+<li><p>Dokonaj predykcji etykiet nieznanych węzłów w oparciu o wyuczony lokalny klasyfikator.</p></li>
+</ul>
+</li>
+<li><p><strong>Faza klasyfikacji iteracyjnej</strong> - aż do osiągnięcia warunku stopu</p>
+<ul class="simple">
+<li><p>Wygeneruj porządek dla nieznanych węzłów (inny niż utility score).</p></li>
+<li><p>W oparciu o wygenerowany porządek dla każdego nieznanego węzła:</p>
+<ul>
+<li><p>Oblicz cechy bazujące na sąsiadach</p></li>
+<li><p>Dokonaj predykcji etykiety węzła z wykorzystaniem lokalnego klasyfikatora i zaktualizowanych cech</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="loopy-belief-propagation-lbp">
+<h3>Loopy Belief Propagation (LBP)<a class="headerlink" href="#loopy-belief-propagation-lbp" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://arxiv.org/abs/1301.6725">LBP</a>, podobnie jak ICA, jest również algorytmem iteracyjnym, jednakże zamiast lokalnego klasyfikatora wykorzystuje przekazywanie wiadomości między węzłami.</p>
+<p>Główne kroki algorytmu to:</p>
+<ol class="simple">
+<li><p>Przypisanie wszystkim nieznanym węzłom takiej samej wiadomości (np. m = 1).</p></li>
+<li><p>Faza message passing aż do osiągnięcia warunku stopu:
+<img alt="lbp" src="../_images/lbp.png" />
+<img alt="lbp2" src="../_images/lbp2.png" /></p></li>
+<li><p>Obliczenie przekonań węzłów:
+<img alt="lbp3" src="../_images/lbp3.png" /></p></li>
+</ol>
+<p><strong>Notacja:</strong></p>
+<ul class="simple">
+<li><p>label-label potential <span class="math notranslate nohighlight">\(\psi(Y_i,Y_j)\)</span> - zależność proporcjonalna do prawdopodobieństwa, że węzeł <span class="math notranslate nohighlight">\(j\)</span> ma etykietę <span class="math notranslate nohighlight">\(Y_j\)</span> wiedząc, że jego sąsiadem jest węzeł <span class="math notranslate nohighlight">\(i\)</span> mający etykietę <span class="math notranslate nohighlight">\(Y_i\)</span></p></li>
+<li><p>prior <span class="math notranslate nohighlight">\(\phi(Y_i)\)</span> - przekonanie proporcjonalne do prawdopodobieństwa, że węzeł <span class="math notranslate nohighlight">\(i\)</span> należy do klasy <span class="math notranslate nohighlight">\(Y_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(m_{i \rightarrow j}(Y_j)\)</span> - wiadomość z węzła <span class="math notranslate nohighlight">\(i\)</span> do <span class="math notranslate nohighlight">\(j\)</span>, że węzeł <span class="math notranslate nohighlight">\(j\)</span> należy do klasy <span class="math notranslate nohighlight">\(Y_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}\)</span> - zbiór wszystkich klas</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="przyklad-zastosowania-algorytmu-ica">
+<h1>Przykład zastosowania algorytmu ICA<a class="headerlink" href="#przyklad-zastosowania-algorytmu-ica" title="Permalink to this headline">#</a></h1>
+<section id="zbior-danych">
+<h2>Zbiór danych<a class="headerlink" href="#zbior-danych" title="Permalink to this headline">#</a></h2>
+<p>W prezentowanym przykładzie będziemy wykorzystywali zbiór <a class="reference external" href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/6Z3CGX">manufacturing company</a> zawierający komunikację mailową pracowników pewnej polskiej firmy wytwórczej.</p>
+<p>W zbiorze dostępne są również informacje o strukturze organizacyjnej firmy, która wygląda w następujący sposób:</p>
+<ol class="simple">
+<li><p>Regularni pracownicy</p></li>
+<li><p>Pracownicy pierwszego poziomu zarządzania</p></li>
+<li><p>Pracownicy drugiego poziomu zarządzania.</p></li>
+</ol>
+<p>Naszym celem będzie pokazanie, w jaki sposób można wykorzystać algorytm ICA do odtworzenia struktury organizacyjnej, mając do dyspozycji tylko sieć zbudowaną na podstawie komunikacji mailowej pracowników oraz częściową wiedzę na temat zajmowanych przez nich stanowisk.</p>
+<p>Będziemy chcieli rozróżnić 2 klasy: regularnych pracowników oraz kadrę zarządzającą (pierwszy i drugi stopień traktujemy jako jedną klasę)</p>
+<p>Plik <code class="docutils literal notranslate"><span class="pre">reportsto.csv</span></code> zawiera informację na temat tego, który pracownik (<code class="docutils literal notranslate"><span class="pre">ID</span></code>) raportuje któremu pracownikowi (<code class="docutils literal notranslate"><span class="pre">ReportsToID</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+
+<span class="c1"># Wczytanie danych i usunięcie kont niebędących pracownikami</span>
+<span class="n">reportsto</span> <span class="o">&lt;-</span> <span class="nf">read.csv2</span><span class="p">(</span><span class="s">&quot;data/collective_classification/reportsto.csv&quot;</span><span class="p">)</span>
+<span class="n">toRemove</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;former employee account&quot;</span><span class="p">,</span> <span class="s">&quot;technical email account - not used by employees&quot;</span><span class="p">)</span>
+<span class="n">reportsto</span> <span class="o">&lt;-</span> <span class="n">reportsto</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ReportsToID</span> <span class="o">%in%</span> <span class="n">toRemove</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">reportsto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching packages</span> ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.2 ──
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.6      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.4 
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.1.8      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.10
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.2.1      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.1 
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 2.1.3      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.2 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Conflicts</span> ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>ReportsToID</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>152</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>132</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>152</td></tr>
+	<tr><th scope=row>4</th><td>5</td><td>36 </td></tr>
+	<tr><th scope=row>5</th><td>6</td><td>163</td></tr>
+	<tr><th scope=row>6</th><td>7</td><td>86 </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># ID pracowników pierwszego stopnia zarządzania</span>
+<span class="n">first_management_level</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">76</span><span class="p">,</span> <span class="m">90</span><span class="p">,</span> <span class="m">136</span><span class="p">,</span> <span class="m">137</span><span class="p">,</span> <span class="m">143</span><span class="p">,</span> <span class="m">152</span><span class="p">,</span> <span class="m">47</span><span class="p">,</span> <span class="m">162</span><span class="p">)</span>
+
+<span class="c1"># ID pracowników drugiego stopnia zarządzania</span>
+<span class="n">second_management_level</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">86</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">36</span><span class="p">,</span> <span class="m">69</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="m">85</span><span class="p">,</span> <span class="m">104</span><span class="p">,</span> <span class="m">121</span><span class="p">,</span> <span class="m">148</span><span class="p">,</span> <span class="m">156</span><span class="p">,</span> <span class="m">163</span><span class="p">)</span>
+
+<span class="n">management_level</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">first_management_level</span><span class="p">,</span> <span class="n">second_management_level</span><span class="p">)</span>
+
+<span class="c1"># Pozostałe ID to regularni pracownicy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plik <code class="docutils literal notranslate"><span class="pre">communication.csv</span></code> zawiera informację o komunikacji mailowej pracowników.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">communication</span> <span class="o">&lt;-</span> <span class="nf">read.csv2</span><span class="p">(</span><span class="s">&quot;data/collective_classification/communication.csv&quot;</span><span class="p">)</span>
+<span class="n">communication</span> <span class="o">&lt;-</span> <span class="n">communication</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">Sender</span> <span class="o">%in%</span> <span class="n">reportsto</span><span class="o">$</span><span class="n">ID</span> <span class="o">&amp;</span> <span class="n">Recipient</span> <span class="o">%in%</span> <span class="n">reportsto</span><span class="o">$</span><span class="n">ID</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">communication</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Sender</th><th scope=col>Recipient</th><th scope=col>EventDate</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>17</td><td> 37</td><td>2010-01-02 17:40:10</td></tr>
+	<tr><th scope=row>2</th><td>17</td><td>136</td><td>2010-01-02 17:40:10</td></tr>
+	<tr><th scope=row>3</th><td>17</td><td> 62</td><td>2010-01-02 17:40:10</td></tr>
+	<tr><th scope=row>4</th><td>17</td><td>129</td><td>2010-01-02 17:40:10</td></tr>
+	<tr><th scope=row>5</th><td>17</td><td> 32</td><td>2010-01-02 17:40:10</td></tr>
+	<tr><th scope=row>6</th><td>17</td><td> 97</td><td>2010-01-02 17:40:10</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="budowa-sieci">
+<h2>Budowa sieci<a class="headerlink" href="#budowa-sieci" title="Permalink to this headline">#</a></h2>
+<p>Do zbudowania grafu, a następnie do obliczenia miar sieciowych wykorzystamy pakiet <code class="docutils literal notranslate"><span class="pre">igraph</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">igraph</span><span class="p">)</span>
+
+<span class="c1"># Tworzymy graf skierowany na podstawie historii komunikacji mailowej</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">graph_from_data_frame</span><span class="p">(</span><span class="n">communication</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Każdej krawędzi przypisujemy wagę 1</span>
+<span class="nf">E</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">weight</span> <span class="o">&lt;-</span> <span class="m">1</span>
+
+<span class="c1"># Upraszczamy graf:</span>
+<span class="c1">#  - usuwamy pętle</span>
+<span class="c1">#  - zastępujemy powtarzające się krawędzie poprzez zsumowanie wag i przypisanie ich do pojedynczej krawędzi</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">simplify</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">remove.loops</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">remove.multiple</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">edge.attr.comb</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s">&quot;sum&quot;</span><span class="p">))</span>
+
+<span class="c1"># Przypisanie hierarchii. Regularni pracownicy są oznaczeni przez cyfrę 1, a kadra zarządzająca przez cyfrę 2</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;true_label&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;true_label&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)[</span><span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">name</span> <span class="o">%in%</span> <span class="n">management_level</span><span class="p">])</span>
+
+<span class="c1"># Wizualizacja sieci</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;color&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;pink&quot;</span><span class="p">,</span> <span class="s">&quot;skyblue&quot;</span><span class="p">)[</span><span class="m">1</span><span class="o">+</span><span class="p">(</span><span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">true_label</span><span class="o">==</span><span class="m">1</span><span class="p">)])</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">layout</span> <span class="o">=</span> <span class="nf">layout_with_lgl</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">vertex.label</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">vertex.size</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">edge.width</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span> <span class="n">edge.arrow.size</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘igraph’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:dplyr’:
+
+    as_data_frame, groups, union
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:purrr’:
+
+    compose, simplify
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:tidyr’:
+
+    crossing
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:tibble’:
+
+    as_data_frame
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:base’:
+
+    union
+</pre></div>
+</div>
+<img alt="../_images/collective_classification_20_7.png" src="../_images/collective_classification_20_7.png" />
+</div>
+</div>
+</section>
+<section id="obliczenie-cech-wezlow-miary-sieciowe">
+<h2>Obliczenie cech węzłów - miary sieciowe<a class="headerlink" href="#obliczenie-cech-wezlow-miary-sieciowe" title="Permalink to this headline">#</a></h2>
+<p>Kolejnym krokiem po zbudowaniu sieci jest obliczenie miar opisujących ważność każdego węzła w sieci.</p>
+<section id="centralnosc-stopnia-wezla-ang-degree-centrality">
+<h3>Centralność stopnia węzła (ang. <em>degree centrality</em>)<a class="headerlink" href="#centralnosc-stopnia-wezla-ang-degree-centrality" title="Permalink to this headline">#</a></h3>
+<p>Najprostszą miarą jest stopień każdego węzła. Ważne węzły będą miały więcej krawędzi łączących je z innymi węzłami. Stopień węzła może być użyty do zdefiniowania miary zwanej centralnością stopnia (ang. <em>degree centrality</em>).</p>
+<div class="math notranslate nohighlight">
+\[C_{deg}(v) = \dfrac{d_v}{N-1}\]</div>
+<p>gdzie <span class="math notranslate nohighlight">\(v\)</span> to dany węzeł, <span class="math notranslate nohighlight">\(d_v\)</span> to liczba krawędzi danego węzła <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(N\)</span> jest całkowitą liczbą węzłów w sieci.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">degree_centrality</span> <span class="o">&lt;-</span> <span class="nf">degree</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">normalized</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;degree&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">degree_centrality</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bliskosc-ang-closeness">
+<h3>Bliskość (ang. <em>closeness</em>)<a class="headerlink" href="#bliskosc-ang-closeness" title="Permalink to this headline">#</a></h3>
+<p>Bliskość przypisuje wyższy wynik tym węzłom, które mają mniejszą odległość do wszystkich pozostałych węzłów w sieci. Miarę tę można zdefiniować jako:</p>
+<div class="math notranslate nohighlight">
+\[C_c(v) = \dfrac{n-1}{N-1}\dfrac{n-1}{\sum_{u=1}^{n-1}\sigma_{v,u}}\]</div>
+<p>gdzie <span class="math notranslate nohighlight">\(n\)</span> jest liczbą węzłów, do których można się dostać z węzła <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(N\)</span> jest całkowitą liczbą węzłów w sieci, <span class="math notranslate nohighlight">\(\sigma_{v,u}\)</span> jest długością najkrótszej ścieżki między węzłami <span class="math notranslate nohighlight">\(v\)</span> i <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">closeness_centrality</span> <span class="o">&lt;-</span> <span class="nf">closeness</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">normalized</span> <span class="o">=</span> <span class="kc">TRUE</span> <span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;closeness&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">closeness_centrality</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="posredniosc-ang-betweenness">
+<h3>Pośredniość (ang. <em>betweenness</em>)<a class="headerlink" href="#posredniosc-ang-betweenness" title="Permalink to this headline">#</a></h3>
+<p>Pośredniość między węzłami jest miarą wykorzystującą najkrótsze ścieżki do obliczenia ważności każdego węzła. Miarę tę można obliczyć według następującego wzoru:</p>
+<div class="math notranslate nohighlight">
+\[C_{B}(v) = \sum_{s,t\in V}\dfrac{\sigma_{s,t}(v)}{\sigma_{s,t}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">betweenness_centrality</span> <span class="o">&lt;-</span> <span class="nf">betweenness</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">normalized</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;betweenness&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">betweenness_centrality</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="budowanie-rankingu">
+<h2>Budowanie rankingu<a class="headerlink" href="#budowanie-rankingu" title="Permalink to this headline">#</a></h2>
+<p>Jednym z problemów klasyfikacji kolektywnej jest wybór węzłów, które zostaną odkryte, a następnie użyte w procesie klasyfikacji kolektywnej. Głównym celem jest taki nieprzypadkowy wybór węzłów, aby zminimalizować błąd klasyfikacji.</p>
+<p>W celu skwantyfikowania użyteczności danego węzła możemy użyć różnych miar sieciowych, jakie dostarcza nam obliczeniowa nauka o sieciach. Należy wybrać jedną z wcześniej wspomnianych miar (np. betweenness), obliczyć ją dla każdego węzła, a następnie posegregować węzły rosnąco lub malejąco według wybranej miary.</p>
+<p>Mając zbudowany ranking odsłaniamy <span class="math notranslate nohighlight">\(p\%\)</span> etykiet najlepszych węzłów (<span class="math notranslate nohighlight">\(V^K\)</span>). Posłużą one do wytrenowania lokalnego klasyfikatora.</p>
+<p>Pozostałe węzły traktujemy jako nieznane (<span class="math notranslate nohighlight">\(V^{UK}\)</span>).</p>
+<p>Na potrzeby tego przykładu użyjemy miary betweenness jako oceny użyteczności oraz odsłonimy 60% węzłów w sieci.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">betweenness_centrality</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">betweenness_centrality</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">true_label</span><span class="p">,</span> 
+                                     <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="n">node_order</span> <span class="o">&lt;-</span> <span class="n">betweenness_centrality</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">betweenness_centrality</span><span class="o">$</span><span class="n">value</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),]</span>
+
+<span class="n">p</span> <span class="o">&lt;-</span> <span class="m">0.6</span>
+
+<span class="n">known_nodes</span> <span class="o">&lt;-</span> <span class="n">node_order</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">round</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="nf">nrow</span><span class="p">(</span><span class="n">node_order</span><span class="p">)),]</span>
+<span class="n">unknown_nodes</span> <span class="o">&lt;-</span> <span class="n">node_order</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">name</span> <span class="o">%in%</span> <span class="n">known_nodes</span><span class="o">$</span><span class="n">name</span><span class="p">))</span>
+
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;pred_label&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">true_label</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;pred_label&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)[</span><span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">name</span> <span class="o">%in%</span> <span class="n">unknown_nodes</span><span class="o">$</span><span class="n">name</span><span class="p">],</span> <span class="n">value</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="trenowanie-prostego-klasyfikatora-lokalnego">
+<h2>Trenowanie prostego klasyfikatora lokalnego<a class="headerlink" href="#trenowanie-prostego-klasyfikatora-lokalnego" title="Permalink to this headline">#</a></h2>
+<p>Mając już odsłonięte węzły, musimy ich użyć do wytrenowania prostego lokalnego klasyfikatora. W tym celu możemy użyć dobrze znanych modeli takich jak Naive Bayes, SVM, drzewo decyzyjne lub las losowy.</p>
+<p>Jako cech wejściowych dla algorytmu klasyfikacji użyjemy wcześniej obliczonych miar sieciowych: degree centrality, closeness i betweenness. Jako dodatkowych cech użyjemy informacji na temat tego ilu sąsiadów danego węzła należy do klasy 1 (regularni pracownicy) , a ilu do klasy 2 (pracownicy pierwszego lub drugiego poziomu zarządzania).</p>
+<p>Poniżej użyliśmy algorytmu lasu losowego z 5-krotną walidacją krzyżową.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">MLmetrics</span><span class="p">)</span>
+
+<span class="n">update_neighbors</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">neighborhood</span> <span class="o">&lt;-</span> <span class="nf">neighbors</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">$</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s">&quot;all&quot;</span><span class="p">)</span>
+    
+    <span class="n">neighbors_1</span> <span class="o">&lt;-</span> <span class="m">0</span>
+    <span class="n">neighbors_2</span> <span class="o">&lt;-</span> <span class="m">0</span>
+    
+    <span class="nf">for </span><span class="p">(</span><span class="n">n</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">neighborhood</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">label</span> <span class="o">&lt;-</span> <span class="nf">vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">neighborhood</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">$</span><span class="n">pred_label</span>
+
+      <span class="nf">if </span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">neighbors_1</span> <span class="o">&lt;-</span> <span class="n">neighbors_1</span> <span class="o">+</span> <span class="m">1</span>
+      <span class="p">}</span> <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="m">2</span><span class="p">){</span>
+        <span class="n">neighbors_2</span> <span class="o">=</span> <span class="n">neighbors_2</span> <span class="o">+</span> <span class="m">1</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;neighbors_1&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">$</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">neighbors_1</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;neighbors_2&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">$</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">neighbors_2</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">F1_Macro</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">lev</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">f1_scores</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">lev</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">f1_score</span> <span class="o">&lt;-</span> <span class="n">MLmetrics</span><span class="o">::</span><span class="nf">F1_Score</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">obs</span><span class="p">,</span> <span class="n">positive</span> <span class="o">=</span> <span class="n">l</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">f1_score</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">f1_score</span> <span class="o">&lt;-</span> <span class="m">0</span>
+    <span class="p">}</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">f1_score</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="n">macro</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">f1_scores</span><span class="p">)</span> <span class="o">/</span> <span class="nf">length</span><span class="p">(</span><span class="n">lev</span><span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">macro</span><span class="o">=</span><span class="n">macro</span><span class="p">,</span> <span class="n">class</span><span class="o">=</span><span class="n">f1_scores</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># Oblicz cechy bazujące na sąsiadach</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">update_neighbors</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">known_nodes</span><span class="p">)</span>
+
+<span class="c1"># Trenowanie klasyfikatora</span>
+<span class="n">attributes</span> <span class="o">&lt;-</span> <span class="nf">vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">known_nodes</span><span class="o">$</span><span class="n">name</span><span class="p">)</span>
+<span class="n">trainingData</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">attributes</span><span class="o">$</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">closeness</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">degree</span><span class="p">,</span> 
+                       <span class="n">attributes</span><span class="o">$</span><span class="n">neighbors_1</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">neighbors_2</span><span class="p">,</span>
+                       <span class="n">label</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">attributes</span><span class="o">$</span><span class="n">true_label</span><span class="p">))</span>
+
+<span class="n">fitControl</span> <span class="o">&lt;-</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;CV&quot;</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">summaryFunction</span> <span class="o">=</span> <span class="n">F1_Macro</span><span class="p">,</span> <span class="n">search</span> <span class="o">=</span> <span class="s">&quot;random&quot;</span><span class="p">)</span>
+<span class="n">classifier</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">label</span> <span class="o">~</span> <span class="n">.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">trainingData</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;rf&quot;</span><span class="p">,</span> <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">,</span> 
+                    <span class="n">preProcess</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span> <span class="s">&quot;scale&quot;</span><span class="p">),</span> <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;macro&quot;</span><span class="p">,</span> <span class="n">tuneLength</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: lattice
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘caret’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:purrr’:
+
+    lift
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘MLmetrics’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:caret’:
+
+    MAE, RMSE
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:base’:
+
+    Recall
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bootstrapping">
+<h2>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">#</a></h2>
+<p>W fazie bootstrapingu przypisujemy klasę nieznanym węzłom <span class="math notranslate nohighlight">\(V^{UK}\)</span> tylko na podstawie zaobserwowanych węzłów <span class="math notranslate nohighlight">\(V^K\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zaktualizuj informację na temat liczby sąsiadów (należących do V^K)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">update_neighbors</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">unknown_nodes</span><span class="p">)</span>
+
+<span class="c1"># Użyj lokalnego klasyfikatora do przypisania klasy węzłom należącym do V^UK</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">n</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">unknown_nodes</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">node</span> <span class="o">&lt;-</span> <span class="n">unknown_nodes</span><span class="p">[</span><span class="n">n</span><span class="p">,]</span><span class="o">$</span><span class="n">name</span>
+    
+    <span class="n">attributes</span> <span class="o">&lt;-</span> <span class="nf">vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">node</span><span class="p">)</span>
+    
+    <span class="n">testData</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">attributes</span><span class="o">$</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">closeness</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">degree</span><span class="p">,</span> 
+                       <span class="n">attributes</span><span class="o">$</span><span class="n">neighbors_1</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">neighbors_2</span><span class="p">)</span>
+    
+    <span class="n">predicted_label</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">newdata</span> <span class="o">=</span> <span class="n">testData</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;pred_label&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">predicted_label</span><span class="p">)</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iteracyjna-klasyfikacja">
+<h2>Iteracyjna klasyfikacja<a class="headerlink" href="#iteracyjna-klasyfikacja" title="Permalink to this headline">#</a></h2>
+<p>W fazie iteracyjnej klasyfikacji przechodzimy po nieznanych węzłach <span class="math notranslate nohighlight">\(V^{UK}\)</span> wykonując następujące kroki dla każdego węzła <span class="math notranslate nohighlight">\(v\)</span>:</p>
+<ol class="simple">
+<li><p>Zaktualizuj informacje o sąsiadach <span class="math notranslate nohighlight">\(N_v\)</span>.</p></li>
+<li><p>Użyj lokalnego klasyfikatora oraz informacji z poprzedniego kroku do predykcji etykiety węzła <span class="math notranslate nohighlight">\(v\)</span>.</p></li>
+<li><p>Czy osiągnięto warunek stopu? TAK - koniec, NIE - wróć do punktu 1.</p></li>
+</ol>
+<p>Warunek stopu jest osiągnięty, jeżeli etykiety węzłów ustabilizują się w kolejnych iteracjach lub gdy zostanie wykonana maksymalna liczba iteracji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="n">maxIter</span> <span class="o">&lt;-</span> <span class="m">100</span>
+<span class="n">changed</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+
+<span class="nf">while </span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">maxIter</span> <span class="o">&amp;</span> <span class="n">changed</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">changed</span> <span class="o">&lt;-</span> <span class="kc">FALSE</span>
+  
+  <span class="n">unknown_nodes</span> <span class="o">&lt;-</span> <span class="n">unknown_nodes</span><span class="p">[</span><span class="nf">sample</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">unknown_nodes</span><span class="p">)),]</span>
+  
+  <span class="nf">for </span><span class="p">(</span><span class="n">n</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">unknown_nodes</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">node</span> <span class="o">&lt;-</span> <span class="n">unknown_nodes</span><span class="p">[</span><span class="n">n</span><span class="p">,]</span><span class="o">$</span><span class="n">name</span>
+    
+    <span class="c1"># Zaktualizuj informacje o sąsiadach węzła n na podstawie aktualnie przypisanych etykiet</span>
+    <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">update_neighbors</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">unknown_nodes</span><span class="p">[</span><span class="n">n</span><span class="p">,])</span>
+    
+    <span class="n">attributes</span> <span class="o">&lt;-</span> <span class="nf">vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">node</span><span class="p">)</span>
+    
+    <span class="n">test</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">attributes</span><span class="o">$</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">closeness</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">degree</span><span class="p">,</span> 
+                       <span class="n">attributes</span><span class="o">$</span><span class="n">neighbors_1</span><span class="p">,</span> <span class="n">attributes</span><span class="o">$</span><span class="n">neighbors_2</span><span class="p">)</span>
+    
+    <span class="c1"># Predykcja nowej etykiety</span>
+    <span class="n">predicted_label</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">newdata</span> <span class="o">=</span> <span class="n">test</span><span class="p">)</span>
+    <span class="n">current_label</span> <span class="o">&lt;-</span> <span class="n">attributes</span><span class="o">$</span><span class="n">pred_label</span>
+    
+    <span class="c1"># Jeżeli nowa etykieta jest różna od obecnej, to przypisujemy ją do węzła</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">predicted_label</span> <span class="o">!=</span> <span class="n">current_label</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">set_vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;pred_label&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">predicted_label</span><span class="p">)</span>
+      <span class="n">changed</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="n">i</span> <span class="o">&lt;-</span> <span class="n">i</span> <span class="o">+</span> <span class="m">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ewaluacja-modelu">
+<h2>Ewaluacja modelu<a class="headerlink" href="#ewaluacja-modelu" title="Permalink to this headline">#</a></h2>
+<p>Do ewaluacji modelu klasyfikacji kolektywnej możemy użyć tych samych miar co w przypadku zwykłych algorytmów klasyfikacji, np.: <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> lub <code class="docutils literal notranslate"><span class="pre">F1</span></code>.</p>
+<p>W naszym przykładzie użyliśmy miary <code class="docutils literal notranslate"><span class="pre">F1</span> <span class="pre">macro</span></code>, będącą średnią miary F1 dla każdej z klas. Dodatkowo możemy zauważyć, że miara F1 dla klasy 2 (stopień zarządzający) jest niższa, co spowodowane jest niezbalansowaniem klas.</p>
+<p>W celu polepszenia otrzymanego wyniku należałoby przetestować różne miary sieciowe do oceny użyteczności węzłów oraz zastanowić się, jakie jeszcze cechy węzłów mogą być użyteczne przy określeniu hierarchii organizacyjnej.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">true_labels</span> <span class="o">=</span> <span class="nf">vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;true_label&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)[</span><span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">name</span> <span class="o">%in%</span> <span class="n">unknown_nodes</span><span class="o">$</span><span class="n">name</span><span class="p">])</span>
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="nf">vertex_attr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;pred_label&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)[</span><span class="nf">V</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">name</span> <span class="o">%in%</span> <span class="n">unknown_nodes</span><span class="o">$</span><span class="n">name</span><span class="p">])</span>
+
+<span class="nf">F1_Macro</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;pred&quot;</span><span class="o">=</span><span class="n">pred_labels</span><span class="p">,</span> <span class="s">&quot;obs&quot;</span><span class="o">=</span><span class="n">true_labels</span><span class="p">),</span> <span class="n">lev</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>macro</dt><dd>0.732456140350877</dd><dt>class1</dt><dd>0.964912280701754</dd><dt>class2</dt><dd>0.5</dd></dl>
+</div></div>
+</div>
+</section>
+<section id="rekomendowana-literatura">
+<h2>Rekomendowana literatura<a class="headerlink" href="#rekomendowana-literatura" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.aaai.org/Papers/Workshops/2000/WS-00-06/WS00-06-007.pdf">Neville, Jennifer, and David Jensen. “Iterative classification in relational data.” Proc. AAAI-2000 workshop on learning statistical models from relational data. 2000.</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1301.6725">Murphy, Kevin, Yair Weiss, and Michael I. Jordan. “Loopy belief propagation for approximate inference: An empirical study.” arXiv preprint arXiv:1301.6725 (2013).</a></p></li>
+<li><p><a class="reference external" href="https://ojs.aaai.org/index.php/aimagazine/article/view/2157">Sen, Prithviraj, et al. “Collective classification in network data.” AI magazine 29.3 (2008): 93-93.</a></p></li>
+<li><p><a class="reference external" href="https://content.iospress.com/articles/ai-communications/aic686">Kajdanowicz, Tomasz, et al. “Learning in unlabeled networks–An active learning and inference approach.” AI Communications 29.1 (2016): 123-148.</a></p></li>
+<li><p><a class="reference external" href="http://snap.stanford.edu/class/cs224w-2020/slides/05-message.pdf">Stanford CS224W Message Passing and Node Classification</a></p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="hawkes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Proces Hawkesa</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
