@@ -9,6 +9,10 @@ python = "^3.9"
 jupyter-book = "^0.13.1"
 toml = "^0.10.2"
 ghp-import = "^2.1.0"
+matplotlib = "^3.6.2"
+pydot = "^1.4.2"
+networkx = "^2.8.8"
+graphviz = "^0.20.1"
 
 [tool.poetry.dev-dependencies]
 
