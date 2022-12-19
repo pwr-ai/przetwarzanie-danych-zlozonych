@@ -1,39 +1,128 @@
 Traceback (most recent call last):
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/kamiltagowski/.pyenv/versions/3.9.6/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import networkx as nx
+import pydot
+from networkx.drawing.nx_pydot import graphviz_layout
+
+with open("data/hierarchical_classification/imclef07d.hf", "r", newline="\n") as file:
+    G = nx.read_edgelist(file, create_using=nx.DiGraph)
+
+G = nx.relabel_nodes(G, {'19':'ROOT'})
+
+color_map = ['red' if node == 'ROOT' else 'green' for node in G] 
+pos = graphviz_layout(G, prog="dot")
+nx.draw(G, pos, with_labels=True, node_color=color_map)
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+File [0;32m~/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/pydot.py:1923[0m, in [0;36mDot.create[0;34m(self, prog, format, encoding)[0m
+[1;32m   1922[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 1923[0m     stdout_data, stderr_data, process [38;5;241m=[39m [43mcall_graphviz[49m[43m([49m
+[1;32m   1924[0m [43m        [49m[43mprogram[49m[38;5;241;43m=[39;49m[43mprog[49m[43m,[49m
+[1;32m   1925[0m [43m        [49m[43marguments[49m[38;5;241;43m=[39;49m[43marguments[49m[43m,[49m
+[1;32m   1926[0m [43m        [49m[43mworking_dir[49m[38;5;241;43m=[39;49m[43mtmp_dir[49m[43m,[49m
+[1;32m   1927[0m [43m    [49m[43m)[49m
+[1;32m   1928[0m [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m [38;5;28;01mas[39;00m e:
+
+File [0;32m~/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/pydot.py:132[0m, in [0;36mcall_graphviz[0;34m(program, arguments, working_dir, **kwargs)[0m
+[1;32m    130[0m program_with_args [38;5;241m=[39m [program, ] [38;5;241m+[39m arguments
+[0;32m--> 132[0m process [38;5;241m=[39m [43msubprocess[49m[38;5;241;43m.[39;49m[43mPopen[49m[43m([49m
+[1;32m    133[0m [43m    [49m[43mprogram_with_args[49m[43m,[49m
+[1;32m    134[0m [43m    [49m[43menv[49m[38;5;241;43m=[39;49m[43menv[49m[43m,[49m
+[1;32m    135[0m [43m    [49m[43mcwd[49m[38;5;241;43m=[39;49m[43mworking_dir[49m[43m,[49m
+[1;32m    136[0m [43m    [49m[43mshell[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    137[0m [43m    [49m[43mstderr[49m[38;5;241;43m=[39;49m[43msubprocess[49m[38;5;241;43m.[39;49m[43mPIPE[49m[43m,[49m
+[1;32m    138[0m [43m    [49m[43mstdout[49m[38;5;241;43m=[39;49m[43msubprocess[49m[38;5;241;43m.[39;49m[43mPIPE[49m[43m,[49m
+[1;32m    139[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m
+[1;32m    140[0m [43m[49m[43m)[49m
+[1;32m    141[0m stdout_data, stderr_data [38;5;241m=[39m process[38;5;241m.[39mcommunicate()
+
+File [0;32m~/.pyenv/versions/3.9.6/lib/python3.9/subprocess.py:951[0m, in [0;36mPopen.__init__[0;34m(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, user, group, extra_groups, encoding, errors, text, umask)[0m
+[1;32m    948[0m             [38;5;28mself[39m[38;5;241m.[39mstderr [38;5;241m=[39m io[38;5;241m.[39mTextIOWrapper([38;5;28mself[39m[38;5;241m.[39mstderr,
+[1;32m    949[0m                     encoding[38;5;241m=[39mencoding, errors[38;5;241m=[39merrors)
+[0;32m--> 951[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_execute_child[49m[43m([49m[43margs[49m[43m,[49m[43m [49m[43mexecutable[49m[43m,[49m[43m [49m[43mpreexec_fn[49m[43m,[49m[43m [49m[43mclose_fds[49m[43m,[49m
+[1;32m    952[0m [43m                        [49m[43mpass_fds[49m[43m,[49m[43m [49m[43mcwd[49m[43m,[49m[43m [49m[43menv[49m[43m,[49m
+[1;32m    953[0m [43m                        [49m[43mstartupinfo[49m[43m,[49m[43m [49m[43mcreationflags[49m[43m,[49m[43m [49m[43mshell[49m[43m,[49m
+[1;32m    954[0m [43m                        [49m[43mp2cread[49m[43m,[49m[43m [49m[43mp2cwrite[49m[43m,[49m
+[1;32m    955[0m [43m                        [49m[43mc2pread[49m[43m,[49m[43m [49m[43mc2pwrite[49m[43m,[49m
+[1;32m    956[0m [43m                        [49m[43merrread[49m[43m,[49m[43m [49m[43merrwrite[49m[43m,[49m
+[1;32m    957[0m [43m                        [49m[43mrestore_signals[49m[43m,[49m
+[1;32m    958[0m [43m                        [49m[43mgid[49m[43m,[49m[43m [49m[43mgids[49m[43m,[49m[43m [49m[43muid[49m[43m,[49m[43m [49m[43mumask[49m[43m,[49m
+[1;32m    959[0m [43m                        [49m[43mstart_new_session[49m[43m)[49m
+[1;32m    960[0m [38;5;28;01mexcept[39;00m:
+[1;32m    961[0m     [38;5;66;03m# Cleanup if the child failed starting.[39;00m
+
+File [0;32m~/.pyenv/versions/3.9.6/lib/python3.9/subprocess.py:1821[0m, in [0;36mPopen._execute_child[0;34m(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, gid, gids, uid, umask, start_new_session)[0m
+[1;32m   1820[0m         err_msg [38;5;241m=[39m os[38;5;241m.[39mstrerror(errno_num)
+[0;32m-> 1821[0m     [38;5;28;01mraise[39;00m child_exception_type(errno_num, err_msg, err_filename)
+[1;32m   1822[0m [38;5;28;01mraise[39;00m child_exception_type(err_msg)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'dot'
 
 During handling of the above exception, another exception occurred:
 
-Traceback (most recent call last):
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
-    executenb(
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
-    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
-    return just_run(coro(*args, **kwargs))
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
-    return loop.run_until_complete(coro)
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
-    return future.result()
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
-    await self.async_execute_cell(
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/home/mnurek/anaconda3/envs/pdz/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['import re', 'import pandas as pd', '', 'def readDataset(path):', "    with open(path, 'r', newline='\\n') as file:"]
-...
-['            newRow = pd.DataFrame(dict(zip(column_names, features)))', '            df = pd.concat([df, newRow], ignore_index = True)', '        return(df)', '            ', "df = readDataset('data/hierarchical_classification/imclef07d_train')"]
--------------------
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn [3], line 12[0m
+[1;32m      9[0m G [38;5;241m=[39m nx[38;5;241m.[39mrelabel_nodes(G, {[38;5;124m'[39m[38;5;124m19[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124mROOT[39m[38;5;124m'[39m})
+[1;32m     11[0m color_map [38;5;241m=[39m [[38;5;124m'[39m[38;5;124mred[39m[38;5;124m'[39m [38;5;28;01mif[39;00m node [38;5;241m==[39m [38;5;124m'[39m[38;5;124mROOT[39m[38;5;124m'[39m [38;5;28;01melse[39;00m [38;5;124m'[39m[38;5;124mgreen[39m[38;5;124m'[39m [38;5;28;01mfor[39;00m node [38;5;129;01min[39;00m G] 
+[0;32m---> 12[0m pos [38;5;241m=[39m graphviz_layout(G, prog[38;5;241m=[39m[38;5;124m"[39m[38;5;124mdot[39m[38;5;124m"[39m)
+[1;32m     13[0m nx[38;5;241m.[39mdraw(G, pos, with_labels[38;5;241m=[39m[38;5;28;01mTrue[39;00m, node_color[38;5;241m=[39mcolor_map)
+[1;32m     14[0m plt[38;5;241m.[39mshow()
+
+File [0;32m~/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/networkx/drawing/nx_pydot.py:357[0m, in [0;36mgraphviz_layout[0;34m(G, prog, root)[0m
+[1;32m    349[0m msg [38;5;241m=[39m (
+[1;32m    350[0m     [38;5;124m"[39m[38;5;124mnx.nx_pydot.graphviz_layout depends on the pydot package, which has[39m[38;5;124m"[39m
+[1;32m    351[0m     [38;5;124m"[39m[38;5;124mknown issues and is not actively maintained. Consider using[39m[38;5;124m"[39m
+[1;32m    352[0m     [38;5;124m"[39m[38;5;124mnx.nx_agraph.graphviz_layout instead.[39m[38;5;130;01m\n[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m    353[0m     [38;5;124m"[39m[38;5;124mSee https://github.com/networkx/networkx/issues/5723[39m[38;5;124m"[39m
+[1;32m    354[0m )
+[1;32m    355[0m warnings[38;5;241m.[39mwarn(msg, [38;5;167;01mPendingDeprecationWarning[39;00m, stacklevel[38;5;241m=[39m[38;5;241m2[39m)
+[0;32m--> 357[0m [38;5;28;01mreturn[39;00m [43mpydot_layout[49m[43m([49m[43mG[49m[38;5;241;43m=[39;49m[43mG[49m[43m,[49m[43m [49m[43mprog[49m[38;5;241;43m=[39;49m[43mprog[49m[43m,[49m[43m [49m[43mroot[49m[38;5;241;43m=[39;49m[43mroot[49m[43m)[49m
+
+File [0;32m~/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/networkx/drawing/nx_pydot.py:412[0m, in [0;36mpydot_layout[0;34m(G, prog, root)[0m
+[1;32m    408[0m     P[38;5;241m.[39mset([38;5;124m"[39m[38;5;124mroot[39m[38;5;124m"[39m, [38;5;28mstr[39m(root))
+[1;32m    410[0m [38;5;66;03m# List of low-level bytes comprising a string in the dot language converted[39;00m
+[1;32m    411[0m [38;5;66;03m# from the passed graph with the passed external GraphViz command.[39;00m
+[0;32m--> 412[0m D_bytes [38;5;241m=[39m [43mP[49m[38;5;241;43m.[39;49m[43mcreate_dot[49m[43m([49m[43mprog[49m[38;5;241;43m=[39;49m[43mprog[49m[43m)[49m
+[1;32m    414[0m [38;5;66;03m# Unique string decoded from these bytes with the preferred locale encoding[39;00m
+[1;32m    415[0m D [38;5;241m=[39m [38;5;28mstr[39m(D_bytes, encoding[38;5;241m=[39mgetpreferredencoding())
+
+File [0;32m~/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/pydot.py:1733[0m, in [0;36mDot.__init__.<locals>.new_method[0;34m(f, prog, encoding)[0m
+[1;32m   1729[0m [38;5;28;01mdef[39;00m [38;5;21mnew_method[39m(
+[1;32m   1730[0m         f[38;5;241m=[39mfrmt, prog[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mprog,
+[1;32m   1731[0m         encoding[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[1;32m   1732[0m     [38;5;124;03m"""Refer to docstring of method `create`."""[39;00m
+[0;32m-> 1733[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcreate[49m[43m([49m
+[1;32m   1734[0m [43m        [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[43mf[49m[43m,[49m[43m [49m[43mprog[49m[38;5;241;43m=[39;49m[43mprog[49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m)[49m
+
+File [0;32m~/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/pydot.py:1933[0m, in [0;36mDot.create[0;34m(self, prog, format, encoding)[0m
+[1;32m   1930[0m     args [38;5;241m=[39m [38;5;28mlist[39m(e[38;5;241m.[39margs)
+[1;32m   1931[0m     args[[38;5;241m1[39m] [38;5;241m=[39m [38;5;124m'[39m[38;5;124m"[39m[38;5;132;01m{prog}[39;00m[38;5;124m"[39m[38;5;124m not found in path.[39m[38;5;124m'[39m[38;5;241m.[39mformat(
+[1;32m   1932[0m         prog[38;5;241m=[39mprog)
+[0;32m-> 1933[0m     [38;5;28;01mraise[39;00m [38;5;167;01mOSError[39;00m([38;5;241m*[39margs)
+[1;32m   1934[0m [38;5;28;01melse[39;00m:
+[1;32m   1935[0m     [38;5;28;01mraise[39;00m
+
+[0;31mFileNotFoundError[0m: [Errno 2] "dot" not found in path.
+FileNotFoundError: [Errno 2] "dot" not found in path.
 
