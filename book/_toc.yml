@@ -13,6 +13,16 @@ parts:
   - caption: Laboratorium 5
     chapters:
     - file: labs/hierarchical_classification
+  - caption: Laboratorium 7
+    chapters:
+    - file: labs/river_ml_introduction
+  - caption: Laboratorium 8
+    chapters:
+    - file: labs/concept_drift
+  - caption: Laboratorium 9
+    chapters:
+     - file: labs/classification_of_streaming_data
+
 
 #  - caption: Laboratorium 2
 #    chapters:

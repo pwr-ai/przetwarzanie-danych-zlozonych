@@ -9,6 +9,7 @@ author: Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
+  timeout: 1000
 
 # Define the name of the latex output file for PDF builds
 latex:
