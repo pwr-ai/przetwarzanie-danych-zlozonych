@@ -22,19 +22,9 @@ parts:
   - caption: Laboratorium 9
     chapters:
      - file: labs/classification_of_streaming_data
-
-
-#  - caption: Laboratorium 2
-#    chapters:
-#    - file: labs/lab2-pobieranie-danych
-#    - file: labs/lab2-wizualizacja-danych
-#  - caption: Laboratorium 3
-#    chapters:
-#    - file: labs/lab3-sentiment-topics
-#  - caption: Laboratorium 4
-#    chapters:
-#    - file: labs/lab4-community-detection
-#  - caption: Projekt
-#    chapters:
-#    - file: labs/propozycja_projektu
-#    - file: labs/przykladowe_projekty
+  - caption: Laboratorium 10
+    chapters:
+     - file: labs/time_series
+  - caption: Laboratorium 11
+    chapters:
+     - file: labs/time_series_neural_networks
