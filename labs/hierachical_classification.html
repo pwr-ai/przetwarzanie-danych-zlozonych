@@ -1,0 +1,1100 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Klasyfikacja hierarchiczna &#8212; Przetwarzanie danych złożonych</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Przetwarzanie danych złożonych</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Przetwarzanie danych złożonych
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zasady.html">
+   Zasady
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hawkes.html">
+   Proces Hawkesa
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="collective_classification.html">
+   Klasyfikacja kolektywna
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pwr-ai/przetwarzanie-danych-zlozonych/master?urlpath=tree/docs/labs/hierachical_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/hierachical_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dane-hierarchiczne">
+   Dane hierarchiczne
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wczytanie-danych">
+   Wczytanie danych
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#podejscia-do-klasyfikacji-hierarchicznej">
+   Podejścia do klasyfikacji hierarchicznej
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klasyfikatory-lokalne-top-down">
+     Klasyfikatory lokalne (top-down)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lcn-local-classifier-per-node">
+       <strong>
+        LCN
+       </strong>
+       - local classifier per node
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lcpn-local-classifier-per-parent-node">
+       <strong>
+        LCPN
+       </strong>
+       - local classifier per parent node
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lcl-local-classifier-per-level">
+       <strong>
+        LCL
+       </strong>
+       - local classifier per level
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#podejscie-globalne-big-bang">
+     Podejście globalne (Big Bang)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klasyfikacja-plaska">
+     Klasyfikacja płaska
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glebokosc-klasyfikacji">
+   Głębokość klasyfikacji
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#klasyfikacja-hierarchiczna-przy-pomocy-hiclass">
+   Klasyfikacja hierarchiczna przy pomocy HiClass
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ewaluacja">
+   Ewaluacja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rekomendowana-literatura">
+   Rekomendowana literatura
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Klasyfikacja hierarchiczna</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dane-hierarchiczne">
+   Dane hierarchiczne
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wczytanie-danych">
+   Wczytanie danych
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#podejscia-do-klasyfikacji-hierarchicznej">
+   Podejścia do klasyfikacji hierarchicznej
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klasyfikatory-lokalne-top-down">
+     Klasyfikatory lokalne (top-down)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lcn-local-classifier-per-node">
+       <strong>
+        LCN
+       </strong>
+       - local classifier per node
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lcpn-local-classifier-per-parent-node">
+       <strong>
+        LCPN
+       </strong>
+       - local classifier per parent node
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lcl-local-classifier-per-level">
+       <strong>
+        LCL
+       </strong>
+       - local classifier per level
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#podejscie-globalne-big-bang">
+     Podejście globalne (Big Bang)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klasyfikacja-plaska">
+     Klasyfikacja płaska
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glebokosc-klasyfikacji">
+   Głębokość klasyfikacji
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#klasyfikacja-hierarchiczna-przy-pomocy-hiclass">
+   Klasyfikacja hierarchiczna przy pomocy HiClass
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ewaluacja">
+   Ewaluacja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rekomendowana-literatura">
+   Rekomendowana literatura
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="klasyfikacja-hierarchiczna">
+<h1>Klasyfikacja hierarchiczna<a class="headerlink" href="#klasyfikacja-hierarchiczna" title="Permalink to this headline">#</a></h1>
+<section id="dane-hierarchiczne">
+<h2>Dane hierarchiczne<a class="headerlink" href="#dane-hierarchiczne" title="Permalink to this headline">#</a></h2>
+<p>Znaczna liczba problemów klasyfikacyjnych dotyczy danych o płaskiej strukturze klas. Przykładem takiej płaskiej klasyfikacji może być przypisanie wiadomości email etykiety spam/nie spam lub przypisanie obrazom ze zbioru MNIST jednej z dziesięciu etykiet reprezentujących cyfry.</p>
+<p>Dla niektórych problemów naturalna jest jednak hierarchiczna struktura klas przybierająca formę drzewa lub skierowanego grafu acyklicznego (DAG).</p>
+<p><img alt="muzyka" src="../_images/muzyka.svg" /></p>
+<p>Przykłady problemów klasyfikacji hierarchicznej:</p>
+<ul class="simple">
+<li><p>klasyfikacja gatunków muzyki</p></li>
+<li><p>przypisanie kategorii artykułom prasowym</p></li>
+<li><p>klasyfikacja taksonomiczna np. obrazów medycznych</p></li>
+</ul>
+<p>W każdym z powyższych problemów możemy zdefiniować drzewo hierarchii klas, gdzie wychodząc od korzenia będziemy mieli węzły reprezentujące najbardziej ogólne etykiety (np. dla muzyki: Rock, Klasyczna, Jazz), a w węzłach będących liśćmi będziemy mieli najbardziej szczegółowe klasy (np. soft rock, hard rock, pianino, chór, orkiestra). W tego typu problemach oprócz przewidzenia klas liści równie ważne może być przewidzenie prawidłowych etykiet na każdym poziomie hierarchii.</p>
+<p>W niniejszym tutorialu będziemy pracowali z hierarchicznym zbiorem danych zawierającym obrazy medyczne <a class="reference external" href="https://sites.google.com/site/hrsvmproject/datasets-hier">imclef07d</a>.</p>
+</section>
+<section id="wczytanie-danych">
+<h2>Wczytanie danych<a class="headerlink" href="#wczytanie-danych" title="Permalink to this headline">#</a></h2>
+<p>Zbiór składa się z 3 plików:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">imclef07d_train</span></code> - zbiór treningowy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imclef07d_test</span></code> - zbiór testowy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imclef07d.hf</span></code> - hierarchia klas w postaci listy krawędzi</p></li>
+</ul>
+<p>Hierarchia zawiera 3 poziomy, a każdy obraz ma przypisane 3 etykiety (jedna dla każdego poziomu).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">readDataset</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">column_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">((</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">)))</span>
+        <span class="n">column_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; \d{1,2}:&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+            <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">labels</span><span class="p">])</span>
+            <span class="n">newRow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">column_names</span><span class="p">,</span> <span class="n">features</span><span class="p">)))</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">newRow</span><span class="p">],</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            
+<span class="n">df</span> <span class="o">=</span> <span class="n">readDataset</span><span class="p">(</span><span class="s1">&#39;data/hierarchical_classification/imclef07d_train&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Każdy obraz opisany jest zestawem osiemdziesięciu cech.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>F0</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+      <th>F4</th>
+      <th>F5</th>
+      <th>F6</th>
+      <th>F7</th>
+      <th>F8</th>
+      <th>F9</th>
+      <th>...</th>
+      <th>F71</th>
+      <th>F72</th>
+      <th>F73</th>
+      <th>F74</th>
+      <th>F75</th>
+      <th>F76</th>
+      <th>F77</th>
+      <th>F78</th>
+      <th>F79</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.596529</td>
+      <td>-0.284171</td>
+      <td>0.254657</td>
+      <td>-0.162900</td>
+      <td>-0.007383</td>
+      <td>0.009371</td>
+      <td>-0.024586</td>
+      <td>-0.132000</td>
+      <td>-0.487257</td>
+      <td>-0.021700</td>
+      <td>...</td>
+      <td>0.210829</td>
+      <td>0.523171</td>
+      <td>0.275814</td>
+      <td>0.708057</td>
+      <td>0.174729</td>
+      <td>0.007300</td>
+      <td>0.440557</td>
+      <td>-0.407543</td>
+      <td>0.166243</td>
+      <td>[15, D, 2B]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.025100</td>
+      <td>0.001543</td>
+      <td>0.397514</td>
+      <td>0.122814</td>
+      <td>-0.007383</td>
+      <td>-0.133486</td>
+      <td>0.403986</td>
+      <td>0.010857</td>
+      <td>0.084171</td>
+      <td>0.144967</td>
+      <td>...</td>
+      <td>0.353686</td>
+      <td>0.380314</td>
+      <td>0.275814</td>
+      <td>0.422343</td>
+      <td>0.317586</td>
+      <td>-0.135557</td>
+      <td>0.154843</td>
+      <td>0.592457</td>
+      <td>0.166243</td>
+      <td>[15, D, 2B]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.260614</td>
+      <td>0.001543</td>
+      <td>0.540371</td>
+      <td>0.408529</td>
+      <td>-0.007383</td>
+      <td>0.009371</td>
+      <td>0.118271</td>
+      <td>0.010857</td>
+      <td>0.084171</td>
+      <td>0.144967</td>
+      <td>...</td>
+      <td>0.210829</td>
+      <td>0.237457</td>
+      <td>0.418671</td>
+      <td>0.422343</td>
+      <td>0.174729</td>
+      <td>0.007300</td>
+      <td>0.583414</td>
+      <td>0.306743</td>
+      <td>0.023386</td>
+      <td>[15, D, 2B]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.403471</td>
+      <td>-0.284171</td>
+      <td>0.111800</td>
+      <td>-0.162900</td>
+      <td>0.159283</td>
+      <td>-0.133486</td>
+      <td>-0.024586</td>
+      <td>-0.132000</td>
+      <td>0.227029</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>0.210829</td>
+      <td>0.237457</td>
+      <td>-0.295614</td>
+      <td>-0.149086</td>
+      <td>-0.396700</td>
+      <td>0.007300</td>
+      <td>0.726271</td>
+      <td>-0.121829</td>
+      <td>0.023386</td>
+      <td>[15, D, 2B]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.167957</td>
+      <td>-0.141314</td>
+      <td>0.254657</td>
+      <td>0.122814</td>
+      <td>-0.007383</td>
+      <td>-0.419200</td>
+      <td>0.118271</td>
+      <td>-0.560571</td>
+      <td>-0.344400</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>-0.074886</td>
+      <td>0.380314</td>
+      <td>0.418671</td>
+      <td>-0.006229</td>
+      <td>-0.539557</td>
+      <td>-0.135557</td>
+      <td>0.011986</td>
+      <td>-0.264686</td>
+      <td>-0.119471</td>
+      <td>[15, D, 2B]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9995</th>
+      <td>0.453671</td>
+      <td>-0.284171</td>
+      <td>0.254657</td>
+      <td>0.694243</td>
+      <td>-0.007383</td>
+      <td>-0.133486</td>
+      <td>-0.310300</td>
+      <td>-0.560571</td>
+      <td>0.512743</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>-0.217743</td>
+      <td>-0.191114</td>
+      <td>-0.438471</td>
+      <td>-0.149086</td>
+      <td>-0.539557</td>
+      <td>-0.135557</td>
+      <td>-0.273729</td>
+      <td>-0.407543</td>
+      <td>-0.119471</td>
+      <td>[10, 11, 20]</td>
+    </tr>
+    <tr>
+      <th>9996</th>
+      <td>0.453671</td>
+      <td>-0.284171</td>
+      <td>-0.031057</td>
+      <td>-0.162900</td>
+      <td>-0.174050</td>
+      <td>-0.419200</td>
+      <td>-0.310300</td>
+      <td>-0.560571</td>
+      <td>-0.487257</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>0.639400</td>
+      <td>-0.333971</td>
+      <td>-0.438471</td>
+      <td>-0.149086</td>
+      <td>-0.253843</td>
+      <td>0.721586</td>
+      <td>-0.130871</td>
+      <td>-0.407543</td>
+      <td>-0.119471</td>
+      <td>[10, 11, 20]</td>
+    </tr>
+    <tr>
+      <th>9997</th>
+      <td>-0.117757</td>
+      <td>0.144400</td>
+      <td>0.111800</td>
+      <td>0.694243</td>
+      <td>0.159283</td>
+      <td>-0.419200</td>
+      <td>-0.310300</td>
+      <td>-0.560571</td>
+      <td>0.369886</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>-0.217743</td>
+      <td>-0.333971</td>
+      <td>-0.438471</td>
+      <td>-0.149086</td>
+      <td>-0.539557</td>
+      <td>-0.135557</td>
+      <td>-0.273729</td>
+      <td>-0.407543</td>
+      <td>-0.119471</td>
+      <td>[10, 11, 20]</td>
+    </tr>
+    <tr>
+      <th>9998</th>
+      <td>0.453671</td>
+      <td>-0.141314</td>
+      <td>0.254657</td>
+      <td>0.408529</td>
+      <td>-0.007383</td>
+      <td>-0.419200</td>
+      <td>-0.167443</td>
+      <td>-0.560571</td>
+      <td>-0.487257</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>-0.217743</td>
+      <td>-0.333971</td>
+      <td>-0.438471</td>
+      <td>-0.149086</td>
+      <td>-0.110986</td>
+      <td>-0.135557</td>
+      <td>-0.273729</td>
+      <td>-0.407543</td>
+      <td>-0.119471</td>
+      <td>[10, 11, 20]</td>
+    </tr>
+    <tr>
+      <th>9999</th>
+      <td>0.025100</td>
+      <td>-0.284171</td>
+      <td>-0.173914</td>
+      <td>0.265671</td>
+      <td>-0.007383</td>
+      <td>-0.419200</td>
+      <td>-0.167443</td>
+      <td>-0.560571</td>
+      <td>0.369886</td>
+      <td>-0.188367</td>
+      <td>...</td>
+      <td>-0.217743</td>
+      <td>-0.048257</td>
+      <td>-0.438471</td>
+      <td>-0.149086</td>
+      <td>-0.110986</td>
+      <td>-0.135557</td>
+      <td>-0.273729</td>
+      <td>-0.407543</td>
+      <td>-0.119471</td>
+      <td>[10, 11, 20]</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 81 columns</p>
+</div></div></div>
+</div>
+<p>Wizualizacja struktury klas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pydot</span>
+<span class="kn">from</span> <span class="nn">networkx.drawing.nx_pydot</span> <span class="kn">import</span> <span class="n">graphviz_layout</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/hierarchical_classification/imclef07d.hf&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;19&#39;</span><span class="p">:</span><span class="s1">&#39;ROOT&#39;</span><span class="p">})</span>
+
+<span class="n">color_map</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span> <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="s1">&#39;ROOT&#39;</span> <span class="k">else</span> <span class="s1">&#39;green&#39;</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="p">]</span> 
+<span class="n">pos</span> <span class="o">=</span> <span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;dot&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">color_map</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hierachical_classification_8_0.png" src="../_images/hierachical_classification_8_0.png" />
+</div>
+</div>
+</section>
+<section id="podejscia-do-klasyfikacji-hierarchicznej">
+<h2>Podejścia do klasyfikacji hierarchicznej<a class="headerlink" href="#podejscia-do-klasyfikacji-hierarchicznej" title="Permalink to this headline">#</a></h2>
+<section id="klasyfikatory-lokalne-top-down">
+<h3>Klasyfikatory lokalne (top-down)<a class="headerlink" href="#klasyfikatory-lokalne-top-down" title="Permalink to this headline">#</a></h3>
+<p>Jest to najczęściej wykorzystywane podejście do klasyfikacji hierarchicznej. Hierarchia jest wzięta pod uwagę poprzez wykorzystanie perspektywy lokalnej - wytrenowanie wielu lokalnych klasyfikatorów. W zależności od sposobu wykorzystania lokalnej informacji możemy wyróżnić 3 metody: LCN, LCPN i LCL.</p>
+<section id="lcn-local-classifier-per-node">
+<h4><strong>LCN</strong> - local classifier per node<a class="headerlink" href="#lcn-local-classifier-per-node" title="Permalink to this headline">#</a></h4>
+<p>Dla każdego węzła (poza korzeniem) uczony jest binarny klasyfikator, który decyduje czy dany przykład należy, czy nie należy do danej klasy. Wadą tego podejścia jest możliwość propagacji błędu w głąb drzewa.</p>
+<p>Klasyfikatory binarne wymagają podjęcia decyzji, które klasy będziemy traktowali jako pozytywne, a które jako negatywne. Jest to tak zwana <em>polityka treningu klasyfikatora binarnego</em>, która będzie miała wpływ na otrzymane wyniki (zobacz więcej w sekcji 4.1 <a class="reference external" href="https://link.springer.com/content/pdf/10.1007/s10618-010-0175-9.pdf">Silla et al.</a>).</p>
+<p><img alt="lcn" src="../_images/lcn.svg" /></p>
+</section>
+<section id="lcpn-local-classifier-per-parent-node">
+<h4><strong>LCPN</strong> - local classifier per parent node<a class="headerlink" href="#lcpn-local-classifier-per-parent-node" title="Permalink to this headline">#</a></h4>
+<p>Dla każdego węzła-rodzica uczony jest klasyfikator, który przypisuje swoje dzieci do odpowiedniej klasy. Podobnie jak przy LCN, tutaj również błąd klasyfikacji popełniony na pewnym poziomie hierarchii będzie dalej propagowany.</p>
+<p><img alt="lcpn" src="../_images/lcpn.svg" /></p>
+</section>
+<section id="lcl-local-classifier-per-level">
+<h4><strong>LCL</strong> - local classifier per level<a class="headerlink" href="#lcl-local-classifier-per-level" title="Permalink to this headline">#</a></h4>
+<p>Dla każdego poziomu w drzewie hierarchii uczony jest klasyfikator decydujący, do którego węzła na danym poziomie przypisać dany przykład. Stosując to podejście trzeba mieć na uwadze, że możemy otrzymać niespójność przypisanych klas (np. pierwszy poziom: 2, drugi poziom: 1.1), ale może to również uchronić nas przed propagacją błędu z poprzedniego poziomu.</p>
+<p><img alt="lcl" src="../_images/lcl.svg" /></p>
+</section>
+</section>
+<section id="podejscie-globalne-big-bang">
+<h3>Podejście globalne (Big Bang)<a class="headerlink" href="#podejscie-globalne-big-bang" title="Permalink to this headline">#</a></h3>
+<p>W tym podejściu uczymy jeden model dla całej hierarchii, który zwykle jest mniejszy niż modele oparte na lokalnych klasyfikatorach. Przykładem takiego modelu może być HC4.5 (hierarchiczny wariant C4.5).</p>
+</section>
+<section id="klasyfikacja-plaska">
+<h3>Klasyfikacja płaska<a class="headerlink" href="#klasyfikacja-plaska" title="Permalink to this headline">#</a></h3>
+<p>Do danych hierarchicznych możemy również zastosować zwykłe klasyfikatory dla danych płaskich. Oczywistą wadą tego rozwiązania jest zignorowanie podczas uczenia informacji o hierarchii klas. Może się jednak okazać, że takie proste rozwiązanie będzie wystarczające dla rozwiązywanego problemu.</p>
+</section>
+</section>
+<section id="glebokosc-klasyfikacji">
+<h2>Głębokość klasyfikacji<a class="headerlink" href="#glebokosc-klasyfikacji" title="Permalink to this headline">#</a></h2>
+<p>Kolejną decyzją jaką musimy podjąć w przypadku klasyfikacji hierarchicznej jest ustalenie głębokości klasyfikacji:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mandatory</span> <span class="pre">leaf-node</span> <span class="pre">prediction</span> <span class="pre">(MLNP)</span></code> - dla każdego przykładu przechodzimy przez całe drzewo hierarchii i przypisujemy klasę aż do poziomu liści.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">non-mandatory</span> <span class="pre">leaf-node</span> <span class="pre">prediction</span> <span class="pre">(NMLP)</span></code> - możemy zdefiniować kryterium stopu i zatrzymać klasyfikację danego przykładu na węźle niebędącym liściem.</p></li>
+</ul>
+</section>
+<section id="klasyfikacja-hierarchiczna-przy-pomocy-hiclass">
+<h2>Klasyfikacja hierarchiczna przy pomocy HiClass<a class="headerlink" href="#klasyfikacja-hierarchiczna-przy-pomocy-hiclass" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://hiclass.readthedocs.io/en/latest/index.html">HiClass</a> jest biblioteką w Pythonie pozwalającą na przeprowadzenie w prosty sposób klasyfikacji hierarchicznej. Narzędzie to posiada następujące funkcjonalności:</p>
+<ul class="simple">
+<li><p>zaimplementowane algorytmy</p>
+<ul>
+<li><p>LCN</p></li>
+<li><p>LCPN</p></li>
+<li><p>LCL</p></li>
+</ul>
+</li>
+<li><p>obsługę hierarchii z różną liczbą poziomów</p></li>
+<li><p>wybór polityki treningu klasyfikatora binarnego</p></li>
+<li><p>hierarchiczne wersje miar:</p>
+<ul>
+<li><p>hRecall</p></li>
+<li><p>hPrecision</p></li>
+<li><p>hF1</p></li>
+</ul>
+</li>
+<li><p>kompatybilność z scikit-learn</p></li>
+</ul>
+<p>UWAGA: aktualnie HiClass najlepiej używać z Pythonem 3.8. Dla wyższych wersji mogą pojawić się błędy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hiclass</span> <span class="kn">import</span> <span class="n">LocalClassifierPerNode</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Y_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">LocalClassifierPerNode</span><span class="p">(</span><span class="n">local_classifier</span><span class="o">=</span><span class="n">rf</span><span class="p">)</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:25,261 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;8&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:26,890 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;2C&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:27,256 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;4&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:28,208 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;2D&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:29,526 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;2E&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:29,665 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;29&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:29,792 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;25&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:29,939 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;1&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:30,091 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;28&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:30,217 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;21&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:31,104 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;1E&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-14 13:50:31,237 - LCPN - WARNING - Fitting ConstantClassifier for node &#39;20&#39;
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LocalClassifierPerNode(local_classifier=RandomForestClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LocalClassifierPerNode</label><div class="sk-toggleable__content"><pre>LocalClassifierPerNode(local_classifier=RandomForestClassifier())</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">local_classifier: RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier()</pre></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+</section>
+<section id="ewaluacja">
+<h2>Ewaluacja<a class="headerlink" href="#ewaluacja" title="Permalink to this headline">#</a></h2>
+<p>Ewaluacja klasyfikacji hierarchicznej nie jest prostym zadaniem, ponieważ nie istnieje jedna uniwersalna miara, która będzie w stanie uchwycić hierarchiczny charakter danych, a dodatkowo uwzględni różne specyficzne wymagania rozwiązywanego problemu.</p>
+<p>Dobrze znane miary takie jak precision, recall czy F1 nie pokażą nam jak dobrze nasz model odwzorowuje hierarchię danych. Mimo tego ograniczenia miary te są często stosowane.</p>
+<p>W literaturze zostały zaproponowane hierarchiczne odpowiedniki wyżej wspomnianych miar:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(hRecall = \frac{\sum_i|T_i \cap P_i|}{\sum_i|T_i|}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(hPrecision = \frac{\sum_i|T_i \cap P_i|}{\sum_i|P_i|}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(hF1 = \frac{2 \times hRecall \times hPrecision}{hRecall + hPrecision}\)</span></p></li>
+</ul>
+<p>gdzie <span class="math notranslate nohighlight">\(P_i\)</span> to przewidziane kolejne etykiety w hierarchii dla przykładu <span class="math notranslate nohighlight">\(i\)</span>, a <span class="math notranslate nohighlight">\(T_i\)</span> to prawdziwe etykiety przykładu <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Czasami może się okazać, że również hierarchiczne miary nie są w stanie uchwycić tego, co jest poprawną, a co błędną klasyfikacją w kontekście hierarchii. W takich przypadkach może być potrzebne zdefiniowanie własnej miary uwzględniającej specyfikę danej dziedziny i problemu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hiclass</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">readDataset</span><span class="p">(</span><span class="s1">&#39;data/hierarchical_classification/imclef07d_test&#39;</span><span class="p">)</span>
+
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">hR</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="n">Y_test</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">hP</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span><span class="n">Y_test</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">hF1</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">f1</span><span class="p">(</span><span class="n">Y_test</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hRecall = &quot;</span><span class="p">,</span> <span class="n">hR</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">hPrecision = &quot;</span><span class="p">,</span> <span class="n">hP</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">hF1 = &quot;</span><span class="p">,</span> <span class="n">hF1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hRecall =  0.7982107355864811 
+hPrecision =  0.7982107355864811 
+hF1 =  0.7982107355864811
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rekomendowana-literatura">
+<h2>Rekomendowana literatura<a class="headerlink" href="#rekomendowana-literatura" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://link.springer.com/content/pdf/10.1007/s10618-010-0175-9.pdf">Silla, Carlos N., and Alex A. Freitas. “A survey of hierarchical classification across different application domains.” Data Mining and Knowledge Discovery 22.1 (2011): 31-72.</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

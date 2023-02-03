@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -194,6 +192,30 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="classification_of_streaming_data.html">
    Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 10
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series.html">
+   Szeregi czasowe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 11
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series_neural_networks.html">
+   Szeregi czasowe - sieci neuronowe
   </a>
  </li>
 </ul>
@@ -704,7 +726,9 @@ title="Print to PDF"
 <p>Plik <code class="docutils literal notranslate"><span class="pre">reportsto.csv</span></code> zawiera informację na temat tego, który pracownik (<code class="docutils literal notranslate"><span class="pre">ID</span></code>) raportuje któremu pracownikowi (<code class="docutils literal notranslate"><span class="pre">ReportsToID</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span>
+    <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="c1"># Wczytanie danych i usunięcie kont niebędących pracownikami</span>
 <span class="n">reportsto</span> <span class="o">&lt;-</span> <span class="nf">read.csv2</span><span class="p">(</span><span class="s">&quot;data/collective_classification/reportsto.csv&quot;</span><span class="p">)</span>
@@ -716,13 +740,22 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in library(tidyverse): nie ma pakietu o nazwie ‘tidyverse’
-Traceback:
-
-1. library(tidyverse)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>ReportsToID</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>152</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>132</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>152</td></tr>
+	<tr><th scope=row>4</th><td>5</td><td>36 </td></tr>
+	<tr><th scope=row>5</th><td>6</td><td>163</td></tr>
+	<tr><th scope=row>6</th><td>7</td><td>86 </td></tr>
+</tbody>
+</table>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,7 +806,9 @@ Traceback:
 <p>Do zbudowania grafu, a następnie do obliczenia miar sieciowych wykorzystamy pakiet <code class="docutils literal notranslate"><span class="pre">igraph</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">igraph</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span>
+    <span class="nf">library</span><span class="p">(</span><span class="n">igraph</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="c1"># Tworzymy graf skierowany na podstawie historii komunikacji mailowej</span>
 <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">graph_from_data_frame</span><span class="p">(</span><span class="n">communication</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
@@ -882,8 +917,12 @@ Traceback:
 <p>Poniżej użyliśmy algorytmu lasu losowego z 5-krotną walidacją krzyżową.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">MLmetrics</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span>
+    <span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nf">suppressPackageStartupMessages</span><span class="p">(</span>
+    <span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">update_neighbors</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="p">{</span>
   <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span> <span class="p">{</span>

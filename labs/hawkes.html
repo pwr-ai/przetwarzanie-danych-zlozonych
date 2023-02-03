@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -194,6 +192,30 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="classification_of_streaming_data.html">
    Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 10
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series.html">
+   Szeregi czasowe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 11
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series_neural_networks.html">
+   Szeregi czasowe - sieci neuronowe
   </a>
  </li>
 </ul>
@@ -511,13 +533,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: devtools
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: devtools
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: usethis
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: usethis
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipping install of &#39;evently&#39; from a github remote, the SHA1 (9be4daa8) has not changed since last install.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipping install of &#39;evently&#39; from a github remote, the SHA1 (d3e6a693) has not changed since last install.
   Use `force = TRUE` to force installation
 </pre></div>
 </div>
@@ -541,36 +563,6 @@ title="Print to PDF"
 
 <span class="c1"># Generowanie kolejnych zdarzeń na podstawie zadanej serii</span>
 <span class="n">data2</span> <span class="o">&lt;-</span> <span class="nf">generate_series</span><span class="p">(</span><span class="n">par</span> <span class="o">=</span> <span class="n">init_par</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;EXP&#39;</span><span class="p">),</span> <span class="n">Tmax</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">sim_no</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">init_history</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  This package requires AMPL and ipopt
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  But they are not in your PATH environment.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Please specify its binary folder path in ~/.Renviron
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Please also make sure the ipopt binary is in the 
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  same folder.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>It seems AMPL is not found in your PATH environment, do you want to install it now?
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in fun(libname, pkgname):
-“AMPL is missing! You might not be able to fit models.”
 </pre></div>
 </div>
 </div>
@@ -617,12 +609,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in preparation(data): Please set up ampl and ipopt before fitting!
-Traceback:
-
-1. fit_series(data, model_type = &quot;EXP&quot;, observation_time = 5, cores = 2)
-2. preparation(data)
-3. stop(&quot;Please set up ampl and ipopt before fitting!&quot;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Model: EXP 
+- No. of cascades: 1 
+- init_par:
+  K 1.87e+00; theta 3.59e-01
+- par:
+  K 1.00e+00; theta 1.44e+00
+- Neg Log Likelihood: -14.702 
+- lower_bound:
+  K 1.00e-100; theta 1.00e-100
+- upper_bound:
+  K 1.00e+04; theta 3.00e+02
+- Convergence: 0 
 </pre></div>
 </div>
 </div>
@@ -632,7 +630,7 @@ Traceback:
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">repr</span><span class="p">)</span>
 <span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">14</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">7</span><span class="p">,</span> <span class="n">repr.plot.res</span> <span class="o">=</span> <span class="m">200</span><span class="p">)</span>
-<span class="nf">plot_event_series</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">)</span>
+<span class="nf">plot_event_series</span><span class="p">(</span><span class="n">fitted_model</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">15</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -657,7 +655,9 @@ $<span class="math notranslate nohighlight">\( N_\infty = \frac{1}{1-n^*} \text{
 <p>Pierwsze zdarzenie jest postem, który zapoczątkował kaskadę zdarzeń, a wszystkie kolejne zdarzenia są retweetami pierwszego.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span>
+    <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">history</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&#39;data/hawkes/hawkes_example.csv&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
 <span class="n">history</span> <span class="o">&lt;-</span> <span class="n">history</span> <span class="o">%&gt;%</span> <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">X</span><span class="p">)</span>
@@ -666,19 +666,6 @@ $<span class="math notranslate nohighlight">\( N_\infty = \frac{1}{1-n^*} \text{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
-
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-</pre></div>
-</div>
 <div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 6 × 2</caption>
 <thead>
@@ -747,7 +734,7 @@ The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">159.981819637765</div></div>
+<div class="output text_html">159.981794566381</div></div>
 </div>
 <p>Przewidziana liczba zdarzeń 160 jest bliska rzeczywistej 219.</p>
 <p>Błąd względny wynosi:</p>

@@ -1,0 +1,1024 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Szeregi czasowe &#8212; Przetwarzanie danych złożonych</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Szeregi czasowe - sieci neuronowe" href="time_series_neural_networks.html" />
+    <link rel="prev" title="Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych" href="classification_of_streaming_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Przetwarzanie danych złożonych</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Przetwarzanie danych złożonych
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zasady.html">
+   Zasady
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hawkes.html">
+   Proces Hawkesa
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="collective_classification.html">
+   Klasyfikacja kolektywna
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hierarchical_classification.html">
+   Klasyfikacja hierarchiczna
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="river_ml_introduction.html">
+   Wprowadzenie do biblioteki River
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 8
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="concept_drift.html">
+   Wykrywanie dryftu konceptu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 9
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification_of_streaming_data.html">
+   Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 10
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Szeregi czasowe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 11
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series_neural_networks.html">
+   Szeregi czasowe - sieci neuronowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pwr-ai/przetwarzanie-danych-zlozonych/master?urlpath=tree/docs/labs/time_series.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/time_series.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dlaczego-szeregi-czasowe-sa-takie-szczegolne">
+   Dlaczego szeregi czasowe są takie szczególne?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#komponenty-szeregu-czasowego">
+   Komponenty szeregu czasowego
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wstepne-przetwarzanie">
+   Wstępne przetwarzanie
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wczytanie-i-wizualizacja">
+     Wczytanie i wizualizacja
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#czyszczenie-danych">
+     Czyszczenie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wygladzanie-danych">
+     Wygładzanie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dekompozycja-szeregu-czasowego">
+     Dekompozycja szeregu czasowego
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stacjonarnosc-szeregu-czasowego">
+     Stacjonarność szeregu czasowego
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analiza-acf-i-pacf">
+   Analiza ACF i PACF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-arima">
+   Model ARIMA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predykcja">
+   Predykcja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ewaluacja">
+   Ewaluacja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#podsumowanie">
+   Podsumowanie
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Szeregi czasowe</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dlaczego-szeregi-czasowe-sa-takie-szczegolne">
+   Dlaczego szeregi czasowe są takie szczególne?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#komponenty-szeregu-czasowego">
+   Komponenty szeregu czasowego
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wstepne-przetwarzanie">
+   Wstępne przetwarzanie
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wczytanie-i-wizualizacja">
+     Wczytanie i wizualizacja
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#czyszczenie-danych">
+     Czyszczenie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wygladzanie-danych">
+     Wygładzanie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dekompozycja-szeregu-czasowego">
+     Dekompozycja szeregu czasowego
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stacjonarnosc-szeregu-czasowego">
+     Stacjonarność szeregu czasowego
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analiza-acf-i-pacf">
+   Analiza ACF i PACF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-arima">
+   Model ARIMA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predykcja">
+   Predykcja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ewaluacja">
+   Ewaluacja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#podsumowanie">
+   Podsumowanie
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="szeregi-czasowe">
+<h1>Szeregi czasowe<a class="headerlink" href="#szeregi-czasowe" title="Permalink to this headline">#</a></h1>
+<p>Szereg czasowy to sekwencyjny zbiór punktów danych gdzie kolejne pomiary odbywają się po sobie ze stałym krokiem czasowym. Otrzymane wartości pomiarów są ułożone w szeregu w porządku chronologicznym.</p>
+<p>Szereg czasowy co do zasady jest niedeterministyczny, co oznacza, że nie jesteśmy w stanie w łatwy sposób określić modelu jakim podąża. Zbiór obserwacji szeregu czasowego możemy traktować jako realizację pewnego procesu stochastycznego, którego dziedziną jest czas.</p>
+<p>Stosując różne techniki możemy poznać charakter szeregu i jego komponenty co pozwoli na przejście do etapu predykcji jego przyszłych wartości.</p>
+<p>Przykłady szeregów czasowych:</p>
+<ul class="simple">
+<li><p>cogodzinny pomiar temperatury przez stację pogodową</p></li>
+<li><p>średnia cena energii elektrycznej w poszczególnych miesiącach</p></li>
+<li><p>liczba zgłaszanych przestępstw w poszczególnych latach</p></li>
+</ul>
+<section id="dlaczego-szeregi-czasowe-sa-takie-szczegolne">
+<h2>Dlaczego szeregi czasowe są takie szczególne?<a class="headerlink" href="#dlaczego-szeregi-czasowe-sa-takie-szczegolne" title="Permalink to this headline">#</a></h2>
+<p>Dla lepszego zrozumienia czym różni się predykcja szeregów czasowych od klasycznego zadania regresji przeanalizujmy przykład firmy sprzedającej lody.</p>
+<p>W klasycznym podejściu mamy dane historyczne, które przedstawiają sprzedaż lodów w zależności od temperatury. Wykorzystując dane trenujemy model, który dla zadanej temperatury będzie przewidywał liczbę sprzedanych lodów. W tym przypadku mamy do czynienia z zadaniem interpolacji, gdzie predykcja odbywa się wewnątrz pewnego przedziału.</p>
+<p>W szeregach czasowych zakładamy, że istnieje pewne związanie między poprzednimi i kolejnymi wartościami (np. sprzedaż lodów dnia następnego i poprzedniego), które pozwoli na estymowanie kolejnych nieznanych punktów czasowych. W szeregach czasowych chcemy dokonać predykcji przyszłości - jest to zadanie ekstrapolacji. Pewność predykcji  maleje wraz z oddalaniem się od znanej historii.</p>
+<p>Predykcja szeregów czasowych jest zwykle trudniejsza od klasycznego zadania regresji, jednak może dawać lepsze rezultaty, zwłaszcza w przewidywaniu w krótkim odstępie czasu.</p>
+</section>
+<section id="komponenty-szeregu-czasowego">
+<h2>Komponenty szeregu czasowego<a class="headerlink" href="#komponenty-szeregu-czasowego" title="Permalink to this headline">#</a></h2>
+<p>Szereg czasowy może (ale nie musi) zawierać następujące komponenty:</p>
+<ol class="simple">
+<li><p><strong>Trend</strong> - długofalowy kierunek szeregu czasowego</p>
+<ul class="simple">
+<li><p>wzrost</p></li>
+<li><p>spadek</p></li>
+<li><p>brak trendu</p></li>
+</ul>
+</li>
+<li><p><strong>Sezonowość</strong> - okresowa fluktuacja</p></li>
+<li><p><strong>Komponent rezydualny</strong> - niemożliwe do przewidzenia wartości zmiennej losowej</p></li>
+<li><p><strong>Cykle</strong> - wynikają z charakteru obserwowanego obiektu, np. dla spółki: wzrost, spadek, recesja, odbudowa</p>
+<ul class="simple">
+<li><p>dłuższe niż sezonowość (mogą dziać się na przestrzeni wielu lat)</p></li>
+<li><p>nie są tak przewidywalne jak sezonowość</p></li>
+<li><p>mogą mieć różną długość</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="wstepne-przetwarzanie">
+<h2>Wstępne przetwarzanie<a class="headerlink" href="#wstepne-przetwarzanie" title="Permalink to this headline">#</a></h2>
+<p>W niniejszym tutorialu wykorzystamy zbiór zawierający dane z systemu wypożyczania rowerów. Zbiór zawiera informacje na temat wypożyczeń rowerów każdego dnia na przestrzeni dwóch lat.</p>
+<section id="wczytanie-i-wizualizacja">
+<h3>Wczytanie i wizualizacja<a class="headerlink" href="#wczytanie-i-wizualizacja" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">anytime</span><span class="p">)</span> 
+<span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">))</span>
+
+<span class="c1"># wczytanie</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;data/bike_sharing.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="c1"># konwersja stringa na date</span>
+<span class="n">data</span><span class="o">$</span><span class="n">date</span> <span class="o">&lt;-</span> <span class="nf">anydate</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">dteday</span><span class="p">)</span>
+
+<span class="c1"># interesują nas tylko kolumny zawierające datę i liczbę wypożyczonych rowerów</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">select</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">,</span> <span class="s">&quot;cnt&quot;</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>date</th><th scope=col>cnt</th></tr>
+	<tr><th></th><th scope=col>&lt;date&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>2011-01-01</td><td> 985</td></tr>
+	<tr><th scope=row>2</th><td>2011-01-02</td><td> 801</td></tr>
+	<tr><th scope=row>3</th><td>2011-01-03</td><td>1349</td></tr>
+	<tr><th scope=row>4</th><td>2011-01-04</td><td>1562</td></tr>
+	<tr><th scope=row>5</th><td>2011-01-05</td><td>1600</td></tr>
+	<tr><th scope=row>6</th><td>2011-01-06</td><td>1606</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Wizualizacja analizowanego szeregu czasowego:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># ustawienie rozmiaru wykresu</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">8</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">cnt</span><span class="p">))</span> <span class="o">+</span> 
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> 
+    <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Dzień&quot;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Wypożyczenia&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_8_0.png" src="../_images/time_series_8_0.png" />
+</div>
+</div>
+</section>
+<section id="czyszczenie-danych">
+<h3>Czyszczenie danych<a class="headerlink" href="#czyszczenie-danych" title="Permalink to this headline">#</a></h3>
+<p>W pakiecie <code class="docutils literal notranslate"><span class="pre">forecast</span></code> dostępna jest funkcja <code class="docutils literal notranslate"><span class="pre">tsclean</span></code>, która w wygodny sposób pozwala na usunięcie obserwacji odstających i uzupełnienie brakujących wartości.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;forecast&#39;</span><span class="p">))</span>
+
+<span class="n">data</span><span class="o">$</span><span class="n">clean_cnt</span> <span class="o">=</span> <span class="nf">tsclean</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">cnt</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">clean_cnt</span><span class="p">))</span> <span class="o">+</span> 
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> 
+    <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Dzień&quot;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Wypożyczenia&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_11_0.png" src="../_images/time_series_11_0.png" />
+</div>
+</div>
+</section>
+<section id="wygladzanie-danych">
+<h3>Wygładzanie danych<a class="headerlink" href="#wygladzanie-danych" title="Permalink to this headline">#</a></h3>
+<p>Pomimo usunięcia wartości odstających nasz szereg czasowy nadal charakteryzuje duża zmienność. Możemy poradzić sobie z tym problemem wygładzając dane poprzez zastosowanie średniej ruchomej. W ten sposób otrzymamy stabilniejszy, a przez to również bardziej przewidywalny szereg czasowy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">$</span><span class="n">cnt_ma</span> <span class="o">&lt;-</span> <span class="nf">ma</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">clean_cnt</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span> 
+  <span class="nf">geom_line</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">clean_cnt</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&quot;Oryginalna seria czasowa&quot;</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">cnt_ma</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&quot;Tygodniowa średnia ruchoma&quot;</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Dzień&quot;</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Wypożyczenia&quot;</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">15</span><span class="p">),</span> <span class="n">legend.title</span><span class="o">=</span><span class="nf">element_blank</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“Removed 6 row(s) containing missing values (geom_path).”
+</pre></div>
+</div>
+<img alt="../_images/time_series_13_1.png" src="../_images/time_series_13_1.png" />
+</div>
+</div>
+</section>
+<section id="dekompozycja-szeregu-czasowego">
+<h3>Dekompozycja szeregu czasowego<a class="headerlink" href="#dekompozycja-szeregu-czasowego" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cnt</span> <span class="o">=</span> <span class="nf">ts</span><span class="p">(</span><span class="nf">na.omit</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">cnt_ma</span><span class="p">),</span> <span class="n">frequency</span><span class="o">=</span><span class="m">30</span><span class="p">)</span> 
+
+<span class="c1"># wyodrębnienie komponentów szeregu</span>
+<span class="n">decomp</span> <span class="o">=</span> <span class="nf">stl</span><span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="n">s.window</span><span class="o">=</span><span class="s">&quot;periodic&quot;</span><span class="p">)</span>
+
+<span class="c1"># usunięcie komponentu sezonowego</span>
+<span class="n">deseasonal_cnt</span> <span class="o">&lt;-</span> <span class="nf">seasadj</span><span class="p">(</span><span class="n">decomp</span><span class="p">)</span>
+
+<span class="c1"># wykres komponentów</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">decomp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_15_0.png" src="../_images/time_series_15_0.png" />
+</div>
+</div>
+</section>
+<section id="stacjonarnosc-szeregu-czasowego">
+<h3>Stacjonarność szeregu czasowego<a class="headerlink" href="#stacjonarnosc-szeregu-czasowego" title="Permalink to this headline">#</a></h3>
+<p>Wiele modeli (AR, MA, ARMA) wymagają, aby szereg był stacjonarny. Szereg czasowy jest stacjonarny gdy spełnia następujące warunki:</p>
+<ul class="simple">
+<li><p>stała wartość oczekiwana</p></li>
+<li><p>stałe odchylenie standardowe</p></li>
+<li><p>brak sezonowości</p></li>
+</ul>
+<p>Do sprawdzenia stacjonarności możemy użyć rozszerzonego testu Dickeya–Fullera (<em>Augmented Dickey–Fuller test</em>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&#39;tseries&#39;</span><span class="p">)</span>
+
+<span class="nf">adf.test</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s">&quot;stationary&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in adf.test(deseasonal_cnt, alternative = &quot;stationary&quot;):
+“p-value greater than printed p-value”
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Augmented Dickey-Fuller Test
+
+data:  deseasonal_cnt
+Dickey-Fuller = -0.18385, Lag order = 8, p-value = 0.99
+alternative hypothesis: stationary
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uzyskana duża p-wartość pokazuje, że analizowany szereg nie jest stacjonarny.</p>
+<p>Możemy uzyskać stacjonarność szeregu stosując operację różnicowania <span class="math notranslate nohighlight">\(Z_t = y_t - y_{t-k}\)</span>.</p>
+<p>W ten sposób otrzymamy nowy szereg czasowy <span class="math notranslate nohighlight">\(Z_t\)</span>, który powstał przez odjęcie od każdego elementu sąsiedniego elementu oddalonego o <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>W naszym przypadku zacznijmy od <span class="math notranslate nohighlight">\(k=1\)</span> i zobaczmy czy uzyskany szereg jest stacjonarny.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cnt_diff_1</span> <span class="o">=</span> <span class="nf">diff</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">,</span> <span class="n">differences</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">cnt_diff_1</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_19_0.png" src="../_images/time_series_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">adf.test</span><span class="p">(</span><span class="n">cnt_diff_1</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s">&quot;stationary&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in adf.test(cnt_diff_1, alternative = &quot;stationary&quot;):
+“p-value smaller than printed p-value”
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Augmented Dickey-Fuller Test
+
+data:  cnt_diff_1
+Dickey-Fuller = -9.9255, Lag order = 8, p-value = 0.01
+alternative hypothesis: stationary
+</pre></div>
+</div>
+</div>
+</div>
+<p>Przeprowadzony test pozwolił odrzucić hipotezę zerową o niestacjonarności szeregu i przyjąć hipotezę alternatywną, że szereg jest stacjonarny.</p>
+</section>
+</section>
+<section id="analiza-acf-i-pacf">
+<h2>Analiza ACF i PACF<a class="headerlink" href="#analiza-acf-i-pacf" title="Permalink to this headline">#</a></h2>
+<p>Autokorelacja (ACF) i częściowa autokorelacja (PACF):</p>
+<ul class="simple">
+<li><p>pozwalają na analizę trendu i sezonowości szeregu</p></li>
+<li><p>PACF bierze pod uwagę tylko bezpośredni wpływ <span class="math notranslate nohighlight">\(X_{t-k}\)</span> na <span class="math notranslate nohighlight">\(X_t\)</span></p></li>
+<li><p>ACF bierze pod uwagę bezpośredni oraz pośredni wpływ obserwacji na siebie</p></li>
+<li><p>ACF pozwala określić stopień <span class="math notranslate nohighlight">\(q\)</span> modelu MA</p></li>
+<li><p>PACF pozwala określić stopień <span class="math notranslate nohighlight">\(p\)</span> modelu AR</p></li>
+</ul>
+<p>Dodatkowo na wykresach ACF i PACF można zauważyć obszar wyznaczony przez przerywane linie. Obszar ten przedstawia 95% przedział ufności. Wszystkie korelacje poza tym obszarem są statystycznie istotne.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">Acf</span><span class="p">(</span><span class="n">cnt_diff_1</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;ACF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_23_0.png" src="../_images/time_series_23_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">Pacf</span><span class="p">(</span><span class="n">cnt_diff_1</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&quot;PACF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_24_0.png" src="../_images/time_series_24_0.png" />
+</div>
+</div>
+<p>Wykres ACF pokazuje silną korelację dla lagów 1, 2 i 7. Na wykresie PACF widoczna jest silna korelacja dla lagów 1 i 7. Wykorzystując te informacje możemy przetestować model z komponentami AR lub MA stopnia 1,2 lub 7.</p>
+<p>Dodatkowo warto zauważyć silne piki co 7 dni na wykresie PACF. Może to oznaczać tygodniową sezonowość. W takiej sytuacji warto również wypróbować model SARIMA, który ją uwzględni.</p>
+</section>
+<section id="model-arima">
+<h2>Model ARIMA<a class="headerlink" href="#model-arima" title="Permalink to this headline">#</a></h2>
+<p>Jednym z najczęściej wykorzystywanych modeli do predykcji szeregów czasowych jest model ARIMA (AutoRegressive Integrated Moving Average). Składa się on z 3 komponentów:</p>
+<ul class="simple">
+<li><p><strong>AR</strong> - składnik autoregresyjny (stopień określany przez parametr <em>p</em>)</p></li>
+<li><p><strong>I</strong> - składnik różnicujący (parametr <em>d</em> określa lag potrzebny do uzyskania stacjonarności)</p></li>
+<li><p><strong>MA</strong> - składnik średniej ruchomej (stopień określany przez parametr <em>q</em>)</p></li>
+</ul>
+<p>Dzięki składnikowi <strong>I</strong> szereg czasowy dostarczony modelowi ARIMA nie musi być stacjonarny, ale musimy być w stanie poprawnie określić parametr <em>d</em>.</p>
+<p>Wytrenujemy teraz 4 modele ARIMA z różnymi parametrami określonymi na podstawie wykresów ACF/PACF:</p>
+<ul class="simple">
+<li><p>ARIMA ( 0, 1, 7 )</p></li>
+<li><p>ARIMA ( 1, 1, 7 )</p></li>
+<li><p>ARIMA ( 7, 1, 7 )</p></li>
+<li><p>ARIMA ( 1, 1, 1 )</p></li>
+</ul>
+<p>Do treningu użyjemy pierwsze 700 obserwacji, a do testowania predykcji następne 25 obserwacji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model_1</span> <span class="o">=</span> <span class="nf">arima</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">701</span><span class="o">:</span><span class="m">725</span><span class="p">)]),</span> <span class="n">order</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+<span class="n">model_2</span> <span class="o">=</span> <span class="nf">arima</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">701</span><span class="o">:</span><span class="m">725</span><span class="p">)]),</span> <span class="n">order</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+<span class="n">model_3</span> <span class="o">=</span> <span class="nf">arima</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">701</span><span class="o">:</span><span class="m">725</span><span class="p">)]),</span> <span class="n">order</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+<span class="n">model_4</span> <span class="o">=</span> <span class="nf">arima</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">701</span><span class="o">:</span><span class="m">725</span><span class="p">)]),</span> <span class="n">order</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>W celu wybrania modelu użyjemy <strong>Akaike’s Information Criteria (AIC)</strong>, które poszukuje kompromisu pomiędzy złożonością modelu a jego dopasowaniem. AIC może być interpretowane jako oszacowanie, ile informacji zostałoby utraconych w przypadku wyboru danego modelu. Niższe AIC oznacza lepszy model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">AIC</span><span class="p">(</span><span class="n">model_1</span><span class="p">)</span>
+<span class="nf">AIC</span><span class="p">(</span><span class="n">model_2</span><span class="p">)</span>
+<span class="nf">AIC</span><span class="p">(</span><span class="n">model_3</span><span class="p">)</span>
+<span class="nf">AIC</span><span class="p">(</span><span class="n">model_4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">8711.40195601769</div><div class="output text_html">8691.53274449108</div><div class="output text_html">8693.44255305875</div><div class="output text_html">9083.72937608611</div></div>
+</div>
+<p>Najlepszy wynik osiągnął model ARIMA (1, 1, 7).</p>
+<p>Możemy również użyć funkcji <code class="docutils literal notranslate"><span class="pre">auto.arima</span></code>, która automatycznie postara się dopasować najlepsze parametry dla modelu. Ustawiając parametr <code class="docutils literal notranslate"><span class="pre">seasonal=TRUE</span></code> użyjemy modelu SARIMA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">auto.arima</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">,</span> <span class="n">seasonal</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Series: deseasonal_cnt 
+ARIMA(2,1,0) 
+
+Coefficients:
+         ar1     ar2
+      0.2929  0.1055
+s.e.  0.0370  0.0370
+
+sigma^2 = 26137:  log likelihood = -4708.32
+AIC=9422.64   AICc=9422.68   BIC=9436.4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">auto.arima</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">,</span> <span class="n">seasonal</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Series: deseasonal_cnt 
+ARIMA(2,1,2)(1,0,0)[30] 
+
+Coefficients:
+         ar1      ar2      ma1     ma2    sar1
+      1.3644  -0.8027  -1.2903  0.9146  0.0100
+s.e.  0.0372   0.0347   0.0255  0.0202  0.0388
+
+sigma^2 = 24810:  log likelihood = -4688.59
+AIC=9389.17   AICc=9389.29   BIC=9416.68
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">auto.arima</span></code> zwróciła trochę inne parametry, a wyniki zarówno dla modelu ARIMA jak i SARIMA są trochę gorsze niż dla modelu, którego parametry ustawialiśmy własnoręcznie. Nalezy jednak zauważyć, że uwzględnienie sezonowości dało lepszy rezultat.</p>
+</section>
+<section id="predykcja">
+<h2>Predykcja<a class="headerlink" href="#predykcja" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># przez parametr h deklarujemy, że chcemy przewidzieć 25 kroków do przodu</span>
+<span class="n">fcast</span> <span class="o">&lt;-</span> <span class="nf">forecast</span><span class="p">(</span><span class="n">model_2</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="m">25</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">fcast</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_38_0.png" src="../_images/time_series_38_0.png" />
+</div>
+</div>
+</section>
+<section id="ewaluacja">
+<h2>Ewaluacja<a class="headerlink" href="#ewaluacja" title="Permalink to this headline">#</a></h2>
+<p>W przypadku modelowania lub prognostyki, błąd szeregów czasowych określa się jako różnicę wartości przewidzianej przez model i wartości rzeczywistej. W tym celu możemy użyć dobrze znanych miar takich jak RMSE lub MAE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">Metrics</span><span class="p">))</span>
+
+<span class="n">actual</span> <span class="o">&lt;-</span> <span class="n">deseasonal_cnt</span><span class="p">[</span><span class="m">701</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">deseasonal_cnt</span><span class="p">)]</span>
+<span class="n">predicted</span> <span class="o">&lt;-</span> <span class="n">fcast</span><span class="o">$</span><span class="n">mean</span>
+
+<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;RMSE = %.2f&quot;</span><span class="p">,</span> <span class="nf">rmse</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">predicted</span><span class="p">))</span>
+<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;MAE = %.2f&quot;</span><span class="p">,</span> <span class="nf">mae</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">predicted</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'RMSE = 1876.37'</div><div class="output text_html">'MAE = 1298.04'</div></div>
+</div>
+</section>
+<section id="podsumowanie">
+<h2>Podsumowanie<a class="headerlink" href="#podsumowanie" title="Permalink to this headline">#</a></h2>
+<p>W tym materiale zostały omówione podstawy pracy z szeregami czasowymi. W celu poszerzenia wiedzy warto zapoznać się z następującymi zagadnieniami i modelami:</p>
+<ul class="simple">
+<li><p>time series cross-validation - wersja walidacji krzyżowej zachowująca chronologię obserwacji</p></li>
+<li><p>multivariate time series</p></li>
+<li><p>modele:</p>
+<ul>
+<li><p>VARMA i VARMAX</p></li>
+<li><p>ARCH i GARCH</p></li>
+<li><p>Prophet</p></li>
+<li><p>klasyczne modele (las losowy, XGBoost) i podejście głębokie (RNN, LSTM)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="classification_of_streaming_data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="time_series_neural_networks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Szeregi czasowe - sieci neuronowe</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1073 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Szeregi czasowe - sieci neuronowe &#8212; Przetwarzanie danych złożonych</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Szeregi czasowe" href="time_series.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Przetwarzanie danych złożonych</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Przetwarzanie danych złożonych
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zasady.html">
+   Zasady
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hawkes.html">
+   Proces Hawkesa
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="collective_classification.html">
+   Klasyfikacja kolektywna
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hierarchical_classification.html">
+   Klasyfikacja hierarchiczna
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="river_ml_introduction.html">
+   Wprowadzenie do biblioteki River
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 8
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="concept_drift.html">
+   Wykrywanie dryftu konceptu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 9
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification_of_streaming_data.html">
+   Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 10
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series.html">
+   Szeregi czasowe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 11
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Szeregi czasowe - sieci neuronowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pwr-ai/przetwarzanie-danych-zlozonych/master?urlpath=tree/docs/labs/time_series_neural_networks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/time_series_neural_networks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zbior-danych">
+   Zbiór danych
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wczytanie-zioru">
+     Wczytanie zioru
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalizacja">
+     Normalizacja
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#podzial-danych-na-zbior-treningowy-i-testowy">
+     Podział danych na zbiór treningowy i testowy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predykcja-jednego-kroku">
+   Predykcja jednego kroku
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#przygotowanie-danych">
+     Przygotowanie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptron">
+     Perceptron
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rnn">
+     RNN
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstm">
+     LSTM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#przewidywanie-wielu-krokow-w-przod">
+   Przewidywanie wielu kroków w przód
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Przygotowanie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encoder-decoder-model">
+     Encoder-decoder model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-shot-model">
+     Single-shot model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#podsumowanie">
+   Podsumowanie
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Szeregi czasowe - sieci neuronowe</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zbior-danych">
+   Zbiór danych
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wczytanie-zioru">
+     Wczytanie zioru
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalizacja">
+     Normalizacja
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#podzial-danych-na-zbior-treningowy-i-testowy">
+     Podział danych na zbiór treningowy i testowy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predykcja-jednego-kroku">
+   Predykcja jednego kroku
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#przygotowanie-danych">
+     Przygotowanie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptron">
+     Perceptron
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rnn">
+     RNN
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstm">
+     LSTM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#przewidywanie-wielu-krokow-w-przod">
+   Przewidywanie wielu kroków w przód
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Przygotowanie danych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encoder-decoder-model">
+     Encoder-decoder model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-shot-model">
+     Single-shot model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#podsumowanie">
+   Podsumowanie
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="szeregi-czasowe-sieci-neuronowe">
+<h1>Szeregi czasowe - sieci neuronowe<a class="headerlink" href="#szeregi-czasowe-sieci-neuronowe" title="Permalink to this headline">#</a></h1>
+<p>Zwykle do modelowania szeregów czasowych używa się prostych modeli liniowych takich jak AR, MA, ARMA lub ARIMA. Czasami jednak możemy potrzebować bardziej ekspresyjnego modelu, który będzie w stanie się wyuczyć złożonych zależności temporalnych pomiędzy obserwacjami. W takiej sytuacji możemy wykorzystać sieci neuronowe.</p>
+<p>Uczenie głębokie z powodzeniem wykorzystywane jest do różnych zadań w obszarze przetwarzania języka naturalnego lub obrazów. Możemy je również wykorzystać do modelowania i predykcji szeregów czasowych. Poniżej przedstawiono, w jaki sposób można do tego celu wykorzystać perceptron, rekurencyjne sieci neuronowe (RNN) oraz LSTM.</p>
+<p>Tutorial jest przygotowany w języku R z wykorzystaniem biblioteki Keras. Biblioteka ta do prawidłowego działania wymaga dodatkowo zainstalowanego Pythona wraz z TensorFlow.</p>
+<p>UWAGA: Niniejszy tutorial ma na celu pokazanie wykorzystania sieci neuronowych w obszarze szeregów czassowych i zakłada, że czytający ma podstawową wiedzę z zakresu uczenia głębokiego (MLP, RNN, LSTM, problem seq2seq).</p>
+<section id="zbior-danych">
+<h2>Zbiór danych<a class="headerlink" href="#zbior-danych" title="Permalink to this headline">#</a></h2>
+<p>W prezentowanych przykładach wykorzystamy zbiór zawierający miesięczną liczbę pasażerów amerykańskich linii lotniczych w latach 1949-1960. Szereg zawiera łącznie 144 obserwacje.</p>
+<section id="wczytanie-zioru">
+<h3>Wczytanie zioru<a class="headerlink" href="#wczytanie-zioru" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">anytime</span><span class="p">)</span> 
+<span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">))</span>
+<span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">forecast</span><span class="p">))</span>
+
+<span class="c1"># wczytanie</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;data/AirPassengers.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="c1"># konwersja stringa na date</span>
+<span class="n">data</span><span class="o">$</span><span class="n">month</span> <span class="o">&lt;-</span> <span class="nf">anydate</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">)</span>
+
+<span class="c1"># czyszczenie danych</span>
+<span class="n">data</span><span class="o">$</span><span class="n">passengers</span> <span class="o">=</span> <span class="nf">tsclean</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">)</span>
+
+<span class="c1"># wizualizacja szeregu</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">8</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">passengers</span><span class="p">))</span> <span class="o">+</span> 
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Rok&quot;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Liczba pasażerów&quot;</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span>          
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_4_0.png" src="../_images/time_series_neural_networks_4_0.png" />
+</div>
+</div>
+</section>
+<section id="normalizacja">
+<h3>Normalizacja<a class="headerlink" href="#normalizacja" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">normalize</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">min_x</span> <span class="o">&lt;-</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">max_x</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">),</span> <span class="n">min</span> <span class="o">=</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="n">max_x</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">denormalize</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">)</span> <span class="o">+</span> <span class="n">min_x</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">norm_data</span> <span class="o">&lt;-</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">)</span>
+<span class="n">data</span><span class="o">$</span><span class="n">passengers</span> <span class="o">&lt;-</span> <span class="n">norm_data</span><span class="o">$</span><span class="n">data</span>
+<span class="n">min_x</span> <span class="o">&lt;-</span> <span class="n">norm_data</span><span class="o">$</span><span class="n">min</span>
+<span class="n">max_x</span> <span class="o">&lt;-</span> <span class="n">norm_data</span><span class="o">$</span><span class="n">max</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="podzial-danych-na-zbior-treningowy-i-testowy">
+<h3>Podział danych na zbiór treningowy i testowy<a class="headerlink" href="#podzial-danych-na-zbior-treningowy-i-testowy" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_train</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">120</span><span class="p">,</span> <span class="s">&#39;passengers&#39;</span><span class="p">]</span>
+<span class="n">data_test</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="m">121</span><span class="o">:</span><span class="m">144</span><span class="p">,</span> <span class="s">&#39;passengers&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="predykcja-jednego-kroku">
+<h2>Predykcja jednego kroku<a class="headerlink" href="#predykcja-jednego-kroku" title="Permalink to this headline">#</a></h2>
+<p>Na początek zajmijmy się najprostszym przypadkiem, czyli wykorzystaniem sieci neuronowej do predykcji tylko jednej przyszłej obserwacji.</p>
+<p>Zostaną zaprezentowane następujące modele:</p>
+<ul class="simple">
+<li><p>perceptron (MLP)</p></li>
+<li><p>RNN</p></li>
+<li><p>LSTM</p></li>
+</ul>
+<section id="przygotowanie-danych">
+<h3>Przygotowanie danych<a class="headerlink" href="#przygotowanie-danych" title="Permalink to this headline">#</a></h3>
+<p>Pierwszym krokiem będzie przygotowanie danych do takiej postaci, żeby mogły zostać przetworzone przez sieć neuronową.</p>
+<p>Zazwyczaj mamy do dyspozycji wiele obserwacji posiadających różne cechy, jednak w przypadku szeregów czasowych dysponujemy tylko serią pojedynczych obserwacji. Rozwiązaniem tego problemu jest podzielenie naszego szeregu na wiele miniszeregów o długości <span class="math notranslate nohighlight">\(L\)</span>. Na potrzeby tego ćwiczenia przyjmiemy <span class="math notranslate nohighlight">\(L=5\)</span>, jednakże należy pamiętać, że w rzeczywistości wybór wartości <span class="math notranslate nohighlight">\(L\)</span> powinien być oparty o zbiór walidacyjny.</p>
+<p>Dane wejściowe i wyjściowe powinny zostać doprowadzone do następującej postaci:
+$<span class="math notranslate nohighlight">\(
+X = \begin{bmatrix}
+v_{1} &amp; v_{2} &amp; v_{3} &amp; v_{4} &amp; v_{5}\\
+v_{2} &amp; v_{3} &amp; v_{4} &amp; v_{5} &amp; v_{6}\\
+v_{3} &amp; v_{4} &amp; v_{5} &amp; v_{6} &amp; v_{7}\\
+... &amp; ... &amp; ... &amp; ... &amp; ...
+\end{bmatrix} \qquad Y = \begin{bmatrix}
+v_{6} \\
+v_{7} \\
+v_{8} \\
+... 
+\end{bmatrix}
+\)</span>$</p>
+<p>Algorytmy takie jak RNN i LSTM oczekują danych trójwymiarowych, dlatego musimy dodatkowo przekształcić powyższe dane dwuwymiarowe do postaci (<em>n_seq, L, n_feat</em>) gdzie:</p>
+<ul class="simple">
+<li><p><em>n_seq</em> to liczba minisekwencji.</p></li>
+<li><p><em>L</em> to długość pojedynczej minisekwencji. W naszym przypadku <span class="math notranslate nohighlight">\(L=5\)</span>.</p></li>
+<li><p><em>n_feat</em> to liczba cech pojedynczej obserwacji. W naszym przypadku będzie to tylko liczba pasażerów, ale nic nie stoi na przeszkodzie, żeby zastosować więcej cech.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">split_sequence</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x_len</span><span class="p">,</span> <span class="n">y_len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">max_len</span> <span class="o">&lt;-</span> <span class="n">x_len</span> <span class="o">+</span> <span class="n">y_len</span>
+    
+    <span class="n">data_matrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">max_len</span> <span class="o">+</span> <span class="m">1</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="n">max_len</span><span class="p">)</span> 
+
+    <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">))){</span>
+        <span class="n">data_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">:</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">max_len</span> <span class="o">-</span> <span class="m">1</span><span class="p">)]</span>
+    <span class="p">}</span>
+
+    <span class="n">x</span> <span class="o">&lt;-</span> <span class="n">data_matrix</span><span class="p">[,</span> <span class="o">-</span><span class="p">((</span><span class="nf">ncol</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_len</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">))]</span>
+    <span class="n">y</span> <span class="o">&lt;-</span> <span class="n">data_matrix</span><span class="p">[,</span> <span class="p">(</span><span class="nf">ncol</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_len</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">)]</span>
+
+    <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x_len</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">splited_seq</span> <span class="o">&lt;-</span> <span class="nf">split_sequence</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">x_len</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">y_len</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="n">x_train</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">x</span>
+<span class="n">y_train</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">y</span>
+
+<span class="n">splited_seq</span> <span class="o">&lt;-</span> <span class="nf">split_sequence</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">x_len</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">y_len</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="n">x_test</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">x</span>
+<span class="n">y_test</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perceptron">
+<h3>Perceptron<a class="headerlink" href="#perceptron" title="Permalink to this headline">#</a></h3>
+<p>Perceptron to najprostsza sieć neuronowa, która składa się tylko z jednego neuronu. Dla przyjętego parametru <span class="math notranslate nohighlight">\(L=5\)</span> model ten jest tożsamy z modelem AR(5). Dodając warstwę ukrytą otrzymamy perceptron wielowarstwowy. Dzięki tej dodatkowej warstwie model stanie się nieliniowy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">keras</span><span class="p">))</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tensorflow</span><span class="p">)</span>
+
+<span class="nf">set_random_seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">keras_model_sequential</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_flatten</span><span class="p">(</span><span class="n">input_shape</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">x_train</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span><span class="o">%&gt;%</span>
+<span class="c1">#   dodatkowa warstwa wprowadzająca nieliniowość</span>
+<span class="c1">#   layer_dense(units = 50) %&gt;%</span>
+  <span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">compile</span><span class="p">(</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="s">&quot;mse&quot;</span><span class="p">,</span>
+  <span class="n">optimizer</span><span class="o">=</span> <span class="s">&#39;adam&#39;</span><span class="p">,</span>
+  <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;mae&quot;</span> 
+<span class="p">)</span>
+
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> 
+ <span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_13_0.png" src="../_images/time_series_neural_networks_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred_nn</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> 
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Rok&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Liczba pasażerów&quot;</span><span class="p">,</span> <span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.main</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.sub</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span>
+
+<span class="nf">lines</span><span class="p">(</span><span class="n">data</span><span class="p">[(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="nf">length</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&#39;month&#39;</span><span class="p">],</span> 
+      <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">pred_nn</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_14_0.png" src="../_images/time_series_neural_networks_14_0.png" />
+</div>
+</div>
+</section>
+<section id="rnn">
+<h3>RNN<a class="headerlink" href="#rnn" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">keras_model_sequential</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_simple_rnn</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">x_train</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">compile</span><span class="p">(</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="s">&quot;mse&quot;</span><span class="p">,</span>
+  <span class="n">optimizer</span><span class="o">=</span> <span class="s">&#39;adam&#39;</span><span class="p">,</span>
+  <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;mae&quot;</span> 
+<span class="p">)</span>
+
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> 
+ <span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_16_0.png" src="../_images/time_series_neural_networks_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred_rnn</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> 
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Rok&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Liczba pasażerów&quot;</span><span class="p">,</span> <span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.main</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.sub</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span>
+
+<span class="nf">lines</span><span class="p">(</span><span class="n">data</span><span class="p">[(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="nf">length</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&#39;month&#39;</span><span class="p">],</span> 
+      <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">pred_rnn</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_17_0.png" src="../_images/time_series_neural_networks_17_0.png" />
+</div>
+</div>
+</section>
+<section id="lstm">
+<h3>LSTM<a class="headerlink" href="#lstm" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">keras_model_sequential</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_lstm</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">x_train</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">compile</span><span class="p">(</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="s">&quot;mse&quot;</span><span class="p">,</span>
+  <span class="n">optimizer</span><span class="o">=</span> <span class="s">&#39;adam&#39;</span><span class="p">,</span>
+  <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;mae&quot;</span> 
+<span class="p">)</span>
+
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> 
+ <span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_19_0.png" src="../_images/time_series_neural_networks_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred_lstm</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> 
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Rok&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Liczba pasażerów&quot;</span><span class="p">,</span> <span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.main</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.sub</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span>
+
+<span class="nf">lines</span><span class="p">(</span><span class="n">data</span><span class="p">[(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="nf">length</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&#39;month&#39;</span><span class="p">],</span> 
+      <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">pred_lstm</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_20_0.png" src="../_images/time_series_neural_networks_20_0.png" />
+</div>
+</div>
+<p>Możemy porównać powyższe trzy modele obliczając dla każdego z nich MAE dla zbioru testowego:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">Metrics</span><span class="p">))</span>
+
+<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;Perceptron: %.2f&quot;</span><span class="p">,</span> <span class="nf">mae</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_nn</span><span class="p">))</span>
+<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;RNN: %.2f&quot;</span><span class="p">,</span> <span class="nf">mae</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_rnn</span><span class="p">))</span>
+<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;LSTM: %.2f&quot;</span><span class="p">,</span> <span class="nf">mae</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_lstm</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'Perceptron: 0.31'</div><div class="output text_html">'RNN: 0.09'</div><div class="output text_html">'LSTM: 0.11'</div></div>
+</div>
+<p>Pomimo tego, że analizowany przykład jest bardzo prosty, widoczna jest przewaga bardziej złożonych modeli. Najmniejszy błąd uzyskała sieć RNN, jednakże należy pamiętać o problemie zanikającego gradientu w tej architekturze. W przedstawionym przykładzie nie jest to widoczne, ponieważ sekwencja wejściowa jest krótka <span class="math notranslate nohighlight">\(L=5\)</span>. Dla dłuższych sekwencji rozwiązaniem problemu zanikającego gradientu może być zastosowanie LSTM zamiast prostej sieci RNN.</p>
+</section>
+</section>
+<section id="przewidywanie-wielu-krokow-w-przod">
+<h2>Przewidywanie wielu kroków w przód<a class="headerlink" href="#przewidywanie-wielu-krokow-w-przod" title="Permalink to this headline">#</a></h2>
+<p>Predykcję wielu kroków w przód dla serii czasowej można potraktować jako problem sequence-to-sequence. Dostarczając na wejście modelu sekwencję przeszłych zdarzeń, będziemy chcieli otrzymać na wyjściu przewidzianą sekwencję przyszłych zdarzeń. W tym celu użyjemy modelu <strong>kodera-dekodera</strong>.</p>
+<p>Zadaniem <strong>kodera</strong> jest przetworzenie danych wejściowych, a następnie zwrócenie wektora o stałej długości będącego pewną reprezentacją wejścia. Jako kodera możemy użyć modelu RNN lub LSTM.</p>
+<p><strong>Dekoder</strong> ma za zadanie przetworzyć wektor otrzymany z kodera na sekwencję wyjściową, która będzie predykcją przyszłych zdarzeń w szeregu czasowym. Podobnie jak poprzednio, tutaj również możemy użyć jako dekodera model RNN lub LSTM.</p>
+<p>Alternatywnym rozwiązaniem jest podejście <strong>single-shot</strong>, gdzie wszystkie kolejne kroki przewidywane są jednocześnie. Możemy tutaj zastosować takie same modele, jakie były wykorzystywane przy predykcji jednego kroku, modyfikując jedynie ostatnią warstwę wyjściową. Warstwa <code class="docutils literal notranslate"><span class="pre">dense</span></code> nie będzie miała już jednego neuronu, lecz tyle ile kroków chcemy przewidzieć. Kolejne neurony będą odpowiadały kolejnym krokom.</p>
+<section id="id1">
+<h3>Przygotowanie danych<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>W przypadku predykcji wielokrokowej dane wejściowe pozostaną bez zmian natomiast nie będzie predykowana już jedna wartość, lecz zwracany będzie wektor wartości o długości równej liczbie kroków.</p>
+<p>Przykładowa minisekwencja, gdy chcemy przewidzieć 3 kroki do przodu:
+$<span class="math notranslate nohighlight">\(
+x = \begin{bmatrix}v_1 &amp; v_2 &amp; v_3 &amp; ... &amp; v_t\end{bmatrix} \qquad y = \begin{bmatrix}v_{t+1} &amp; v_{t+2} &amp; v_{t+3}\end{bmatrix}
+\)</span>$</p>
+<p>W dalszej części tutorialu przyjmiemy, że interesuje nas predykcja pięciu kroków do przodu, a długość miniserii przekazywanej na wejście algorytmu będzie wynosić 19.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">splited_seq</span> <span class="o">&lt;-</span> <span class="nf">split_sequence</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">x_len</span> <span class="o">=</span> <span class="m">19</span><span class="p">,</span> <span class="n">y_len</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+
+<span class="n">x_train</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">x</span>
+<span class="n">y_train</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">y</span>
+
+<span class="n">splited_seq</span> <span class="o">&lt;-</span> <span class="nf">split_sequence</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">x_len</span> <span class="o">=</span> <span class="m">19</span><span class="p">,</span> <span class="n">y_len</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+
+<span class="n">x_test</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">x</span>
+<span class="n">y_test</span> <span class="o">&lt;-</span> <span class="n">splited_seq</span><span class="o">$</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="encoder-decoder-model">
+<h3>Encoder-decoder model<a class="headerlink" href="#encoder-decoder-model" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n_steps</span> <span class="o">=</span> <span class="m">5</span>
+
+<span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">keras_model_sequential</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_lstm</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">x_train</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_repeat_vector</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_lstm</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">return_sequences</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">time_distributed</span><span class="p">(</span><span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+
+<span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">compile</span><span class="p">(</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="s">&quot;mse&quot;</span><span class="p">,</span>
+  <span class="n">optimizer</span><span class="o">=</span> <span class="s">&#39;adam&#39;</span><span class="p">,</span>
+  <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;mae&quot;</span> 
+<span class="p">)</span>
+
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> 
+ <span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_28_0.png" src="../_images/time_series_neural_networks_28_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred_enc_dec</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">predict</span><span class="p">(</span><span class="nf">array</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">1</span><span class="p">)))</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">denormalize</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&#39;black&#39;</span><span class="p">,</span> 
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Rok&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Liczba pasażerów&quot;</span><span class="p">,</span> <span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.main</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.sub</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span>
+
+<span class="nf">lines</span><span class="p">(</span><span class="n">data</span><span class="p">[(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">n_steps</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&#39;month&#39;</span><span class="p">],</span> 
+      <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">pred_enc_dec</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_29_0.png" src="../_images/time_series_neural_networks_29_0.png" />
+</div>
+</div>
+<p>Obliczamy MAE:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mae</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_enc_dec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0973282513471183</div></div>
+</div>
+</section>
+<section id="single-shot-model">
+<h3>Single-shot model<a class="headerlink" href="#single-shot-model" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">keras</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">keras_model_sequential</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_lstm</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">x_train</span><span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="o">%&gt;%</span>
+  <span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">compile</span><span class="p">(</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="s">&quot;mse&quot;</span><span class="p">,</span>
+  <span class="n">optimizer</span><span class="o">=</span> <span class="s">&#39;adam&#39;</span><span class="p">,</span>
+  <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;mae&quot;</span> 
+<span class="p">)</span>
+
+<span class="n">history</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> 
+ <span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_33_0.png" src="../_images/time_series_neural_networks_33_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred_enc_dec</span> <span class="o">&lt;-</span> <span class="n">model</span> <span class="o">%&gt;%</span> <span class="nf">predict</span><span class="p">(</span><span class="nf">array</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">1</span><span class="p">)))</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">denormalize</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">passengers</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&#39;black&#39;</span><span class="p">,</span> 
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Rok&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Liczba pasażerów&quot;</span><span class="p">,</span> <span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.main</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cex.sub</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span>
+
+<span class="nf">lines</span><span class="p">(</span><span class="n">data</span><span class="p">[(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">n_steps</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="s">&#39;month&#39;</span><span class="p">],</span> 
+      <span class="n">y</span><span class="o">=</span><span class="nf">denormalize</span><span class="p">(</span><span class="n">pred_enc_dec</span><span class="p">,</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/time_series_neural_networks_34_0.png" src="../_images/time_series_neural_networks_34_0.png" />
+</div>
+</div>
+<p>Obliczamy MAE:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mae</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_enc_dec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0898986061107238</div></div>
+</div>
+</section>
+</section>
+<section id="podsumowanie">
+<h2>Podsumowanie<a class="headerlink" href="#podsumowanie" title="Permalink to this headline">#</a></h2>
+<p>W materiale zaprezentowano różne podejścia do predykcji szeregów czasowych za pomocą sieci neuronowych. Widoczne jest, że bardziej złożone, nieliniowe głębokie modele pozwalają uzyskać lepsze rezultaty w porównaniu do prostego perceptronu, który można traktować jako model AR. Niewątpliwą wadą podejścia wykorzystującego sieci neuronowe jest mniejsza interpretowalność modelu w porównaniu do klasycznych metod takich jak ARIMA.</p>
+<p>Należy zaznaczyć, że zaprezentowane tutaj architektury sieci neuronowych są tylko niewielkim wycinkiem istniejących rozwiązań. Zainteresowane osoby powinny również zwrócić uwagę np. na:</p>
+<ul class="simple">
+<li><p>stacked LSTM</p></li>
+<li><p>bidirectional LSTM</p></li>
+<li><p>CNN LSTM</p></li>
+<li><p>ConvLSTM</p></li>
+<li><p>GRU</p></li>
+<li><p>Transformer-based LTSF models</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="time_series.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Szeregi czasowe</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
