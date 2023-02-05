@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sieci - analiza i modelowanie &#8212; Przetwarzanie danych złożonych</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Wprowadzenie do biblioteki River" href="river_ml_introduction.html" />
+    <link rel="prev" title="Klasyfikacja hierarchiczna" href="hierarchical_classification.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Przetwarzanie danych złożonych</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Przetwarzanie danych złożonych
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zasady.html">
+   Zasady
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hawkes.html">
+   Proces Hawkesa
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="collective_classification.html">
+   Klasyfikacja kolektywna
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hierarchical_classification.html">
+   Klasyfikacja hierarchiczna
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 6
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Sieci - analiza i modelowanie
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="river_ml_introduction.html">
+   Wprowadzenie do biblioteki River
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 8
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="concept_drift.html">
+   Wykrywanie dryftu konceptu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 9
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification_of_streaming_data.html">
+   Ewaluacja jednoklasowych algorytmów klasyfikacji w danych strumieniowych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 10
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series.html">
+   Szeregi czasowe
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratorium 11
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_series_neural_networks.html">
+   Szeregi czasowe - sieci neuronowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pwr-ai/przetwarzanie-danych-zlozonych/master?urlpath=tree/docs/labs/networks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/networks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Sieci - analiza i modelowanie
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wstep">
+     Wstęp
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#narzedzia">
+     Narzędzia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-sieci-losowej">
+   Model sieci losowej
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ustalanie-wag-krawedzi">
+     Ustalanie wag krawędzi
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#miary-w-grafach">
+   Miary w grafach
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#komponenty-grafu">
+     Komponenty grafu
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-dolaczania-preferencyjnego">
+     Model dołączania preferencyjnego
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#praca-z-rzeczywistym-zbiorem-danych">
+   Praca z rzeczywistym zbiorem danych
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelowanie-i-analiza-sieci-temporalnych">
+   Modelowanie i analiza sieci temporalnych
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polecane-materialy">
+   Polecane materiały
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Sieci - analiza i modelowanie</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Sieci - analiza i modelowanie
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wstep">
+     Wstęp
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#narzedzia">
+     Narzędzia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-sieci-losowej">
+   Model sieci losowej
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ustalanie-wag-krawedzi">
+     Ustalanie wag krawędzi
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#miary-w-grafach">
+   Miary w grafach
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#komponenty-grafu">
+     Komponenty grafu
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-dolaczania-preferencyjnego">
+     Model dołączania preferencyjnego
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#praca-z-rzeczywistym-zbiorem-danych">
+   Praca z rzeczywistym zbiorem danych
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelowanie-i-analiza-sieci-temporalnych">
+   Modelowanie i analiza sieci temporalnych
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polecane-materialy">
+   Polecane materiały
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="sieci-analiza-i-modelowanie">
+<h1>Sieci - analiza i modelowanie<a class="headerlink" href="#sieci-analiza-i-modelowanie" title="Permalink to this headline">#</a></h1>
+<section id="wstep">
+<h2>Wstęp<a class="headerlink" href="#wstep" title="Permalink to this headline">#</a></h2>
+<p>Spojrzenie na dane przez pryzmat sieci pozwala na odnalezienie do tej pory niezauważalnych właściwości, których wykorzystanie może doprowadzić do pozyskania nowej wiedzy. W praktyce okazuje się, że wiele danych pozornie nieusieciowionych pozwala jednak tę sieciowość odnaleźć i dany problem możemy umiejscowić w domenie nauki o sieciach.</p>
+<p>W ramach tego tutoriala nauczymy się pracować z sieciami złożonymi różnych rodzajów (statyczne i temporalne), zarówno patrząc przez pryzmat modeli jak i danych.</p>
+</section>
+<section id="narzedzia">
+<h2>Narzędzia<a class="headerlink" href="#narzedzia" title="Permalink to this headline">#</a></h2>
+<p>Niniejszy tutorial zrealizowany jest w języku R. Przed przystąpieniem do instalacji pakietu należy zainstalować <a class="reference external" href="https://cran.r-project.org">R</a> i <a class="reference external" href="https://www.rstudio.com">RStudio</a>. W kolejnym kroku instalujemy pakiet <a class="reference external" href="https://igraph.org">igraph</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&#39;igraph&#39;</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;igraph&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: igraph
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘igraph’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:base’:
+
+    union
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="model-sieci-losowej">
+<h1>Model sieci losowej<a class="headerlink" href="#model-sieci-losowej" title="Permalink to this headline">#</a></h1>
+<p>Na początku tutoriala zajmiemy się pracą z sieciami statycznymi.
+Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci losowej, tzw. model Erdős–Rényi, którego właściwości badali Paul Erdos i Alfréd Renyi. Duża część ich wyników została opublikowana w <a class="reference external" href="https://static.renyi.hu/~p_erdos/1960-10.pdf">tej pracy</a>. Model określa liczbę węzłów oraz prawdopodobieństwo połączenia nowego węzła z każdym innym węzłem do tej pory istniejącym w sieci (przy czym losowanie odbywa się co krawędź).</p>
+<p>Stwórzmy sieć o dwudziestu pięciu węzłach i prawdopodobieństwie 0.25:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">erdos.renyi.game</span><span class="p">(</span><span class="n">p.or.m</span><span class="o">=</span><span class="m">0.25</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Możemy teraz sprawdzić właściwości tej sieci poprzez użycie funkcji <code class="docutils literal notranslate"><span class="pre">summary</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH abd3a4c U--- 25 65 -- Erdos-Renyi (gnp) graph
++ attr: name (g/c), type (g/c), loops (g/l), p (g/n)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podsumowanie grafu pokazuje, że obiekt stworzono z wykorzystaniem biblioteki <code class="docutils literal notranslate"><span class="pre">igraph</span></code>, następnie widzimy jego identyfikator oraz cztery pola wskazujące atrybuty sieci (obecnie oznaczone jako (<code class="docutils literal notranslate"><span class="pre">U---</span></code>). Interpretacja poszczególnych wartości w tym polu jest następująca:</p>
+<ul class="simple">
+<li><p>pierwsza wartość: D/U - graf skierowany (<code class="docutils literal notranslate"><span class="pre">D</span></code> od directed) lub nieskierowany (<code class="docutils literal notranslate"><span class="pre">U</span></code> od undirected)</p></li>
+<li><p>druga wartość: N/U - wierzchołki nazwane (<code class="docutils literal notranslate"><span class="pre">N</span></code> od named) lub nienazwane (<code class="docutils literal notranslate"><span class="pre">U</span></code> od unnamed)</p></li>
+<li><p>trzecia wartość: W/U - krawędzie ważone (<code class="docutils literal notranslate"><span class="pre">W</span></code> od weighted) lub nieważone (<code class="docutils literal notranslate"><span class="pre">U</span></code> od unweighted)</p></li>
+<li><p>czwarta wartość: B/no-type vertices - wierzchołki z typem (<code class="docutils literal notranslate"><span class="pre">B</span></code> od bipartite) (<code class="docutils literal notranslate"><span class="pre">no-type</span></code> od bez typu) - używane najczęściej przy grafach dwudzielnych</p></li>
+</ul>
+<p>Widzimy też, że graf ma 25 wierzchołków i 75 krawędzi. Przy czym druga wartość może się zmieniać co wywołanie, ponieważ zależy od wartości losowych (przy czym prawdopodobieństwo istnienia krawędzi wynosi 0.25).</p>
+<p>Teraz możemy sobie taki graf przedstawić na rysunku poprzez użycie funkcji <code class="docutils literal notranslate"><span class="pre">plot</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_10_0.png" src="../_images/networks_10_0.png" />
+</div>
+</div>
+<section id="ustalanie-wag-krawedzi">
+<h2>Ustalanie wag krawędzi<a class="headerlink" href="#ustalanie-wag-krawedzi" title="Permalink to this headline">#</a></h2>
+<p>Jak już wiemy, powyższy graf jest bez wag na krawędziach. Spróbujmy je nadać, ale najpierw trzeba poznać dwie przydatne funkcje pakietu igraph:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V(g)</span></code> - uzyskujemy dostęp do wierzchołków grafu</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E(g)</span></code> - uzyskujemy dostęp do krawędzi grafu</p></li>
+</ul>
+<p>Zobaczmy więc listę krawędzi naszego grafu <code class="docutils literal notranslate"><span class="pre">g</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">E</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ 65/65 edges from abd3a4c:
+ [1]  2-- 3  2-- 4  4-- 7  6-- 7  6-- 8  3-- 9  8-- 9  7--10  2--11  3--11
+[11]  6--11 10--11  4--12  5--12  1--13  2--13  9--13  6--15 11--15  7--16
+[21]  8--16  9--16 11--16 13--16  1--17  5--17 14--17 16--17  3--18  6--18
+[31]  8--19 14--19 18--19  1--20  9--20  2--21  3--21  6--21  7--21 11--21
+[41] 12--21 15--21  4--22  8--22 10--22 15--22  2--23  6--23  8--23 17--23
+[51] 19--23 22--23 10--24 14--24 16--24 17--24 21--24 22--24 23--24  6--25
+[61] 10--25 11--25 13--25 14--25 22--25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Następnie nadajmy wagi krawędziom w taki sposób, że każdej krawędzi uzyskanej z funkcji <code class="docutils literal notranslate"><span class="pre">E(g)</span></code> przypiszemy liczbę losową z zakresu [0,1]:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">E</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">weight</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="n">g</span><span class="p">)),</span> <span class="m">0.01</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Możemy teraz porównać wynik <code class="docutils literal notranslate"><span class="pre">summary(g)</span></code> z poprzednim i przekonać się, że doszedł nowy atrybut: waga krawędzi (trzecie pole):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH abd3a4c U-W- 25 65 -- Erdos-Renyi (gnp) graph
++ attr: name (g/c), type (g/c), loops (g/l), p (g/n), weight (e/n)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Spróbujmy wyrysować sobie nasz graf, ale z założeniem, że będzie on w layoucie koła oraz atrybut szerokości krawędzi powiążemy z wagą krawędzi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">edge.width</span><span class="o">=</span><span class="nf">E</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">$</span><span class="n">weight</span><span class="o">*</span><span class="m">10</span><span class="p">,</span> <span class="n">vertex.size</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="nf">layout.circle</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_18_0.png" src="../_images/networks_18_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="miary-w-grafach">
+<h1>Miary w grafach<a class="headerlink" href="#miary-w-grafach" title="Permalink to this headline">#</a></h1>
+<p>W kolejnym kroku zapoznamy się z podstawowymi miarami węzłów, takimi jak np. stopień węzła (degree), betweeenness czy closeness. W pierwszej kolejności sprawdźmy jaki jest stopień wierzchołków:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">degree</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>3</li><li>6</li><li>5</li><li>4</li><li>2</li><li>8</li><li>5</li><li>6</li><li>5</li><li>5</li><li>8</li><li>3</li><li>5</li><li>4</li><li>4</li><li>7</li><li>6</li><li>3</li><li>4</li><li>2</li><li>8</li><li>7</li><li>7</li><li>7</li><li>6</li></ol>
+</div></div>
+</div>
+<p>Widzimy wylistowane stopnie wierzchołków, ale wygodniej byłoby to zagregować w postaci histogramu, do czego służy funkcja <code class="docutils literal notranslate"><span class="pre">hist</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="nf">degree</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_22_0.png" src="../_images/networks_22_0.png" />
+</div>
+</div>
+<p>Po grafie losowym tego typu można by się spodziewać nieco innego rozkładu stopni węzłów (bliższego normalnemu), ale graf jest zbyt mały, aby statystycznie ujawnić tę własność. Wobec tego spróbujmy z większym grafem:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g_larger</span> <span class="o">&lt;-</span> <span class="nf">erdos.renyi.game</span><span class="p">(</span><span class="n">p.or.m</span><span class="o">=</span><span class="m">0.1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">10000</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="nf">degree</span><span class="p">(</span><span class="n">g_larger</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_24_0.png" src="../_images/networks_24_0.png" />
+</div>
+</div>
+<p>Widzimy już, że faktycznie stopień węzła ma rozkład normalny.</p>
+<p>Warto także przyjrzeć się mniej lokalnej mierze wierzchołków, tzw. betweenness, która opisuje jak centralny jest węzeł względem całej sieci. Jej obliczenie sprowadza się do obliczenia wszystkich najkrótszych ścieżek w grafie a następnie policzeniu ile z nich przebiega przez analizowany węzeł względem wszystkich najkrótszych ścieżek. Można więc przypuszczać, że jest to zadanie obliczeniowo złożone, stąd wracamy do naszego małego grafu <code class="docutils literal notranslate"><span class="pre">g</span></code> zamiast liczyć to na <code class="docutils literal notranslate"><span class="pre">g_larger</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">betweenness</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0</li><li>52</li><li>15</li><li>0</li><li>0</li><li>76</li><li>0</li><li>91</li><li>22</li><li>3</li><li>5</li><li>23</li><li>75</li><li>0</li><li>4</li><li>73</li><li>28</li><li>0</li><li>8</li><li>0</li><li>57</li><li>22</li><li>35</li><li>5</li><li>27</li></ol>
+</div></div>
+</div>
+<p>Istotną miarą jest też średnica grafu, tj. najdłuższa najkrótsza ścieżka. Aby nie liczyć jej z uwzględnieniem wag, ustawiamy opcję <code class="docutils literal notranslate"><span class="pre">weights</span></code> na <code class="docutils literal notranslate"><span class="pre">NA</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">diameter</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">4</div></div>
+</div>
+<section id="komponenty-grafu">
+<h2>Komponenty grafu<a class="headerlink" href="#komponenty-grafu" title="Permalink to this headline">#</a></h2>
+<p>Sprawdźmy jakie komponenty są w grafie, ale nieco rzadszym, aby było ich kilka:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g_smallprob</span> <span class="o">&lt;-</span><span class="nf">erdos.renyi.game</span><span class="p">(</span><span class="m">50</span><span class="p">,</span> <span class="m">0.02</span><span class="p">)</span>
+<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">clusters</span><span class="p">(</span><span class="n">g_smallprob</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wyrysujmy graf, ale kolorując wierzchołki przynależnością do komponentów:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">g_smallprob</span><span class="p">,</span> <span class="n">vertex.color</span><span class="o">=</span><span class="n">cl</span><span class="o">$</span><span class="n">membership</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_32_0.png" src="../_images/networks_32_0.png" />
+</div>
+</div>
+</section>
+<section id="model-dolaczania-preferencyjnego">
+<h2>Model dołączania preferencyjnego<a class="headerlink" href="#model-dolaczania-preferencyjnego" title="Permalink to this headline">#</a></h2>
+<p>Kolejnym istotnym modelem grafów jest model dołączania preferencyjnego, tzw. Barabási–Albert model. Określa on, że dołączające do sieci węzły raczej połączą się z węzłami, które już są dobrze połączone zamiast ze słabo połączonymi (choć nie jest to wykluczone). Stwórzmy sieć wedle tego modelu, gdzie będzie tysiąc węzłów:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">barabasi.game</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Teraz spróbujmy ją wyplotować:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span> <span class="o">&lt;-</span> <span class="nf">layout.fruchterman.reingold</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span> <span class="n">vertex.size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span>
+     <span class="n">vertex.label</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span> <span class="n">edge.arrow.size</span><span class="o">=</span><span class="n">.</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_36_0.png" src="../_images/networks_36_0.png" />
+</div>
+</div>
+<p>Jak widać, jej wygląd jest radykalnie inny od modelu losowego. Tego typu sieci cechuje tzw. prawo potęgowe (power-law), inaczej nazywane bezskalowością. W tego typu sieci, jeśli wyplotujemy histogram stopni węzła i wielu innych miar sieciowych, powinniśmy uzyskać taką jego postać, gdzie jest bardzo dużo węzłów z niską wartością miary i tylko kilka z bardzo wysoką. Istotnym współczynnikiem, który mówi o modelu BA jest współczynnik alfa, który można obliczyć poprzez dopasowanie do modelu potęgowego:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">degree</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">fit1</span> <span class="o">&lt;-</span> <span class="n">igraph</span><span class="o">::</span><span class="nf">fit_power_law</span><span class="p">(</span><span class="n">d</span><span class="m">+1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Alpha =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">fit1</span><span class="o">$</span><span class="n">alpha</span><span class="p">,</span> <span class="m">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Alpha = 3.242&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="praca-z-rzeczywistym-zbiorem-danych">
+<h1>Praca z rzeczywistym zbiorem danych<a class="headerlink" href="#praca-z-rzeczywistym-zbiorem-danych" title="Permalink to this headline">#</a></h1>
+<p>Do tej pory pracowaliśmy z modelami sieci. Spróbujmy pracować z rzeczywistym zbiorem danych, tj. takim, który posiada informacje o aktywnościach pozyskane z rzeczywistych interakcji między użytkownikami. Posłużymy się korespondencją z firmy produkcyjnej opublikowanym na Harvard Dataverse (<a class="reference external" href="https://doi.org/10.7910/DVN/6Z3CGX">tutaj</a>) a pochodzącym z pracy [1].</p>
+<p>[1] Nurek, Mateusz, and Radosław Michalski. “Combining Machine Learning and Social Network Analysis to Reveal the Organizational Structures.” Applied Sciences 10, no. 5 (2020): 1699. doi: <a class="reference external" href="https://dx.doi.org/10.3390/app10051699">10.3390/app10051699</a>.</p>
+<p>Zbiór umieszczono jako plik <code class="docutils literal notranslate"><span class="pre">out.radoslaw_email_email</span></code>. Na początku załadujmy go jako data frame, gdzie pozostawiamy tylko identyfikatory węzłów (pomijamy timestampy). Wyświetlamy też liczbę załadowanych wierszy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dfGraph</span> <span class="o">&lt;-</span> <span class="nf">read.csv2</span><span class="p">(</span><span class="s">&quot;data/out.radoslaw_email_email&quot;</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)[,</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span>
+
+<span class="nf">nrow</span><span class="p">(</span><span class="n">dfGraph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">82926</div></div>
+</div>
+<p>Następnie budujemy z tych wierszy graf, usuwamy pętle i zduplikowane krawędzie:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">graph.data.frame</span><span class="p">(</span><span class="n">dfGraph</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">simplify</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH bec2b72 UN-- 167 3250 -- 
++ attr: name (v/c)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kończąc demonstrację pracy z rzeczywistym zbiorem, wyplotujmy graf kolorując węzły przynależnością do grupy, tj. zbioru bardziej powiązanych ze sobą węzłów niż z innymi węzłami (metoda krótkich ścieżek losowych [2]):</p>
+<p>[2] Pascal Pons, Matthieu Latapy: Computing communities in large networks using random walks, <a class="reference external" href="https://arxiv.org/abs/physics/0512106">https://arxiv.org/abs/physics/0512106</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">walktrap</span> <span class="o">&lt;-</span> <span class="nf">cluster_walktrap</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">walktrap</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_44_0.png" src="../_images/networks_44_0.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modelowanie-i-analiza-sieci-temporalnych">
+<h1>Modelowanie i analiza sieci temporalnych<a class="headerlink" href="#modelowanie-i-analiza-sieci-temporalnych" title="Permalink to this headline">#</a></h1>
+<p>Kolejnym krokiem w analizie sieci złożonych może być odejście od sieci statycznych i skierowanie się ku sieciom temporalnym, tzn. takim, w których aspekt czasu jest istotny. W celu zrozumienia podstawowych konceptów tych sieci, polecamy zapoznać się z pracą [3].</p>
+<p>Modelowanie i praca z sieciami temporalnymi jest nieco bardziej złożone, gdyż wymaga ustalenia jakiego modelu używamy, jak liczyć miary (miary temporalne są mniej ustalone niż statyczne) i wyniki wnioskowania są bardziej złożone w interpretacji. Jednak warto poświęcić ten trud aby nie pominąć bardzo istotnego czynnika analiz jakim jest czas. Kolejność zdarzeń jest szczególnie przydatna w procesach dynamicznych w sieciach, przykładowo w dyfuzji informacji i pokrewnych.</p>
+<p>Jednym z pakietów, który warto wykorzystać do analizy sieci temporalnych, jest ndtv. Zainstalujmy go więc.</p>
+<p>[3] Holme, P., &amp; Saramäki, J. (2012). Temporal networks. Physics reports, 519(3), 97-125.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&#39;ndtv&#39;</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;ndtv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: ndtv
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: network
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>‘network’ 1.18.1 (2023-01-24), part of the Statnet Project
+* ‘news(package=&quot;network&quot;)’ for changes since last version
+* ‘citation(&quot;network&quot;)’ for citation information
+* ‘https://statnet.org’ for help, support, and other information
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘network’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:igraph’:
+
+    %c%, %s%, add.edges, add.vertices, delete.edges, delete.vertices,
+    get.edge.attribute, get.edges, get.vertex.attribute, is.bipartite,
+    is.directed, list.edge.attributes, list.vertex.attributes,
+    set.edge.attribute, set.vertex.attribute
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: networkDynamic
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>‘networkDynamic’ 0.11.2 (2022-05-04), part of the Statnet Project
+* ‘news(package=&quot;networkDynamic&quot;)’ for changes since last version
+* ‘citation(&quot;networkDynamic&quot;)’ for citation information
+* ‘https://statnet.org’ for help, support, and other information
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: animation
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sna
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: statnet.common
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘statnet.common’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    attr, order
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sna: Tools for Social Network Analysis
+Version 2.7-1 created on 2023-01-24.
+copyright (c) 2005, Carter T. Butts, University of California-Irvine
+ For citation information, type citation(&quot;sna&quot;).
+ Type help(package=&quot;sna&quot;) to get started.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘sna’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:igraph’:
+
+    betweenness, bonpow, closeness, components, degree, dyad.census,
+    evcent, hierarchy, is.connected, neighborhood, triad.census
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>‘ndtv’ 0.13.3 (2022-11-20), part of the Statnet Project
+* ‘news(package=&quot;ndtv&quot;)’ for changes since last version
+* ‘citation(&quot;ndtv&quot;)’ for citation information
+* ‘https://statnet.org’ for help, support, and other information
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jednym z komponentów biblioteki <code class="docutils literal notranslate"><span class="pre">ndtv</span></code> jest pakiet <code class="docutils literal notranslate"><span class="pre">networkDynamic</span></code>, w którym znajduje się zbiór <code class="docutils literal notranslate"><span class="pre">windsurfers</span></code>, którego użyjemy do analiz sieci temporalnej:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>onset</th><th scope=col>terminus</th><th scope=col>tail</th><th scope=col>head</th><th scope=col>onset.censored</th><th scope=col>terminus.censored</th><th scope=col>duration</th><th scope=col>edge.id</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td> 0</td><td> 1</td><td>4</td><td>1</td><td>FALSE</td><td>FALSE</td><td>1</td><td>1</td></tr>
+	<tr><th scope=row>2</th><td> 2</td><td> 3</td><td>4</td><td>1</td><td>FALSE</td><td>FALSE</td><td>1</td><td>1</td></tr>
+	<tr><th scope=row>3</th><td> 7</td><td> 8</td><td>4</td><td>1</td><td>FALSE</td><td>FALSE</td><td>1</td><td>1</td></tr>
+	<tr><th scope=row>4</th><td> 9</td><td>14</td><td>4</td><td>1</td><td>FALSE</td><td>FALSE</td><td>5</td><td>1</td></tr>
+	<tr><th scope=row>5</th><td>17</td><td>18</td><td>4</td><td>1</td><td>FALSE</td><td>FALSE</td><td>1</td><td>1</td></tr>
+	<tr><th scope=row>6</th><td>19</td><td>24</td><td>4</td><td>1</td><td>FALSE</td><td>FALSE</td><td>5</td><td>1</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>W pierwszej kolejności zrozummy co zawierają poszczególne kolumny:</p>
+<ul class="simple">
+<li><p>onset: początek krawędzi (czas)</p></li>
+<li><p>terminus: koniec krawędzi (czas)</p></li>
+<li><p>tail: węzeł, z którego wychodzi krawędź</p></li>
+<li><p>head: węzeł, do którego dochodzi krawędź</p></li>
+<li><p>duration: czas trwania (czyli terminus minus onset)</p></li>
+</ul>
+<p>Jest to więc tzw. interval graph, gdzie krawędzie opisane są czasem trwania, nie zaś momentem wystąpienia (szczegóły w pracy [2]).</p>
+<p>Możemy teraz wyplotować sobie ten graf, ale traktując go jako statyczny:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_50_0.png" src="../_images/networks_50_0.png" />
+</div>
+</div>
+<p>Jest to jednak mało pomocne, gdy chcemy pracować z dynamiką sieci. Możemy więc zerknąć jak wygląda sieć w wybranym momencie:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">network.extract</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">,</span><span class="n">at</span><span class="o">=</span><span class="m">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_52_0.png" src="../_images/networks_52_0.png" />
+</div>
+</div>
+<p>Jeśli zaś chcielibyśmy zobaczyć jak wygląda graf w pewnym oknie czasowym, możemy użyć nieco innego podejścia:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">network.extract</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">,</span><span class="n">onset</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">terminus</span><span class="o">=</span><span class="m">7</span><span class="p">,</span><span class="n">rule</span> <span class="o">=</span> <span class="s">&quot;any&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_54_0.png" src="../_images/networks_54_0.png" />
+</div>
+</div>
+<p>W ten sposób obejmiemy krawędzie, które “zahaczają” o to okno czasowe. Jeśli zaś interesuje nas sieć, która składa się tylko z krawędzi, które wpadają w dane okno, możemy użyć innego wariantu <code class="docutils literal notranslate"><span class="pre">network.extract</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">network.extract</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">,</span><span class="n">onset</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">terminus</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">rule</span> <span class="o">=</span> <span class="s">&quot;all&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_56_0.png" src="../_images/networks_56_0.png" />
+</div>
+</div>
+<p>Pakiet <code class="docutils literal notranslate"><span class="pre">ndtv</span></code> pozwala też na wygodne wyświetlenie ewolucji sieci, zdecydowanie bardziej wygodne niż korzystanie z pojedynczych klatek <code class="docutils literal notranslate"><span class="pre">plot</span></code>. Warto sprawdzić lokalnie jak zachowa się następujące polecenie:</p>
+<p><code class="docutils literal notranslate"><span class="pre">render.d3movie(windsurfers,displaylabels=TRUE,output.mode</span> <span class="pre">=</span> <span class="pre">&quot;htmlWidget&quot;)</span></code></p>
+<p>Następnie przejdźmy do analizy numerycznej, która może być dobrym sposobem zrozumienia formowania się krawędzi, które następnie możemy wykorzystać do predykcji. Tu posłuży nam biblioteka <code class="docutils literal notranslate"><span class="pre">tsna</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&#39;tsna&#39;</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tsna&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: tsna
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zobaczmy jak formują się krawędzie w czasie dla interwału jednej jednostki czasu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">tEdgeFormation</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">,</span> <span class="n">time.interval</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_61_0.png" src="../_images/networks_61_0.png" />
+</div>
+</div>
+<p>Jak widać, dynamika sieci jest typowo skokowa (ang. bursty). Teraz możemy spróbować spróbować wyliczyć temporalny betweenness:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">temporalBetweenness</span> <span class="o">&lt;-</span> <span class="nf">tSnaStats</span><span class="p">(</span><span class="n">windsurfers</span><span class="p">,</span>
+  <span class="n">snafun</span> <span class="o">=</span> <span class="s">&quot;centralization&quot;</span><span class="p">,</span>
+  <span class="n">start</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+  <span class="n">end</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+  <span class="n">time.interval</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+  <span class="n">aggregate.dur</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
+  <span class="n">FUN</span> <span class="o">=</span> <span class="s">&quot;betweenness&quot;</span>
+<span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">temporalBetweenness</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/networks_63_0.png" src="../_images/networks_63_0.png" />
+</div>
+</div>
+<p>Pamiętajmy jednak, że jest on policzony dla całej sieci, więc aby dokonywać predykcji na lokalnym poziomie musielibyśmy go liczyć dla węzłów.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="polecane-materialy">
+<h1>Polecane materiały<a class="headerlink" href="#polecane-materialy" title="Permalink to this headline">#</a></h1>
+<p>Oprócz prac przytoczonych w tym tutorialu, polecamy następujący poradnik dotyczący pracy z sieciami złożonymi:
+<a class="reference external" href="https://kateto.net/network-visualization">https://kateto.net/network-visualization</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="hierarchical_classification.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Klasyfikacja hierarchiczna</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="river_ml_introduction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Wprowadzenie do biblioteki River</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Mateusz Nurek, Kamil Tagowski, Radosław Michalski, Piotr Bródka<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
