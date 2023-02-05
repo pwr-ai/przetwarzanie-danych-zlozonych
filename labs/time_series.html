@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -606,22 +608,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table class="dataframe">
-<caption>A data.frame: 6 × 2</caption>
-<thead>
-	<tr><th></th><th scope=col>date</th><th scope=col>cnt</th></tr>
-	<tr><th></th><th scope=col>&lt;date&gt;</th><th scope=col>&lt;int&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>2011-01-01</td><td> 985</td></tr>
-	<tr><th scope=row>2</th><td>2011-01-02</td><td> 801</td></tr>
-	<tr><th scope=row>3</th><td>2011-01-03</td><td>1349</td></tr>
-	<tr><th scope=row>4</th><td>2011-01-04</td><td>1562</td></tr>
-	<tr><th scope=row>5</th><td>2011-01-05</td><td>1600</td></tr>
-	<tr><th scope=row>6</th><td>2011-01-06</td><td>1606</td></tr>
-</tbody>
-</table>
-</div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in library(anytime): there is no package called ‘anytime’
+Traceback:
+
+1. library(anytime)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Wizualizacja analizowanego szeregu czasowego:</p>
 <div class="cell docutils container">
