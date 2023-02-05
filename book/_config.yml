@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Przetwarzanie danych złożonych
-author: Radosław Michalski, Piotr Bródka, Mateusz Nurek, Kamil Tagowski
+author: Mateusz Nurek, Kamil Tagowski, Radosław Michalski, Piotr Bródka
 #logo: logo.png
 
 # Force re-execution of notebooks on each build.

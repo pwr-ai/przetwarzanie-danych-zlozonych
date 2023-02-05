@@ -13,6 +13,9 @@ parts:
   - caption: Laboratorium 5
     chapters:
     - file: labs/hierarchical_classification
+  - caption: Laboratorium 6
+    chapters:
+    - file: labs/networks
   - caption: Laboratorium 7
     chapters:
     - file: labs/river_ml_introduction
