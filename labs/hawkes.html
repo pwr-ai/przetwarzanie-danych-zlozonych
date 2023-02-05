@@ -550,52 +550,11 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: devtools
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, :
-“there is no package called ‘devtools’”
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: usethis
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/home/rm/R/x86_64-pc-linux-gnu-library/4.2’
-(as ‘lib’ is unspecified)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>also installing the dependencies ‘credentials’, ‘ini’, ‘systemfonts’, ‘textshaping’, ‘gert’, ‘gh’, ‘httr’, ‘ragg’, ‘usethis’, ‘pkgdown’
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘ini’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘textshaping’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘gh’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘ragg’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘usethis’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘pkgdown’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in install.packages(&quot;devtools&quot;):
-“installation of package ‘devtools’ had non-zero exit status”
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in loadNamespace(x): there is no package called ‘devtools’
-Traceback:
-
-1. loadNamespace(x)
-2. withRestarts(stop(cond), retry_loadNamespace = function() NULL)
-3. withOneRestart(expr, restarts[[1L]])
-4. doWithOneRestart(return(expr), restart)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipping install of &#39;evently&#39; from a github remote, the SHA1 (d3e6a693) has not changed since last install.
+  Use `force = TRUE` to force installation
 </pre></div>
 </div>
 </div>
@@ -618,6 +577,36 @@ Traceback:
 
 <span class="c1"># Generowanie kolejnych zdarzeń na podstawie zadanej serii</span>
 <span class="n">data2</span> <span class="o">&lt;-</span> <span class="nf">generate_series</span><span class="p">(</span><span class="n">par</span> <span class="o">=</span> <span class="n">init_par</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;EXP&#39;</span><span class="p">),</span> <span class="n">Tmax</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">sim_no</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">init_history</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  This package requires AMPL and ipopt
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  But they are not in your PATH environment.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Please specify its binary folder path in ~/.Renviron
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Please also make sure the ipopt binary is in the 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  same folder.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>It seems AMPL is not found in your PATH environment, do you want to install it now?
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in fun(libname, pkgname):
+“AMPL is missing! You might not be able to fit models.”
 </pre></div>
 </div>
 </div>
@@ -664,18 +653,12 @@ Traceback:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Model: EXP 
-- No. of cascades: 1 
-- init_par:
-  K 1.87e+00; theta 3.59e-01
-- par:
-  K 1.00e+00; theta 1.44e+00
-- Neg Log Likelihood: -14.702 
-- lower_bound:
-  K 1.00e-100; theta 1.00e-100
-- upper_bound:
-  K 1.00e+04; theta 3.00e+02
-- Convergence: 0 
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>Error in preparation(data): Please set up ampl and ipopt before fitting!
+Traceback:
+
+1. fit_series(data, model_type = &quot;EXP&quot;, observation_time = 5, cores = 2)
+2. preparation(data)
+3. stop(&quot;Please set up ampl and ipopt before fitting!&quot;)
 </pre></div>
 </div>
 </div>

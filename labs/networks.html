@@ -599,7 +599,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH abd3a4c U--- 25 65 -- Erdos-Renyi (gnp) graph
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 836d3e7 U--- 25 63 -- Erdos-Renyi (gnp) graph
 + attr: name (g/c), type (g/c), loops (g/l), p (g/n)
 </pre></div>
 </div>
@@ -639,14 +639,14 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ 65/65 edges from abd3a4c:
- [1]  2-- 3  2-- 4  4-- 7  6-- 7  6-- 8  3-- 9  8-- 9  7--10  2--11  3--11
-[11]  6--11 10--11  4--12  5--12  1--13  2--13  9--13  6--15 11--15  7--16
-[21]  8--16  9--16 11--16 13--16  1--17  5--17 14--17 16--17  3--18  6--18
-[31]  8--19 14--19 18--19  1--20  9--20  2--21  3--21  6--21  7--21 11--21
-[41] 12--21 15--21  4--22  8--22 10--22 15--22  2--23  6--23  8--23 17--23
-[51] 19--23 22--23 10--24 14--24 16--24 17--24 21--24 22--24 23--24  6--25
-[61] 10--25 11--25 13--25 14--25 22--25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ 63/63 edges from 836d3e7:
+ [1]  2-- 4  1-- 5  4-- 7  5-- 7  1-- 8  5-- 8  7-- 8  7-- 9  1--10  3--10
+[11]  2--11  3--11  5--11  7--11  8--11  7--12 11--12  7--13  1--14  6--14
+[21]  4--15  6--15  7--15 12--15  2--16  1--17  2--17  9--17  4--18  5--18
+[31]  1--19  2--19  8--19 10--19 12--19  5--20 10--20 11--20 13--20  3--21
+[41]  8--21 17--21 18--21 20--21  4--22  8--22 12--22 14--22 17--22 21--22
+[51]  8--23 11--23 15--23  5--24  7--24 16--24 18--24  1--25  7--25  9--25
+[61] 11--25 15--25 18--25
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH abd3a4c U-W- 25 65 -- Erdos-Renyi (gnp) graph
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 836d3e7 U-W- 25 63 -- Erdos-Renyi (gnp) graph
 + attr: name (g/c), type (g/c), loops (g/l), p (g/n), weight (e/n)
 </pre></div>
 </div>
@@ -701,7 +701,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>3</li><li>6</li><li>5</li><li>4</li><li>2</li><li>8</li><li>5</li><li>6</li><li>5</li><li>5</li><li>8</li><li>3</li><li>5</li><li>4</li><li>4</li><li>7</li><li>6</li><li>3</li><li>4</li><li>2</li><li>8</li><li>7</li><li>7</li><li>7</li><li>6</li></ol>
+<ol class=list-inline><li>7</li><li>5</li><li>3</li><li>5</li><li>7</li><li>2</li><li>10</li><li>8</li><li>3</li><li>4</li><li>9</li><li>5</li><li>2</li><li>3</li><li>6</li><li>2</li><li>5</li><li>5</li><li>5</li><li>5</li><li>6</li><li>6</li><li>3</li><li>4</li><li>6</li></ol>
 </div></div>
 </div>
 <p>Widzimy wylistowane stopnie wierzchołków, ale wygodniej byłoby to zagregować w postaci histogramu, do czego służy funkcja <code class="docutils literal notranslate"><span class="pre">hist</span></code>:</p>
@@ -741,7 +741,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>0</li><li>52</li><li>15</li><li>0</li><li>0</li><li>76</li><li>0</li><li>91</li><li>22</li><li>3</li><li>5</li><li>23</li><li>75</li><li>0</li><li>4</li><li>73</li><li>28</li><li>0</li><li>8</li><li>0</li><li>57</li><li>22</li><li>35</li><li>5</li><li>27</li></ol>
+<ol class=list-inline><li>28</li><li>55</li><li>6</li><li>12</li><li>63</li><li>1</li><li>22</li><li>70</li><li>4</li><li>13</li><li>8</li><li>16</li><li>0</li><li>3</li><li>19</li><li>17</li><li>29</li><li>52</li><li>79</li><li>28</li><li>10</li><li>5</li><li>0</li><li>0</li><li>28</li></ol>
 </div></div>
 </div>
 <p>Istotną miarą jest też średnica grafu, tj. najdłuższa najkrótsza ścieżka. Aby nie liczyć jej z uwzględnieniem wag, ustawiamy opcję <code class="docutils literal notranslate"><span class="pre">weights</span></code> na <code class="docutils literal notranslate"><span class="pre">NA</span></code>:</p>
@@ -810,7 +810,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Alpha = 3.242&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Alpha = 3.185&quot;
 </pre></div>
 </div>
 </div>
@@ -843,7 +843,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH bec2b72 UN-- 167 3250 -- 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH a8b45b0 UN-- 167 3250 -- 
 + attr: name (v/c)
 </pre></div>
 </div>
