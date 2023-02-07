@@ -7,6 +7,9 @@ parts:
   - caption: Laboratorium 2
     chapters:
     - file: labs/hawkes
+  - caption: Laboratorium 3
+    chapters:
+    - file: labs/exploratory_data_analysis
   - caption: Laboratorium 4
     chapters:
     - file: labs/collective_classification
