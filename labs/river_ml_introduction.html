@@ -137,6 +137,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Laboratorium 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploratory_data_analysis.html">
+   Analiza eksploracyjna danych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Laboratorium 4
  </span>
 </p>
@@ -392,100 +404,128 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wczytywanie-zbiorow">
-   Wczytywanie zbiorów
+  <a class="reference internal nav-link" href="#dane-w-bibliotece-river">
+   Dane w bibliotece river
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loadery-biblioteki-river">
-     Loadery biblioteki river
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#zbiory-danych-w-bibliotece-river">
-     Zbiory danych w bibliotece river
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wczytywanie-zbioru-movielens100k">
-     Wczytywanie zbioru MovieLens100K
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dostep-do-elementow-w-zbiorze">
-     Dostęp do elementów w zbiorze
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#petla">
-     Pętla
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pobieranie-kilku-elementow-ze-zbioru">
-     Pobieranie kilku elementów ze zbioru
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wczytanie-zbioru-za-pomoca-dostepnych-loaderow">
-     Wczytanie zbioru za pomocą dostępnych loaderów
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wczytywanie-za-pomoca-bilioteki-pandas">
-     Wczytywanie za pomocą bilioteki pandas
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#przetwarzanie-zbioru">
-   Przetwarzanie zbioru
+  <a class="reference internal nav-link" href="#tutorial">
+   Tutorial
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rozklad-klas-wczytany-caly-zbior">
-     Rozkład klas - wczytany cały zbiór
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rozklad-klas-podejscie-strumieniowe">
-     Rozkład klas - podejście strumieniowe
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rozklad-klas-podejscie-strumieniowe-przyblizone">
-     Rozkład klas - podejście strumieniowe przybliżone
+    <a class="reference internal nav-link" href="#podstawowe-operacje-na-zbiorze-danych">
+     Podstawowe operacje na zbiorze danych
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#porownanie-wartosci">
-       Porównanie wartości
+      <a class="reference internal nav-link" href="#wczytanie-zbioru-danych-dostepnego-w-bibliotece">
+       Wczytanie zbioru danych dostępnego w bibliotece
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dostep-do-elementow-zbioru">
+       Dostęp do elementów zbioru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wczytanie-zbioru-z-pliku-csv">
+       Wczytanie zbioru z pliku csv
       </a>
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transformacje-cech">
-   Transformacje cech
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#agregacje">
-     Agregacje
+    <a class="reference internal nav-link" href="#przetwarzanie-zbioru-danych">
+     Przetwarzanie zbioru danych
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rozklad-klas-liczony-od-na-calym-wczytanym-zbiorze">
+       Rozkład klas liczony od na całym wczytanym zbiorze
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obliczenie-rozkladu-klas-z-wykorzystaniem-podejscia-strumieniowego">
+       Obliczenie rozkładu klas z wykorzystaniem podejścia strumieniowego
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obliczenie-rozkladu-klas-z-wykorzystaniem-licznika-przyblizonego">
+       Obliczenie rozkładu klas z wykorzystaniem licznika przybliżonego
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#porownanie-i-podsumowanie-dokladnosci-podejsc-obliczenia-rozkladu-klas">
+       Porównanie i podsumowanie dokładności podejść obliczenia rozkładu klas
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#obliczenie-liczby-recenzji-uzytkownika">
-     Obliczenie liczby recenzji użytkownika
+    <a class="reference internal nav-link" href="#transformacje-i-ekstrakcja-cech">
+     Transformacje i ekstrakcja cech
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#aggregacje-typu-rolling">
-     Aggregacje typu Rolling
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#przeksztalcenie-cech-timestamp-oraz-release-date-z-formatu-timestamp-do-formatu-datetime">
+       Przekształcenie cech
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         timestamp
+        </span>
+       </code>
+       oraz
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         release_date
+        </span>
+       </code>
+       z formatu
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         timestamp
+        </span>
+       </code>
+       do formatu
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         datetime
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kompozycja-transformacji-w-jedna">
+       Kompozycja transformacji w jedną
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modelowanie-tematyczne-tytulow-filmow-za-pomoca-algorytmu-lda">
+       Modelowanie tematyczne tytułów filmów za pomocą algorytmu
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         LDA
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tworzenie-sekwencji-krokow-przetwarzania-za-pomoca-klasy-pipeline">
+       Tworzenie sekwencji kroków przetwarzania za pomocą klasy
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Pipeline
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#agregacje-cech-z-perspektywy-danego-uzytkownika">
+       Agregacje cech z perspektywy danego użytkownika
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -509,100 +549,128 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wczytywanie-zbiorow">
-   Wczytywanie zbiorów
+  <a class="reference internal nav-link" href="#dane-w-bibliotece-river">
+   Dane w bibliotece river
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loadery-biblioteki-river">
-     Loadery biblioteki river
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#zbiory-danych-w-bibliotece-river">
-     Zbiory danych w bibliotece river
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wczytywanie-zbioru-movielens100k">
-     Wczytywanie zbioru MovieLens100K
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dostep-do-elementow-w-zbiorze">
-     Dostęp do elementów w zbiorze
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#petla">
-     Pętla
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pobieranie-kilku-elementow-ze-zbioru">
-     Pobieranie kilku elementów ze zbioru
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wczytanie-zbioru-za-pomoca-dostepnych-loaderow">
-     Wczytanie zbioru za pomocą dostępnych loaderów
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wczytywanie-za-pomoca-bilioteki-pandas">
-     Wczytywanie za pomocą bilioteki pandas
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#przetwarzanie-zbioru">
-   Przetwarzanie zbioru
+  <a class="reference internal nav-link" href="#tutorial">
+   Tutorial
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rozklad-klas-wczytany-caly-zbior">
-     Rozkład klas - wczytany cały zbiór
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rozklad-klas-podejscie-strumieniowe">
-     Rozkład klas - podejście strumieniowe
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rozklad-klas-podejscie-strumieniowe-przyblizone">
-     Rozkład klas - podejście strumieniowe przybliżone
+    <a class="reference internal nav-link" href="#podstawowe-operacje-na-zbiorze-danych">
+     Podstawowe operacje na zbiorze danych
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#porownanie-wartosci">
-       Porównanie wartości
+      <a class="reference internal nav-link" href="#wczytanie-zbioru-danych-dostepnego-w-bibliotece">
+       Wczytanie zbioru danych dostępnego w bibliotece
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dostep-do-elementow-zbioru">
+       Dostęp do elementów zbioru
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wczytanie-zbioru-z-pliku-csv">
+       Wczytanie zbioru z pliku csv
       </a>
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transformacje-cech">
-   Transformacje cech
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#agregacje">
-     Agregacje
+    <a class="reference internal nav-link" href="#przetwarzanie-zbioru-danych">
+     Przetwarzanie zbioru danych
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rozklad-klas-liczony-od-na-calym-wczytanym-zbiorze">
+       Rozkład klas liczony od na całym wczytanym zbiorze
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obliczenie-rozkladu-klas-z-wykorzystaniem-podejscia-strumieniowego">
+       Obliczenie rozkładu klas z wykorzystaniem podejścia strumieniowego
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#obliczenie-rozkladu-klas-z-wykorzystaniem-licznika-przyblizonego">
+       Obliczenie rozkładu klas z wykorzystaniem licznika przybliżonego
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#porownanie-i-podsumowanie-dokladnosci-podejsc-obliczenia-rozkladu-klas">
+       Porównanie i podsumowanie dokładności podejść obliczenia rozkładu klas
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#obliczenie-liczby-recenzji-uzytkownika">
-     Obliczenie liczby recenzji użytkownika
+    <a class="reference internal nav-link" href="#transformacje-i-ekstrakcja-cech">
+     Transformacje i ekstrakcja cech
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#aggregacje-typu-rolling">
-     Aggregacje typu Rolling
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#przeksztalcenie-cech-timestamp-oraz-release-date-z-formatu-timestamp-do-formatu-datetime">
+       Przekształcenie cech
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         timestamp
+        </span>
+       </code>
+       oraz
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         release_date
+        </span>
+       </code>
+       z formatu
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         timestamp
+        </span>
+       </code>
+       do formatu
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         datetime
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kompozycja-transformacji-w-jedna">
+       Kompozycja transformacji w jedną
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modelowanie-tematyczne-tytulow-filmow-za-pomoca-algorytmu-lda">
+       Modelowanie tematyczne tytułów filmów za pomocą algorytmu
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         LDA
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tworzenie-sekwencji-krokow-przetwarzania-za-pomoca-klasy-pipeline">
+       Tworzenie sekwencji kroków przetwarzania za pomocą klasy
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Pipeline
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#agregacje-cech-z-perspektywy-danego-uzytkownika">
+       Agregacje cech z perspektywy danego użytkownika
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -618,24 +686,37 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="wprowadzenie-do-biblioteki-river">
 <h1>Wprowadzenie do biblioteki River<a class="headerlink" href="#wprowadzenie-do-biblioteki-river" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://github.com/online-ml/river">River</a> jest obecnie kluczową biblioteką z dziedziny online machine learning. Jest wynikiem połączenia dwóch bibliotek <a class="reference external" href="https://github.com/MaxHalford/creme">creme</a> i <a class="reference external" href="https://github.com/scikit-multiflow/scikit-multiflow">scikit-multiflow</a>. Jest głównie napisana w języku Python, przy czym intensywne obliczeniowo operacje przeniesiono do języka Rust.</p>
-<p>Jej główna funkcjonalność obejmuje <a class="reference external" href="http://m.in">m.in</a>.:</p>
+<p><a class="reference external" href="https://github.com/online-ml/river">River</a> jest jedną z najbardziej rozszerzonych bibliotek z dziedziny online machine learning. Jest wynikiem połączenia dwóch bibliotek <a class="reference external" href="https://github.com/MaxHalford/creme">creme</a> oraz <a class="reference external" href="https://github.com/scikit-multiflow/scikit-multiflow">scikit-multiflow</a>. Jest głównie napisana w języku Python, przy czym intensywne obliczeniowo operacje napisane są w języku Rust.</p>
+<p>Główna funkcjonalność biblioteki obejmuje <a class="reference external" href="http://m.in">m.in</a>.:</p>
 <ul class="simple">
-<li><p>Modele liniowe i Klasyczne modele maszynowego uczenia</p></li>
-<li><p>Wykrywanie anomalii czy  koncept dryftu</p></li>
+<li><p>Modele liniowe i klasyczne modele maszynowego uczenia</p></li>
+<li><p>Wykrywanie anomalii i dryftu konceptu</p></li>
 <li><p>Systemy rekomendycjne</p></li>
 <li><p>Prognozowanie na podstawie szeregów czasowych</p></li>
 <li><p>Uczenie niezbalansowanych danych</p></li>
 <li><p>Klasteryzacja</p></li>
-<li><p>Metryki i statystyki dedykowane do Online Machine Learningu</p></li>
+<li><p>Metryki i statystyki zadaptowane do dziedziny Online Machine Learning</p></li>
 </ul>
-<p>Strona główna jest dostępna pod adresem: <a class="reference external" href="https://riverml.xyz/0.14.0/">[LINK]</a>
-Tutoriale <a class="reference external" href="https://riverml.xyz/0.14.0/recipes/reading-data/">[LINK]</a>, Przykłady <a class="reference external" href="https://riverml.xyz/0.14.0/examples/batch-to-online/">[LINK]</a>, Dokumentacja <a class="reference external" href="https://riverml.xyz/0.14.0/api/overview/">[LINK]</a></p>
-<section id="wczytywanie-zbiorow">
-<h2>Wczytywanie zbiorów<a class="headerlink" href="#wczytywanie-zbiorow" title="Permalink to this headline">#</a></h2>
-<section id="loadery-biblioteki-river">
-<h3>Loadery biblioteki river<a class="headerlink" href="#loadery-biblioteki-river" title="Permalink to this headline">#</a></h3>
-<p>Przedstawienie formatów danych wspierających przez bibliotekę river przedstawiono w poniższej tabeli:</p>
+<p>Najważniejsze linki:</p>
+<ul class="simple">
+<li><p>Strona główna <a class="reference external" href="https://riverml.xyz/0.14.0/">[LINK]</a></p></li>
+<li><p>Tutoriale <a class="reference external" href="https://riverml.xyz/0.14.0/recipes/reading-data/">[LINK]</a></p></li>
+<li><p>Przykłady <a class="reference external" href="https://riverml.xyz/0.14.0/examples/batch-to-online/">[LINK]</a></p></li>
+<li><p>Dokumentacja <a class="reference external" href="https://riverml.xyz/0.14.0/api/overview/">[LINK]</a></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Materiały wraz z tutorialami zostały przygotowane w oparciu o biblioteke <code class="docutils literal notranslate"><span class="pre">river</span></code> w wersji 0.14</p>
+</div>
+<section id="dane-w-bibliotece-river">
+<h2>Dane w bibliotece river<a class="headerlink" href="#dane-w-bibliotece-river" title="Permalink to this headline">#</a></h2>
+<p>Dodatkowo, w bibliotce <code class="docutils literal notranslate"><span class="pre">river</span></code> zawarto pakiet zbiorów z dziedziny online machine learning wraz z potrzebnymi loaderami.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Pełną listę zbiorów można przejrzeć na stronie biblioteki <a class="reference external" href="https://riverml.xyz/0.14.0/api/datasets/AirlinePassengers/">[LINK]</a></p>
+</div>
+<p>Funkcjanolność biblioteki nie ogranicza się tylko do udostępnionych zbiorów. W bibliotece znajdziemy obsługę wielu popularnych formatów danych takich jak np. numpy array, pliki csv czy bezpośrednie pobieranie danych z baz sql.</p>
+<p>Pełne przedstawienie formatów danych wspierających przez bibliotekę <code class="docutils literal notranslate"><span class="pre">river</span></code> przedstawiono w poniższej tabeli:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Format danych</p></th>
@@ -670,19 +751,18 @@ Tutoriale <a class="reference external" href="https://riverml.xyz/0.14.0/recipes
 </tbody>
 </table>
 </section>
-<section id="zbiory-danych-w-bibliotece-river">
-<h3>Zbiory danych w bibliotece river<a class="headerlink" href="#zbiory-danych-w-bibliotece-river" title="Permalink to this headline">#</a></h3>
-<p>River udostępnia pakiet zbiorów danych wraz z odpowiednimi loaderami.
-Pełną listę zbiorów można przejrzeć na stronie biblioteki <a class="reference external" href="https://riverml.xyz/0.13.0/api/datasets/AirlinePassengers/">[LINK]</a></p>
-</section>
-<section id="wczytywanie-zbioru-movielens100k">
-<h3>Wczytywanie zbioru MovieLens100K<a class="headerlink" href="#wczytywanie-zbioru-movielens100k" title="Permalink to this headline">#</a></h3>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">#</a></h2>
+<p>W tutorialu wykorzystano zbiór danych <a class="reference external" href="https://grouplens.org/datasets/movielens/100k/"><code class="docutils literal notranslate"><span class="pre">MovieLens100K</span></code></a>. Jest to zbiór danych przygotowany przez naukowców z University of Minnesota. Składa się z 100 000 ocen w skali 1-5 1682 filmów pochodzących od 943 użytkowników.</p>
+<section id="podstawowe-operacje-na-zbiorze-danych">
+<h3>Podstawowe operacje na zbiorze danych<a class="headerlink" href="#podstawowe-operacje-na-zbiorze-danych" title="Permalink to this headline">#</a></h3>
+<section id="wczytanie-zbioru-danych-dostepnego-w-bibliotece">
+<h4>Wczytanie zbioru danych dostępnego w bibliotece<a class="headerlink" href="#wczytanie-zbioru-danych-dostepnego-w-bibliotece" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.datasets</span> <span class="kn">import</span> <span class="n">MovieLens100K</span>
 
 <span class="n">ds</span> <span class="o">=</span> <span class="n">MovieLens100K</span><span class="p">()</span>
-<span class="n">ds_path</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">path</span>
 <span class="n">ds</span>
 </pre></div>
 </div>
@@ -696,15 +776,15 @@ user has rated at least 20 movies. User and movie information are provided. The 
 collected through the MovieLens web site (movielens.umn.edu) during the seven-month period from
 September 19th, 1997 through April 22nd, 1998.
 
-      Name  MovieLens100K                                          
-      Task  Regression                                             
-   Samples  100,000                                                
-  Features  10                                                     
-    Sparse  False                                                  
-      Path  /home/rm/river_data/MovieLens100K/ml_100k.csv          
-       URL  https://maxhalford.github.io/files/datasets/ml_100k.zip
-      Size  10.55 MB                                               
-Downloaded  True                                                   
+      Name  MovieLens100K                                            
+      Task  Regression                                               
+   Samples  100,000                                                  
+  Features  10                                                       
+    Sparse  False                                                    
+      Path  /Users/kamiltagowski/river_data/MovieLens100K/ml_100k.csv
+       URL  https://maxhalford.github.io/files/datasets/ml_100k.zip  
+      Size  10.55 MB                                                 
+Downloaded  True                                                     
 
 Parameters
 ----------
@@ -716,8 +796,9 @@ Parameters
 </div>
 </div>
 </section>
-<section id="dostep-do-elementow-w-zbiorze">
-<h3>Dostęp do elementów w zbiorze<a class="headerlink" href="#dostep-do-elementow-w-zbiorze" title="Permalink to this headline">#</a></h3>
+<section id="dostep-do-elementow-zbioru">
+<h4>Dostęp do elementów zbioru<a class="headerlink" href="#dostep-do-elementow-zbioru" title="Permalink to this headline">#</a></h4>
+<p>Standardowy dostęp do elementów ze zbioru danych odbywa się za pomocą iteratora.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">ds</span><span class="p">))</span>
@@ -740,13 +821,14 @@ Parameters
 </div>
 </div>
 </div>
-</section>
-<section id="petla">
-<h3>Pętla<a class="headerlink" href="#petla" title="Permalink to this headline">#</a></h3>
+<p>W przypadku wykorzystania pętli, nie ma potrzeby tworzenia wcześniej iteratora.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>W celu przejrzystego wyświetlania danych została wykorzystana metoda <a class="reference external" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.display_pretty"><code class="docutils literal notranslate"><span class="pre">display_pretty</span></code></a> z modułu <code class="docutils literal notranslate"><span class="pre">IPython.display</span></code></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import w celu czytelniejszego wyświetlania słowników</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_pretty</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_pretty</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
     <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -772,58 +854,63 @@ Parameters
 </div>
 </div>
 </div>
-</section>
-<section id="pobieranie-kilku-elementow-ze-zbioru">
-<h3>Pobieranie kilku elementów ze zbioru<a class="headerlink" href="#pobieranie-kilku-elementow-ze-zbioru" title="Permalink to this headline">#</a></h3>
-<p>Dla tej paczki zbiorów danych przygotowano także metodę take, która umożliwia pobranie kilku elementów ze strumienia</p>
+<p>W przypadku zbiorów danych udostępnionych przez bibliotekę, do dyspozycji mamy również metodę <a class="reference external" href="https://riverml.xyz/0.14.0/api/datasets/base/Dataset/"><code class="docutils literal notranslate"><span class="pre">take</span></code></a>, która zwraca iterator na n pierwszych elementów</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: &#39;259&#39;,
- &#39;item&#39;: &#39;255&#39;,
- &#39;timestamp&#39;: 874731910000000000,
- &#39;title&#39;: &quot;My Best Friend&#39;s Wedding (1997)&quot;,
- &#39;release_date&#39;: 866764800000000000,
- &#39;genres&#39;: &#39;comedy, romance&#39;,
- &#39;age&#39;: 21.0,
- &#39;gender&#39;: &#39;M&#39;,
- &#39;occupation&#39;: &#39;student&#39;,
- &#39;zip_code&#39;: &#39;48823&#39;}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: &#39;259&#39;,
- &#39;item&#39;: &#39;286&#39;,
- &#39;timestamp&#39;: 874731927000000000,
- &#39;title&#39;: &#39;English Patient, The (1996)&#39;,
- &#39;release_date&#39;: 848016000000000000,
- &#39;genres&#39;: &#39;drama, romance, war&#39;,
- &#39;age&#39;: 21.0,
- &#39;gender&#39;: &#39;M&#39;,
- &#39;occupation&#39;: &#39;student&#39;,
- &#39;zip_code&#39;: &#39;48823&#39;}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[({&#39;user&#39;: &#39;259&#39;,
+   &#39;item&#39;: &#39;255&#39;,
+   &#39;timestamp&#39;: 874731910000000000,
+   &#39;title&#39;: &quot;My Best Friend&#39;s Wedding (1997)&quot;,
+   &#39;release_date&#39;: 866764800000000000,
+   &#39;genres&#39;: &#39;comedy, romance&#39;,
+   &#39;age&#39;: 21.0,
+   &#39;gender&#39;: &#39;M&#39;,
+   &#39;occupation&#39;: &#39;student&#39;,
+   &#39;zip_code&#39;: &#39;48823&#39;},
+  4.0),
+ ({&#39;user&#39;: &#39;259&#39;,
+   &#39;item&#39;: &#39;286&#39;,
+   &#39;timestamp&#39;: 874731927000000000,
+   &#39;title&#39;: &#39;English Patient, The (1996)&#39;,
+   &#39;release_date&#39;: 848016000000000000,
+   &#39;genres&#39;: &#39;drama, romance, war&#39;,
+   &#39;age&#39;: 21.0,
+   &#39;gender&#39;: &#39;M&#39;,
+   &#39;occupation&#39;: &#39;student&#39;,
+   &#39;zip_code&#39;: &#39;48823&#39;},
+  4.0)]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="wczytanie-zbioru-za-pomoca-dostepnych-loaderow">
-<h3>Wczytanie zbioru za pomocą dostępnych loaderów<a class="headerlink" href="#wczytanie-zbioru-za-pomoca-dostepnych-loaderow" title="Permalink to this headline">#</a></h3>
+<section id="wczytanie-zbioru-z-pliku-csv">
+<h4>Wczytanie zbioru z pliku csv<a class="headerlink" href="#wczytanie-zbioru-z-pliku-csv" title="Permalink to this headline">#</a></h4>
+<p>W celach ćwiczenia wczytamy zbiór danych bezpośrednio z pliku <code class="docutils literal notranslate"><span class="pre">csv</span></code>, ale wykorzystamy już wersję zbioru pobraną wcześniej. Aby dostać się do ścieżki pobranego zbioru odwołamy się do pola <code class="docutils literal notranslate"><span class="pre">path</span></code> z utworzonego wcześniej obiektu zbioru.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">path</span>
+<span class="n">path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/Users/kamiltagowski/river_data/MovieLens100K/ml_100k.csv&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do stworzenia iteratora z pliku skorzystamy z metody <a class="reference external" href="https://riverml.xyz/0.14.0/api/stream/iter-csv/"><code class="docutils literal notranslate"><span class="pre">iter_csv</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.stream</span> <span class="kn">import</span> <span class="n">iter_csv</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_csv</span><span class="p">(</span><span class="n">ds_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
     <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -850,14 +937,22 @@ Parameters
 </div>
 </div>
 </div>
-<p>Jak widzimy, powyżej zbiór wczytany jest w postaci stringów, a zmienna y jest nieznana.
-Aby to rozwiązać potrzebujemy zdefiniować dane.</p>
+<p>W porównaniu do poprzednego formatu możemy zauważyć nieporządane właściowości:</p>
+<ul class="simple">
+<li><p>Wszystkie cechy wczytane są jako obiekty <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>Cecha wyjściowa nie jest ustawiona, w razultacie otrzymujemy obiekt <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+<p>Aby to poprawić, musimy zdefiniować dodatkowe argumenty, przekazane do metody <code class="docutils literal notranslate"><span class="pre">iter_csv</span></code>:</p>
+<ul class="simple">
+<li><p>Mapowanie pól danych przekozujemy poprzez ustawienie parametru <code class="docutils literal notranslate"><span class="pre">converters</span></code></p></li>
+<li><p>Zdefiniowanie cechy wyjśćiowowej za pomocą parametru <code class="docutils literal notranslate"><span class="pre">target</span></code></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.stream</span> <span class="kn">import</span> <span class="n">iter_csv</span>
 
 <span class="n">ds</span> <span class="o">=</span> <span class="n">iter_csv</span><span class="p">(</span>
-    <span class="n">ds_path</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">,</span>
     <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
     <span class="n">target</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span>
     <span class="n">converters</span><span class="o">=</span><span class="p">{</span>
@@ -865,6 +960,7 @@ Aby to rozwiązać potrzebujemy zdefiniować dane.</p>
         <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="s2">&quot;release_date&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">},</span>
 <span class="p">)</span>
 
@@ -892,17 +988,15 @@ Aby to rozwiązać potrzebujemy zdefiniować dane.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="wczytywanie-za-pomoca-bilioteki-pandas">
-<h3>Wczytywanie za pomocą bilioteki pandas<a class="headerlink" href="#wczytywanie-za-pomoca-bilioteki-pandas" title="Permalink to this headline">#</a></h3>
+<p>Częściowo możemy to obejść poprzez wykorzystanie biblioteki <code class="docutils literal notranslate"><span class="pre">pandas</span></code> i metody <a class="reference external" href="https://riverml.xyz/0.11.1/api/stream/iter-pandas/"><code class="docutils literal notranslate"><span class="pre">iter_pandas</span></code></a>. Pola danych zostaną automatycznie zmapowane za wyjątkiem zmiennej wyjściowej.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">river.stream</span> <span class="kn">import</span> <span class="n">iter_pandas</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ds_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">df_y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">)</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df_y</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
     <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -928,63 +1022,125 @@ Aby to rozwiązać potrzebujemy zdefiniować dane.</p>
 </div>
 </div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Trzeba mieć na uwadze, że takie rozwiązanie nie jest w pełni podejściem <code class="docutils literal notranslate"><span class="pre">online</span></code>, ponieważ plik zostanie najpierw wczytany w całości. Rozwiązanie może być natomiast przydatne w trakcie eksperymentowania.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Pomimo tego, że rozwiązania na pierwszy rzut oka wyglądają identycznie, tak na prawdę różnią się.
+Dlaczego? Pandas uzupełni brakujące wartości jako <code class="docutils literal notranslate"><span class="pre">nan</span></code>, który jest type float.</p>
+</div>
+<p>Sprawdźmy brakujące wartości</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>909
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Łącznie w całym zbiorze mamy 909 rekordów z co najmniej jedną brakującą wartością.</p>
+</div>
+<p>Sprawdźmy teraz dla jakich kolumn występowały brakujące wartości</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>user            False
+item            False
+timestamp       False
+title            True
+release_date    False
+genres          False
+age             False
+gender          False
+occupation       True
+zip_code        False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wartości brakujące występowały wyłącznie dla zmiennych tekstowych <code class="docutils literal notranslate"><span class="pre">title</span></code> oraz <code class="docutils literal notranslate"><span class="pre">occupation</span></code>
+W takim razie wystarczy wykorzystać metodę <code class="docutils literal notranslate"><span class="pre">fillna(str)</span></code>, aby mieć domyślne zachowanie.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Metoda <code class="docutils literal notranslate"><span class="pre">fillna()</span></code> powinna być jednak wykorzystana z rozwagą. Dodatkowe sprawdzenia były celowe, ponieważ jeżeli brakujące wartości pojawiły się w polach liczbowych pandas uzupełniłby je wartościami pustymi typu <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+</div>
 </section>
 </section>
-<section id="przetwarzanie-zbioru">
-<h2>Przetwarzanie zbioru<a class="headerlink" href="#przetwarzanie-zbioru" title="Permalink to this headline">#</a></h2>
-<section id="rozklad-klas-wczytany-caly-zbior">
-<h3>Rozkład klas - wczytany cały zbiór<a class="headerlink" href="#rozklad-klas-wczytany-caly-zbior" title="Permalink to this headline">#</a></h3>
-<p>Wyświetlijmy teraz rozkład klas. W pierwszej kolejności zróbmy to naiwnie, poprzez wykorzystanie całego zaczytanego zbioru</p>
+<section id="przetwarzanie-zbioru-danych">
+<h3>Przetwarzanie zbioru danych<a class="headerlink" href="#przetwarzanie-zbioru-danych" title="Permalink to this headline">#</a></h3>
+<section id="rozklad-klas-liczony-od-na-calym-wczytanym-zbiorze">
+<h4>Rozkład klas liczony od na całym wczytanym zbiorze<a class="headerlink" href="#rozklad-klas-liczony-od-na-calym-wczytanym-zbiorze" title="Permalink to this headline">#</a></h4>
+<p>Zacznijmy od zbadania rozkładu klas. Zacznijmy od scenariusza, gdzie mamy dostęp do wczytanego pełnego zbioru (wykonanego za pomocą biblioteki <code class="docutils literal notranslate"><span class="pre">pandas</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">df_y</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
-</pre></div>
-</div>
-<img alt="../_images/river_ml_introduction_19_1.png" src="../_images/river_ml_introduction_19_1.png" />
+<img alt="../_images/river_ml_introduction_38_0.png" src="../_images/river_ml_introduction_38_0.png" />
 </div>
 </div>
 </section>
-<section id="rozklad-klas-podejscie-strumieniowe">
-<h3>Rozkład klas - podejście strumieniowe<a class="headerlink" href="#rozklad-klas-podejscie-strumieniowe" title="Permalink to this headline">#</a></h3>
+<section id="obliczenie-rozkladu-klas-z-wykorzystaniem-podejscia-strumieniowego">
+<h4>Obliczenie rozkładu klas z wykorzystaniem podejścia strumieniowego<a class="headerlink" href="#obliczenie-rozkladu-klas-z-wykorzystaniem-podejscia-strumieniowego" title="Permalink to this headline">#</a></h4>
+<p>W bibliotece river możemy również obliczać statystyki w podejściu strumieniowym, czego przykładem jest <a class="reference external" href="https://riverml.xyz/0.14.0/api/sketch/Histogram/"><code class="docutils literal notranslate"><span class="pre">Histogram</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.sketch</span> <span class="kn">import</span> <span class="n">Histogram</span>
 
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
 <span class="n">hist</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="n">max_bins</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
     <span class="n">hist</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">hist</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">left</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">hist</span><span class="p">],</span> <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
-</pre></div>
-</div>
-<img alt="../_images/river_ml_introduction_21_1.png" src="../_images/river_ml_introduction_21_1.png" />
+<img alt="../_images/river_ml_introduction_40_0.png" src="../_images/river_ml_introduction_40_0.png" />
 </div>
 </div>
 </section>
-<section id="rozklad-klas-podejscie-strumieniowe-przyblizone">
-<h3>Rozkład klas - podejście strumieniowe przybliżone<a class="headerlink" href="#rozklad-klas-podejscie-strumieniowe-przyblizone" title="Permalink to this headline">#</a></h3>
+<section id="obliczenie-rozkladu-klas-z-wykorzystaniem-licznika-przyblizonego">
+<h4>Obliczenie rozkładu klas z wykorzystaniem licznika przybliżonego<a class="headerlink" href="#obliczenie-rozkladu-klas-z-wykorzystaniem-licznika-przyblizonego" title="Permalink to this headline">#</a></h4>
+<p>Często jednak wartości cech mogą nie mieć zdefiniowanego zakresu, ale pochodzić z całego zbioru liczb rzeczywistych. Obliczenie histogramu dla takich cech, może być zbyt kosztowne obliczeniowo. W takiej sytuacji możemy skorzystać z przybliżonego obliczenia wartości. W tym celu wykorzystamy klasę <a class="reference external" href="https://riverml.xyz/0.14.0/api/sketch/Counter/">Counter</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.sketch</span> <span class="kn">import</span> <span class="n">Counter</span>
 
 <span class="n">cms</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">441</span><span class="p">)</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df_y</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
 <span class="n">values</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
@@ -994,58 +1150,238 @@ Aby to rozwiązać potrzebujemy zdefiniować dane.</p>
 </div>
 </div>
 </div>
-<section id="porownanie-wartosci">
-<h4>Porównanie wartości<a class="headerlink" href="#porownanie-wartosci" title="Permalink to this headline">#</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Obliczanie przybliżone licznika wystąpień poszczególnych wartości dla cech z ograniczonym podzbiorem, jakim jest cecha wyjściowa zbioru MovieLens100K może nie mieć uzsadnienia. Warto jednak pamiętać o takim rozwiązaniu przy cechach z dużą liczbą unikatowych wartości.</p>
+</div>
+</section>
+<section id="porownanie-i-podsumowanie-dokladnosci-podejsc-obliczenia-rozkladu-klas">
+<h4>Porównanie i podsumowanie dokładności podejść obliczenia rozkładu klas<a class="headerlink" href="#porownanie-i-podsumowanie-dokladnosci-podejsc-obliczenia-rozkladu-klas" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">val_id</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="s2">&quot;Rating&quot;</span><span class="p">,</span>
-        <span class="n">value</span><span class="p">,</span>
-        <span class="s2">&quot;hist_counter&quot;</span><span class="p">,</span>
-        <span class="n">hist</span><span class="p">[</span><span class="n">val_id</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">,</span>
-        <span class="s2">&quot;approx_count&quot;</span><span class="p">,</span>
-        <span class="n">cms</span><span class="p">[</span><span class="n">value</span><span class="p">],</span>
-        <span class="s2">&quot;error&quot;</span><span class="p">,</span>
-        <span class="nb">abs</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="n">val_id</span><span class="p">]</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="n">cms</span><span class="p">[</span><span class="n">value</span><span class="p">]),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">rating</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Counter&quot;</span><span class="p">:</span> <span class="n">counter</span><span class="p">[</span><span class="n">rating</span><span class="p">],</span>
+            <span class="s2">&quot;Counter (approx. version)&quot;</span><span class="p">:</span> <span class="n">cms</span><span class="p">[</span><span class="n">rating</span><span class="p">],</span>
+            <span class="s2">&quot;Histogram (streaming version)&quot;</span><span class="p">:</span> <span class="n">hist</span><span class="p">[</span><span class="n">rating</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">,</span>
+        <span class="p">}</span>
     <span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rating 1 hist_counter 6110 approx_count 6110 error 0
-Rating 2 hist_counter 11370 approx_count 11370 error 0
-Rating 3 hist_counter 27145 approx_count 27145 error 0
-Rating 4 hist_counter 34173 approx_count 34174 error 1
-Rating 5 hist_counter 21201 approx_count 21201 error 0
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Counter</th>
+      <th>Counter (approx. version)</th>
+      <th>Histogram (streaming version)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>6110</td>
+      <td>6110</td>
+      <td>6110</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11370</td>
+      <td>11370</td>
+      <td>11370</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27145</td>
+      <td>27145</td>
+      <td>27145</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>34174</td>
+      <td>34174</td>
+      <td>34174</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>21201</td>
+      <td>21201</td>
+      <td>21201</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>W testowanym scenariuszu podejścia mają identyczne wyniki. Wynika to z ograniczonego rozmiaru zbioru (przyp. tylko 100K przypadków) oraz ograniczanego zakresu wartości całkowitych &lt;1,5&gt;.</p>
+</section>
+</section>
+<section id="transformacje-i-ekstrakcja-cech">
+<h3>Transformacje i ekstrakcja cech<a class="headerlink" href="#transformacje-i-ekstrakcja-cech" title="Permalink to this headline">#</a></h3>
+<p>W tym podrozdziale omówimy podstawowe transformacje cech z wykorzystaniem river.</p>
+<p>Przypomnijmy jakie cechy znajdują się w zbiorze danych</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+      <th>rating</th>
+      <th>timestamp</th>
+      <th>title</th>
+      <th>release_date</th>
+      <th>genres</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>occupation</th>
+      <th>zip_code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>259</td>
+      <td>255</td>
+      <td>4.0</td>
+      <td>874731910000000000</td>
+      <td>My Best Friend's Wedding (1997)</td>
+      <td>866764800000000000</td>
+      <td>comedy, romance</td>
+      <td>21</td>
+      <td>M</td>
+      <td>student</td>
+      <td>48823</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>259</td>
+      <td>286</td>
+      <td>4.0</td>
+      <td>874731927000000000</td>
+      <td>English Patient, The (1996)</td>
+      <td>848016000000000000</td>
+      <td>drama, romance, war</td>
+      <td>21</td>
+      <td>M</td>
+      <td>student</td>
+      <td>48823</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>259</td>
+      <td>298</td>
+      <td>4.0</td>
+      <td>874731954000000000</td>
+      <td>Face/Off (1997)</td>
+      <td>867369600000000000</td>
+      <td>action, sci_fi, thriller</td>
+      <td>21</td>
+      <td>M</td>
+      <td>student</td>
+      <td>48823</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>259</td>
+      <td>185</td>
+      <td>4.0</td>
+      <td>874731981000000000</td>
+      <td>Psycho (1960)</td>
+      <td>-315619200000000000</td>
+      <td>horror, romance, thriller</td>
+      <td>21</td>
+      <td>M</td>
+      <td>student</td>
+      <td>48823</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>259</td>
+      <td>173</td>
+      <td>4.0</td>
+      <td>874732043000000000</td>
+      <td>Princess Bride, The (1987)</td>
+      <td>536457600000000000</td>
+      <td>action, adventure, comedy, romance</td>
+      <td>21</td>
+      <td>M</td>
+      <td>student</td>
+      <td>48823</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</section>
-</section>
-</section>
-<section id="transformacje-cech">
-<h2>Transformacje cech<a class="headerlink" href="#transformacje-cech" title="Permalink to this headline">#</a></h2>
-<p>Zacznijmy od transformacji cech, w naszym zbiorze w dalszym ciągu mamy nieprzetworzone timestampy przetwórzmy ja do formatu <code class="docutils literal notranslate"><span class="pre">datetime</span></code></p>
+<p>W ramach materiału wykonamy poniższych przekształceń:</p>
+<ul class="simple">
+<li><p>Przekształcenie cech <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> oraz <code class="docutils literal notranslate"><span class="pre">release_date</span></code>  z formatu <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> do formatu <code class="docutils literal notranslate"><span class="pre">datetime</span></code></p></li>
+<li><p>Kompozycja cech</p></li>
+<li><p>Modelowanie tematyczne tytułów filmów za pomocą algorytmu <code class="docutils literal notranslate"><span class="pre">LDA</span></code></p></li>
+<li><p>Tworzenie sekwencji kroków przetwarzania za pomocą klasy <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></p></li>
+<li><p>Agregacje cech z perspektywy danego użytkownika</p></li>
+</ul>
+<section id="przeksztalcenie-cech-timestamp-oraz-release-date-z-formatu-timestamp-do-formatu-datetime">
+<h4>Przekształcenie cech <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> oraz <code class="docutils literal notranslate"><span class="pre">release_date</span></code>  z formatu <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> do formatu <code class="docutils literal notranslate"><span class="pre">datetime</span></code><a class="headerlink" href="#przeksztalcenie-cech-timestamp-oraz-release-date-z-formatu-timestamp-do-formatu-datetime" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df_y</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">date_column</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;release_date&quot;</span><span class="p">):</span>
         <span class="n">x</span><span class="p">[</span><span class="n">date_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">date_column</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e9</span><span class="p">)</span>
-
+    
+    <span class="c1"># `break` i `display_pretty` tylko w celach wyświetlenia pojedynczego rekordu</span>
     <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">break</span>
+    <span class="k">break</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259,
  &#39;item&#39;: 255,
+ &#39;rating&#39;: 4.0,
  &#39;timestamp&#39;: datetime.datetime(1997, 9, 20, 7, 5, 10),
  &#39;title&#39;: &quot;My Best Friend&#39;s Wedding (1997)&quot;,
  &#39;release_date&#39;: datetime.datetime(1997, 6, 20, 2, 0),
@@ -1058,18 +1394,154 @@ Rating 5 hist_counter 21201 approx_count 21201 error 0
 </div>
 </div>
 </div>
-<p>Dodajmy teraz przetwarzanie tytułów za pomocą algorytmu <code class="docutils literal notranslate"><span class="pre">LDA</span></code>. Do tego celu wykorzystamy klase <a class="reference external" href="https://riverml.xyz/0.14.0/api/preprocessing/LDA/"><code class="docutils literal notranslate"><span class="pre">LDA</span></code></a></p>
+</section>
+<section id="kompozycja-transformacji-w-jedna">
+<h4>Kompozycja transformacji w jedną<a class="headerlink" href="#kompozycja-transformacji-w-jedna" title="Permalink to this headline">#</a></h4>
+<p>Zamiast ręcznie pisać pętle możemy do przetwarzenia kilku kolumn, możemy je złożyć w jedną transformację za pomocą klasy <a class="reference external" href="https://riverml.xyz/0.14.0/api/compose/TransformerUnion/"><code class="docutils literal notranslate"><span class="pre">TransformerUnion</span></code></a>. W tym calu musimy jednak mieć naszą metodę transformującą dane z wykorzystaniem klasy <a class="reference external" href="https://riverml.xyz/0.14.0/api/compose/FuncTransformer/"><code class="docutils literal notranslate"><span class="pre">FuncTransformer</span></code></a>.</p>
+<p>Zaczniemy od przepisania transformacji w klasę.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
+
+
+<span class="k">class</span> <span class="nc">TimestamptoDateConverter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col_name</span> <span class="o">=</span> <span class="n">col_name</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">]:</span>
+        <span class="c1"># Do not assume incorrectly that something is a date in timestamp format</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">col_name</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">col_name</span><span class="si">}</span><span class="s2">_datetime&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">col_name</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e9</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Teraz możemy utworzyć obiekt <code class="docutils literal notranslate"><span class="pre">FuncTransformer</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.compose</span> <span class="kn">import</span> <span class="n">FuncTransformer</span>
+
+<span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FuncTransformer (
+  func=&lt;__main__.TimestamptoDateConverter object at 0x2862de5b0&gt;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Teraz możemy złożyć transformację kilku cech za tworząc obiekt klasy <a class="reference external" href="https://riverml.xyz/0.14.0/api/compose/TransformerUnion/"><code class="docutils literal notranslate"><span class="pre">TransformerUnion</span></code></a> lub użyć operatora <code class="docutils literal notranslate"><span class="pre">+</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.compose</span> <span class="kn">import</span> <span class="n">TransformerUnion</span>
+
+<span class="n">transformations</span> <span class="o">=</span> <span class="n">TransformerUnion</span><span class="p">(</span>
+    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">)),</span>
+    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;release_date&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
+<span class="n">transformations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TransformerUnion (
+  FuncTransformer (
+    func=&lt;__main__.TimestamptoDateConverter object at 0x2862f2640&gt;
+  ),
+  FuncTransformer (
+    func=&lt;__main__.TimestamptoDateConverter object at 0x2862f26d0&gt;
+  )
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transformations</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;release_date&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
+<span class="n">transformations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TransformerUnion (
+   FuncTransformer (
+     func=&lt;__main__.TimestamptoDateConverter object at 0x2862f2b20&gt;
+   ),
+   FuncTransformer (
+     func=&lt;__main__.TimestamptoDateConverter object at 0x2862f26a0&gt;
+   )
+ ),)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transformations</span> <span class="o">=</span> <span class="n">TransformerUnion</span><span class="p">(</span>
+    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">)),</span>
+    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;release_date&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">transformations</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259,
+ &#39;item&#39;: 286,
+ &#39;rating&#39;: 4.0,
+ &#39;timestamp&#39;: 874731927000000000,
+ &#39;title&#39;: &#39;English Patient, The (1996)&#39;,
+ &#39;release_date&#39;: 848016000000000000,
+ &#39;genres&#39;: &#39;drama, romance, war&#39;,
+ &#39;age&#39;: 21,
+ &#39;gender&#39;: &#39;M&#39;,
+ &#39;occupation&#39;: &#39;student&#39;,
+ &#39;zip_code&#39;: &#39;48823&#39;,
+ &#39;release_date_datetime&#39;: datetime.datetime(1996, 11, 15, 1, 0),
+ &#39;timestamp_datetime&#39;: datetime.datetime(1997, 9, 20, 7, 5, 27)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Zamiast nadpisywać obiekty w powyższym kodzie, dodano nowe kolumny.
+To jak zostanie to obsłużone jest po naszej stronie. W niektórych przypadkach źródłowe kolumny usuwa się dopiero na końcu, ponieważ mogą być wymagane do transformacji innych cech.</p>
+</div>
+</section>
+<section id="modelowanie-tematyczne-tytulow-filmow-za-pomoca-algorytmu-lda">
+<h4>Modelowanie tematyczne tytułów filmów za pomocą algorytmu <code class="docutils literal notranslate"><span class="pre">LDA</span></code><a class="headerlink" href="#modelowanie-tematyczne-tytulow-filmow-za-pomoca-algorytmu-lda" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.feature_extraction</span> <span class="kn">import</span> <span class="n">BagOfWords</span>
 <span class="kn">from</span> <span class="nn">river.preprocessing</span> <span class="kn">import</span> <span class="n">LDA</span>
 
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+
 <span class="n">bow</span> <span class="o">=</span> <span class="n">BagOfWords</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
 <span class="n">lda</span> <span class="o">=</span> <span class="n">LDA</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">441</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
-    <span class="n">bow_title</span> <span class="o">=</span> <span class="n">bow</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">display_pretty</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">bow_title</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">bow_title</span><span class="p">))</span>
+    <span class="n">bow_title</span> <span class="o">=</span> <span class="n">bow</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># `break` i `display_pretty` tylko w celach wyświetlenia pojedynczego rekordu</span>
+    <span class="n">display_pretty</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">learn_transform_one</span><span class="p">(</span><span class="n">bow_title</span><span class="p">))</span>
     <span class="k">break</span>
 </pre></div>
 </div>
@@ -1078,315 +1550,856 @@ Rating 5 hist_counter 21201 approx_count 21201 error 0
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0.5,
  1: 1.5,
  2: 0.5,
+ 3: 2.5,
+ 4: 0.5,
+ 5: 1.5,
+ 6: 0.5,
+ 7: 0.5,
+ 8: 1.5,
+ 9: 0.5}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tworzenie-sekwencji-krokow-przetwarzania-za-pomoca-klasy-pipeline">
+<h4>Tworzenie sekwencji kroków przetwarzania za pomocą klasy <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code><a class="headerlink" href="#tworzenie-sekwencji-krokow-przetwarzania-za-pomoca-klasy-pipeline" title="Permalink to this headline">#</a></h4>
+<p>Przekształcimy teraz LDA w jeden pipeline. Możemy to zrobić wykorzystując operator <code class="docutils literal notranslate"><span class="pre">|</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">BagOfWords</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">LDA</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">441</span><span class="p">)</span>
+<span class="n">pipe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><div class="river-component river-pipeline"><details class="river-component river-estimator"><summary class="river-summary"><pre class="river-estimator-name">BagOfWords</pre></summary><code class="river-estimator-params">(
+  on="title"
+  strip_accents=True
+  lowercase=True
+  preprocessor=None
+  stop_words=None
+  tokenizer_pattern="(?u)\b\w[\w\-]+\b"
+  tokenizer=None
+  ngram_range=(1, 1)
+)
+
+</code></details><details class="river-component river-estimator"><summary class="river-summary"><pre class="river-estimator-name">LDA</pre></summary><code class="river-estimator-params">(
+  n_components=10
+  number_of_documents=1e+06
+  alpha_theta=0.5
+  alpha_beta=100.
+  tau=64.
+  kappa=0.75
+  vocab_prune_interval=10
+  number_of_samples=10
+  ranking_smooth_factor=1e-12
+  burn_in_sweeps=5
+  maximum_size_vocabulary=4000
+  seed=441
+)
+
+</code></details></div><style scoped>
+.river-estimator {
+    padding: 1em;
+    border-style: solid;
+    background: white;
+}
+
+.river-pipeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(#000, #000) no-repeat center / 3px 100%;
+}
+
+.river-union {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-style: solid;
+    background: white;
+}
+
+.river-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-style: solid;
+    background: white;
+}
+
+.river-wrapper > .river-estimator {
+    margin-top: 1em;
+}
+
+/* Vertical spacing between steps */
+
+.river-component + .river-component {
+    margin-top: 2em;
+}
+
+.river-union > .river-estimator {
+    margin-top: 0;
+}
+
+.river-union > .pipeline {
+    margin-top: 0;
+}
+
+/* Spacing within a union of estimators */
+
+.river-union > .river-component + .river-component {
+    margin-left: 1em;
+}
+
+/* Typography */
+
+.river-estimator-params {
+    display: block;
+    white-space: pre-wrap;
+    font-size: 120%;
+    margin-bottom: -1em;
+}
+
+.river-estimator > .river-estimator-params,
+.river-wrapper > .river-details > river-estimator-params {
+    background-color: white !important;
+}
+
+.river-estimator-name {
+    display: inline;
+    margin: 0;
+    font-size: 130%;
+}
+
+/* Toggle */
+
+.river-summary {
+    display: flex;
+    align-items:center;
+    cursor: pointer;
+}
+
+.river-summary > div {
+    width: 100%;
+}
+</style></div></div></div>
+</div>
+<p>lub możemy bezpośrednio utworzyć obiekt klasy <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.compose.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">BagOfWords</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">),</span> <span class="n">LDA</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">441</span><span class="p">))</span>
+<span class="n">pipe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><div class="river-component river-pipeline"><details class="river-component river-estimator"><summary class="river-summary"><pre class="river-estimator-name">BagOfWords</pre></summary><code class="river-estimator-params">(
+  on="title"
+  strip_accents=True
+  lowercase=True
+  preprocessor=None
+  stop_words=None
+  tokenizer_pattern="(?u)\b\w[\w\-]+\b"
+  tokenizer=None
+  ngram_range=(1, 1)
+)
+
+</code></details><details class="river-component river-estimator"><summary class="river-summary"><pre class="river-estimator-name">LDA</pre></summary><code class="river-estimator-params">(
+  n_components=10
+  number_of_documents=1e+06
+  alpha_theta=0.5
+  alpha_beta=100.
+  tau=64.
+  kappa=0.75
+  vocab_prune_interval=10
+  number_of_samples=10
+  ranking_smooth_factor=1e-12
+  burn_in_sweeps=5
+  maximum_size_vocabulary=4000
+  seed=441
+)
+
+</code></details></div><style scoped>
+.river-estimator {
+    padding: 1em;
+    border-style: solid;
+    background: white;
+}
+
+.river-pipeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(#000, #000) no-repeat center / 3px 100%;
+}
+
+.river-union {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-style: solid;
+    background: white;
+}
+
+.river-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-style: solid;
+    background: white;
+}
+
+.river-wrapper > .river-estimator {
+    margin-top: 1em;
+}
+
+/* Vertical spacing between steps */
+
+.river-component + .river-component {
+    margin-top: 2em;
+}
+
+.river-union > .river-estimator {
+    margin-top: 0;
+}
+
+.river-union > .pipeline {
+    margin-top: 0;
+}
+
+/* Spacing within a union of estimators */
+
+.river-union > .river-component + .river-component {
+    margin-left: 1em;
+}
+
+/* Typography */
+
+.river-estimator-params {
+    display: block;
+    white-space: pre-wrap;
+    font-size: 120%;
+    margin-bottom: -1em;
+}
+
+.river-estimator > .river-estimator-params,
+.river-wrapper > .river-details > river-estimator-params {
+    background-color: white !important;
+}
+
+.river-estimator-name {
+    display: inline;
+    margin: 0;
+    font-size: 130%;
+}
+
+/* Toggle */
+
+.river-summary {
+    display: flex;
+    align-items:center;
+    cursor: pointer;
+}
+
+.river-summary > div {
+    width: 100%;
+}
+</style></div></div></div>
+</div>
+<p>Co uproszcza cały kod do następującej postaci:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">BagOfWords</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">),</span> <span class="n">LDA</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">441</span><span class="p">))</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+    <span class="c1"># `break` i `display_pretty` tylko w celach wyświetlenia pojedynczego rekordu</span>
+    <span class="n">display_pretty</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0.5,
+ 1: 1.5,
+ 2: 1.5,
  3: 0.5,
  4: 1.5,
  5: 0.5,
- 6: 0.5,
- 7: 1.5,
+ 6: 1.5,
+ 7: 0.5,
  8: 0.5,
  9: 1.5}
 </pre></div>
 </div>
 </div>
 </div>
-<p>Złączmy teraz obie funkcje do jednego kodu:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">date_column</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;release_date&quot;</span><span class="p">):</span>
-        <span class="n">x</span><span class="p">[</span><span class="n">date_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">date_column</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e9</span><span class="p">)</span>
-
-        <span class="n">bow_title</span> <span class="o">=</span> <span class="n">bow</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">[</span><span class="s2">&quot;title_lda&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">bow_title</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">bow_title</span><span class="p">)</span>
-
-    <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259,
- &#39;item&#39;: 298,
- &#39;timestamp&#39;: datetime.datetime(1997, 9, 20, 7, 5, 54),
- &#39;title&#39;: &#39;Face/Off (1997)&#39;,
- &#39;release_date&#39;: datetime.datetime(1997, 6, 27, 2, 0),
- &#39;genres&#39;: &#39;action, sci_fi, thriller&#39;,
- &#39;age&#39;: 21,
- &#39;gender&#39;: &#39;M&#39;,
- &#39;occupation&#39;: &#39;student&#39;,
- &#39;zip_code&#39;: &#39;48823&#39;,
- &#39;title_lda&#39;: {0: 0.5,
-  1: 0.5,
-  2: 0.5,
-  3: 1.5,
-  4: 0.5,
-  5: 0.5,
-  6: 0.5,
-  7: 0.5,
-  8: 2.5,
-  9: 0.5}}
-</pre></div>
-</div>
-</div>
-</div>
-<p>Zamiast ręcznie pisać cały kod kolejnych transformacji możemy je złączyć w jedną za pomocą klasy <a class="reference external" href="https://riverml.xyz/0.14.0/api/compose/TransformerUnion/"><code class="docutils literal notranslate"><span class="pre">TransformerUnion</span></code></a>. W tym calu musimy jednak mieć naszą metodę transformującą dane za pomocą metody <a class="reference external" href="https://riverml.xyz/0.14.0/api/compose/FuncTransformer/"><code class="docutils literal notranslate"><span class="pre">FuncTransformer</span></code></a>. Napiszmy ją teraz</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
-
-<span class="kn">from</span> <span class="nn">river.compose</span> <span class="kn">import</span> <span class="n">FuncTransformer</span>
-
-
-<span class="k">class</span> <span class="nc">TimestamptoDateConverter</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">col_name</span> <span class="o">=</span> <span class="n">col_name</span>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">]:</span>
-        <span class="c1"># Do not assume incorrectly that something is a date in timestamp format</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">col_name</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">col_name</span><span class="si">}</span><span class="s2">_date&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span>
-                <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">col_name</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e9</span>
-            <span class="p">)</span>
-        <span class="p">}</span>
-
-
-<span class="n">date_transform</span> <span class="o">=</span> <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
-    <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">date_transform</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-
-    <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259,
- &#39;item&#39;: 185,
- &#39;timestamp&#39;: 874731981000000000,
- &#39;title&#39;: &#39;Psycho (1960)&#39;,
- &#39;release_date&#39;: -315619200000000000,
- &#39;genres&#39;: &#39;horror, romance, thriller&#39;,
- &#39;age&#39;: 21,
- &#39;gender&#39;: &#39;M&#39;,
- &#39;occupation&#39;: &#39;student&#39;,
- &#39;zip_code&#39;: &#39;48823&#39;,
- &#39;timestamp_date&#39;: datetime.datetime(1997, 9, 20, 7, 6, 21)}
-</pre></div>
-</div>
-</div>
-</div>
-<p>Teraz połączmy wszystko w jedną aggregację</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.compose</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">TransformerUnion</span>
-
-<span class="n">transforms</span> <span class="o">=</span> <span class="n">TransformerUnion</span><span class="p">(</span>
-    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">)),</span>
-    <span class="n">FuncTransformer</span><span class="p">(</span><span class="n">TimestamptoDateConverter</span><span class="p">(</span><span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;release_date&quot;</span><span class="p">)),</span>
-<span class="p">)</span>
-
-<span class="n">lda</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">BagOfWords</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">),</span> <span class="n">LDA</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">441</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
-    <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">transforms</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">[</span><span class="s2">&quot;lda&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="n">display_pretty</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259,
- &#39;item&#39;: 173,
- &#39;timestamp&#39;: 874732043000000000,
- &#39;title&#39;: &#39;Princess Bride, The (1987)&#39;,
- &#39;release_date&#39;: 536457600000000000,
- &#39;genres&#39;: &#39;action, adventure, comedy, romance&#39;,
- &#39;age&#39;: 21,
- &#39;gender&#39;: &#39;M&#39;,
- &#39;occupation&#39;: &#39;student&#39;,
- &#39;zip_code&#39;: &#39;48823&#39;,
- &#39;release_date_date&#39;: datetime.datetime(1987, 1, 1, 1, 0),
- &#39;timestamp_date&#39;: datetime.datetime(1997, 9, 20, 7, 7, 23),
- &#39;lda&#39;: {0: 0.5,
-  1: 0.5,
-  2: 0.5,
-  3: 1.5,
-  4: 1.5,
-  5: 0.5,
-  6: 0.5,
-  7: 0.5,
-  8: 0.5,
-  9: 2.5}}
-</pre></div>
-</div>
-</div>
-</div>
-<section id="agregacje">
-<h3>Agregacje<a class="headerlink" href="#agregacje" title="Permalink to this headline">#</a></h3>
-<p>Aggregacje w bibliotece river wykonujemy za pomocą modułu <a class="reference external" href="https://riverml.xyz/0.14.0/api/feature-extraction/Agg/">Agg</a></p>
 </section>
-<section id="obliczenie-liczby-recenzji-uzytkownika">
-<h3>Obliczenie liczby recenzji użytkownika<a class="headerlink" href="#obliczenie-liczby-recenzji-uzytkownika" title="Permalink to this headline">#</a></h3>
+<section id="agregacje-cech-z-perspektywy-danego-uzytkownika">
+<h4>Agregacje cech z perspektywy danego użytkownika<a class="headerlink" href="#agregacje-cech-z-perspektywy-danego-uzytkownika" title="Permalink to this headline">#</a></h4>
+<p>Aggregacje na strumieniu w bibliotece river wykonujemy za pomocą modułu <a class="reference external" href="https://riverml.xyz/0.14.0/api/feature-extraction/Agg/">Agg</a></p>
+<p>W ramach materiałów skupimy się na aggregacji zmiennej wyjściowej czyli oceny filmu. Wym celu wykorzystamy klasę <a class="reference external" href="https://riverml.xyz/0.14.0/api/feature-extraction/TargetAgg/"><code class="docutils literal notranslate"><span class="pre">TargetAgg</span></code></a>, która dokonuje aggrecji cechy wyjściowej.</p>
+<p>Obliczmy teraz liczbę recenzji użytkowników dla pierwszych dwudziestu elementów strumienia</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.feature_extraction</span> <span class="kn">import</span> <span class="n">TargetAgg</span>
 <span class="kn">from</span> <span class="nn">river.stats</span> <span class="kn">import</span> <span class="n">Count</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
 
 <span class="n">agg</span> <span class="o">=</span> <span class="n">TargetAgg</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="n">Count</span><span class="p">())</span>
+<span class="n">users_reviews_count</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
-    <span class="n">display_pretty</span><span class="p">({</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">agg</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+    <span class="n">users_reviews_count</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">agg</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+    
+<span class="n">users_reviews_count_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">users_reviews_count</span><span class="p">)</span>
+<span class="n">users_reviews_count_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;event_id&quot;</span>
+<span class="n">users_reviews_count_df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 1}
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user</th>
+      <th>y_count_by_user</th>
+    </tr>
+    <tr>
+      <th>event_id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>259</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>259</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>259</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>259</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>259</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>259</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>259</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>259</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>259</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>259</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>259</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>259</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>259</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>259</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>259</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>259</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>851</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>851</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>851</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>851</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 2}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 3}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 4}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 5}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 6}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 7}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 9}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 10}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 11}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 12}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 13}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 14}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 15}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_count_by_user&#39;: 16}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_count_by_user&#39;: 1}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_count_by_user&#39;: 2}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_count_by_user&#39;: 3}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_count_by_user&#39;: 4}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="aggregacje-typu-rolling">
-<h3>Aggregacje typu Rolling<a class="headerlink" href="#aggregacje-typu-rolling" title="Permalink to this headline">#</a></h3>
-<p>Średnia ocena recenzja z ostatnich 5</p>
+<p>Aggregacje cechy z perspektywy całej historii użytkownika to tylko jedna z możliwości. Możemy zostosować aggregacje typu <a class="reference external" href="https://riverml.xyz/0.14.0/api/utils/Rolling/"><code class="docutils literal notranslate"><span class="pre">Rolling</span></code></a> która dokona aggregacji tylko na określonej liczbie rekordów.</p>
+<p>Obliczmy teraz średnia ocena recenzji użytkownika z ostatnich pięciu rekordów</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">river.utils</span> <span class="kn">import</span> <span class="n">Rolling</span>
 <span class="kn">from</span> <span class="nn">river.stats</span> <span class="kn">import</span> <span class="n">Mean</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
 
 <span class="n">agg</span> <span class="o">=</span> <span class="n">TargetAgg</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="n">Rolling</span><span class="p">(</span><span class="n">Mean</span><span class="p">(),</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">user_rolling_review_mean</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
-    <span class="n">display_pretty</span><span class="p">({</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">agg</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+    <span class="n">user_rolling_review_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">agg</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)}</span>
+    <span class="p">)</span>
+
+<span class="n">user_rolling_review_mean_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">user_rolling_review_mean</span><span class="p">)</span>
+<span class="n">user_rolling_review_mean_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;event_id&quot;</span>
+<span class="n">user_rolling_review_mean_df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user</th>
+      <th>rating</th>
+      <th>y_mean_by_user</th>
+    </tr>
+    <tr>
+      <th>event_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>259</td>
+      <td>3.0</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>259</td>
+      <td>3.0</td>
+      <td>3.600000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>259</td>
+      <td>3.0</td>
+      <td>3.600000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>3.600000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>259</td>
+      <td>5.0</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>851</td>
+      <td>2.0</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>851</td>
+      <td>3.0</td>
+      <td>2.500000</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>851</td>
+      <td>3.0</td>
+      <td>2.666667</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>851</td>
+      <td>5.0</td>
+      <td>3.250000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Aggregacje również możemy grupować w pipeline za pomocą <code class="docutils literal notranslate"><span class="pre">TransformerUnion</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aggregations</span> <span class="o">=</span> <span class="n">TargetAgg</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="n">Rolling</span><span class="p">(</span><span class="n">Mean</span><span class="p">(),</span> <span class="mi">5</span><span class="p">))</span> <span class="o">+</span>  <span class="n">TargetAgg</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="n">Count</span><span class="p">())</span>
+<span class="n">aggregations</span>
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
-</pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 4.0}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.6}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.6}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.6}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 259, &#39;y_mean_by_user&#39;: 3.8}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_mean_by_user&#39;: 2.0}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_mean_by_user&#39;: 2.5}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_mean_by_user&#39;: 2.6666666666666665}
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;user&#39;: 851, &#39;y_mean_by_user&#39;: 3.25}
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TransformerUnion (
+  TargetAgg (
+    by=[&#39;user&#39;]
+    how=Rolling (
+      obj=Mean ()
+      window_size=5
+    )
+    target_name=&quot;y&quot;
+  ),
+  TargetAgg (
+    by=[&#39;user&#39;]
+    how=Count ()
+    target_name=&quot;y&quot;
+  )
+)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">iter_pandas</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ds</span><span class="p">:</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">aggregations</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+    
+<span class="n">output</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;event_id&quot;</span>
+<span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user</th>
+      <th>rating</th>
+      <th>y_count_by_user</th>
+      <th>y_mean_by_user</th>
+    </tr>
+    <tr>
+      <th>event_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>5</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>6</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>7</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>259</td>
+      <td>3.0</td>
+      <td>8</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>9</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>10</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>11</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>259</td>
+      <td>3.0</td>
+      <td>12</td>
+      <td>3.600000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>259</td>
+      <td>3.0</td>
+      <td>13</td>
+      <td>3.600000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>14</td>
+      <td>3.600000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>259</td>
+      <td>5.0</td>
+      <td>15</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>259</td>
+      <td>4.0</td>
+      <td>16</td>
+      <td>3.800000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>851</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>851</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>2.500000</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>851</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>2.666667</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>851</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>3.250000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 </section>
 </section>
 </section>
@@ -1441,7 +2454,7 @@ Rating 5 hist_counter 21201 approx_count 21201 error 0
   
     By Mateusz Nurek, Kamil Tagowski, Radosław Michalski, Piotr Bródka<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

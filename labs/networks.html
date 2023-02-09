@@ -137,6 +137,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Laboratorium 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploratory_data_analysis.html">
+   Analiza eksploracyjna danych
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Laboratorium 4
  </span>
 </p>
@@ -559,18 +571,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: igraph
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: igraph
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘igraph’
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dołączanie pakietu: ‘igraph’
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Następujące obiekty zostały zakryte z ‘package:stats’:
 
     decompose, spectrum
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:base’:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Następujący obiekt został zakryty z ‘package:base’:
 
     union
 </pre></div>
@@ -599,7 +611,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 836d3e7 U--- 25 63 -- Erdos-Renyi (gnp) graph
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 7ef2b87 U--- 25 80 -- Erdos-Renyi (gnp) graph
 + attr: name (g/c), type (g/c), loops (g/l), p (g/n)
 </pre></div>
 </div>
@@ -639,14 +651,15 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ 63/63 edges from 836d3e7:
- [1]  2-- 4  1-- 5  4-- 7  5-- 7  1-- 8  5-- 8  7-- 8  7-- 9  1--10  3--10
-[11]  2--11  3--11  5--11  7--11  8--11  7--12 11--12  7--13  1--14  6--14
-[21]  4--15  6--15  7--15 12--15  2--16  1--17  2--17  9--17  4--18  5--18
-[31]  1--19  2--19  8--19 10--19 12--19  5--20 10--20 11--20 13--20  3--21
-[41]  8--21 17--21 18--21 20--21  4--22  8--22 12--22 14--22 17--22 21--22
-[51]  8--23 11--23 15--23  5--24  7--24 16--24 18--24  1--25  7--25  9--25
-[61] 11--25 15--25 18--25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ 80/80 edges from 7ef2b87:
+ [1]  1-- 3  3-- 5  2-- 6  3-- 6  5-- 6  2-- 7  5-- 7  2-- 9  5--10  6--10
+[11]  8--11 10--11 11--12  2--13  3--13  9--13  1--14  5--14  7--14  8--14
+[21]  8--15 11--15  8--16 14--16 15--16  2--17  3--17  4--17 11--17 15--17
+[31] 16--17  2--18  4--18  7--18  8--18 10--18 11--18 12--18 14--18 11--19
+[41] 12--19 17--19 18--19  2--20  5--20 12--20 15--20 18--20  3--21  5--21
+[51]  6--21  7--21 11--21 12--21 13--21 18--21 19--21  5--22 12--22 14--22
+[61] 17--22 20--22  1--23  7--23 11--23 13--23 21--23 22--23  1--24  2--24
+[71]  5--24  6--24 10--24 13--24  2--25  3--25  4--25  7--25 16--25 18--25
 </pre></div>
 </div>
 </div>
@@ -667,7 +680,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 836d3e7 U-W- 25 63 -- Erdos-Renyi (gnp) graph
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 7ef2b87 U-W- 25 80 -- Erdos-Renyi (gnp) graph
 + attr: name (g/c), type (g/c), loops (g/l), p (g/n), weight (e/n)
 </pre></div>
 </div>
@@ -701,7 +714,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>7</li><li>5</li><li>3</li><li>5</li><li>7</li><li>2</li><li>10</li><li>8</li><li>3</li><li>4</li><li>9</li><li>5</li><li>2</li><li>3</li><li>6</li><li>2</li><li>5</li><li>5</li><li>5</li><li>5</li><li>6</li><li>6</li><li>3</li><li>4</li><li>6</li></ol>
+<ol class=list-inline><li>4</li><li>9</li><li>7</li><li>3</li><li>9</li><li>6</li><li>7</li><li>5</li><li>2</li><li>5</li><li>9</li><li>6</li><li>6</li><li>7</li><li>5</li><li>5</li><li>8</li><li>12</li><li>5</li><li>6</li><li>10</li><li>6</li><li>6</li><li>6</li><li>6</li></ol>
 </div></div>
 </div>
 <p>Widzimy wylistowane stopnie wierzchołków, ale wygodniej byłoby to zagregować w postaci histogramu, do czego służy funkcja <code class="docutils literal notranslate"><span class="pre">hist</span></code>:</p>
@@ -741,7 +754,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>28</li><li>55</li><li>6</li><li>12</li><li>63</li><li>1</li><li>22</li><li>70</li><li>4</li><li>13</li><li>8</li><li>16</li><li>0</li><li>3</li><li>19</li><li>17</li><li>29</li><li>52</li><li>79</li><li>28</li><li>10</li><li>5</li><li>0</li><li>0</li><li>28</li></ol>
+<ol class=list-inline><li>0</li><li>32</li><li>29</li><li>0</li><li>40</li><li>0</li><li>0</li><li>16</li><li>0</li><li>9</li><li>3</li><li>30</li><li>23</li><li>62</li><li>0</li><li>0</li><li>9</li><li>88</li><li>0</li><li>0</li><li>22</li><li>51</li><li>7</li><li>46</li><li>23</li></ol>
 </div></div>
 </div>
 <p>Istotną miarą jest też średnica grafu, tj. najdłuższa najkrótsza ścieżka. Aby nie liczyć jej z uwzględnieniem wag, ustawiamy opcję <code class="docutils literal notranslate"><span class="pre">weights</span></code> na <code class="docutils literal notranslate"><span class="pre">NA</span></code>:</p>
@@ -752,7 +765,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">4</div></div>
+<div class="output text_html">3</div></div>
 </div>
 <section id="komponenty-grafu">
 <h2>Komponenty grafu<a class="headerlink" href="#komponenty-grafu" title="Permalink to this headline">#</a></h2>
@@ -810,7 +823,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Alpha = 3.185&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Alpha = 3.19&quot;
 </pre></div>
 </div>
 </div>
@@ -843,7 +856,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH a8b45b0 UN-- 167 3250 -- 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IGRAPH 832fefd UN-- 167 3250 -- 
 + attr: name (v/c)
 </pre></div>
 </div>
@@ -876,10 +889,10 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: ndtv
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: ndtv
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: network
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: network
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>‘network’ 1.18.1 (2023-01-24), part of the Statnet Project
@@ -888,10 +901,10 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 * ‘https://statnet.org’ for help, support, and other information
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘network’
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dołączanie pakietu: ‘network’
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:igraph’:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Następujące obiekty zostały zakryte z ‘package:igraph’:
 
     %c%, %s%, add.edges, add.vertices, delete.edges, delete.vertices,
     get.edge.attribute, get.edges, get.vertex.attribute, is.bipartite,
@@ -899,7 +912,7 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
     set.edge.attribute, set.vertex.attribute
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: networkDynamic
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: networkDynamic
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>‘networkDynamic’ 0.11.2 (2022-05-04), part of the Statnet Project
@@ -908,19 +921,19 @@ Jednym z pierwszych modeli, który rozpatrujemy do analizy, jest model sieci los
 * ‘https://statnet.org’ for help, support, and other information
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: animation
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: animation
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sna
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: sna
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: statnet.common
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: statnet.common
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘statnet.common’
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dołączanie pakietu: ‘statnet.common’
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Następujące obiekty zostały zakryte z ‘package:base’:
 
     attr, order
 </pre></div>
@@ -932,10 +945,10 @@ copyright (c) 2005, Carter T. Butts, University of California-Irvine
  Type help(package=&quot;sna&quot;) to get started.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘sna’
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dołączanie pakietu: ‘sna’
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:igraph’:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Następujące obiekty zostały zakryte z ‘package:igraph’:
 
     betweenness, bonpow, closeness, components, degree, dyad.census,
     evcent, hierarchy, is.connected, neighborhood, triad.census
@@ -1038,7 +1051,7 @@ copyright (c) 2005, Carter T. Butts, University of California-Irvine
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: tsna
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ładowanie wymaganego pakietu: tsna
 </pre></div>
 </div>
 </div>
@@ -1131,7 +1144,7 @@ copyright (c) 2005, Carter T. Butts, University of California-Irvine
   
     By Mateusz Nurek, Kamil Tagowski, Radosław Michalski, Piotr Bródka<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

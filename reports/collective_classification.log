@@ -1,0 +1,84 @@
+Traceback (most recent call last):
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/kamiltagowski/.pyenv/versions/3.9.6/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/kamiltagowski/Library/Caches/pypoetry/virtualenvs/przetwarzanie-danych-zlozonych-tgGM1AJj-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+suppressPackageStartupMessages(
+    library(caret)
+)
+suppressPackageStartupMessages(
+    library(caret)
+)
+
+update_neighbors <- function(g, nodes) {
+  for (i in 1:nrow(nodes)) {
+    neighborhood <- neighbors(g, v = nodes[i,]$name, mode = "all")
+    
+    neighbors_1 <- 0
+    neighbors_2 <- 0
+    
+    for (n in 1:length(neighborhood)) {
+      label <- vertex_attr(g, index = neighborhood[n])$pred_label
+
+      if (label == 1) {
+        neighbors_1 <- neighbors_1 + 1
+      } else if (label == 2){
+        neighbors_2 = neighbors_2 + 1
+      }
+    }
+    
+    g <- set_vertex_attr(g, name = "neighbors_1", index = nodes[i,]$name, value = neighbors_1)
+    g <- set_vertex_attr(g, name = "neighbors_2", index = nodes[i,]$name, value = neighbors_2)
+  }
+  return(g)
+}
+
+F1_Macro <- function(data, lev = NULL, model = NULL) {
+  f1_scores <- sapply(lev, function(l) {
+    f1_score <- MLmetrics::F1_Score(y_pred = data$pred, y_true = data$obs, positive = l)
+    if(is.na(f1_score)) {
+      f1_score <- 0
+    }
+    return(f1_score)
+  })
+  macro <- sum(f1_scores) / length(lev)
+  return(c(macro=macro, class=f1_scores))
+}
+
+# Oblicz cechy bazujące na sąsiadach
+g <- update_neighbors(g, known_nodes)
+
+# Trenowanie klasyfikatora
+attributes <- vertex_attr(g, index = known_nodes$name)
+trainingData <- data.frame(attributes$betweenness, attributes$closeness, attributes$degree, 
+                       attributes$neighbors_1, attributes$neighbors_2,
+                       label = as.factor(attributes$true_label))
+
+fitControl <- trainControl(method = "CV", number = 5, summaryFunction = F1_Macro, search = "random")
+classifier <- train(label ~ ., data = trainingData, method = "rf", trControl = fitControl, 
+                    preProcess = c("center", "scale"), metric = "macro", tuneLength=10)
+------------------
+
+Error in library(caret): nie ma pakietu o nazwie ‘caret’
+Traceback:
+
+1. suppressPackageStartupMessages(library(caret))
+2. withCallingHandlers(expr, packageStartupMessage = function(c) tryInvokeRestart("muffleMessage"))
+3. library(caret)
+ERROR: Error in library(caret): nie ma pakietu o nazwie ‘caret’
+
+
