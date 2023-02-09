@@ -1,15 +1,17 @@
 format: jb-book
 root: intro
-part: Laboratoria
- chapters:
-  - file: labs/zasady
-  - file: labs/exploratory_data_analysis
-  - file: labs/hawkes
-  - file: labs/networks
-  - file: labs/collective_classification
-  - file: labs/hierarchical_classification
-  - file: labs/river_ml_introduction
-  - file: labs/concept_drift
-  - file: labs/classification_of_streaming_data
-  - file: labs/time_series
-  - file: labs/time_series_neural_networks
+
+parts:
+  - caption: Laboratoria
+    chapters:
+     - file: labs/zasady
+     - file: labs/exploratory_data_analysis
+     - file: labs/hawkes
+     - file: labs/networks
+     - file: labs/collective_classification
+     - file: labs/hierarchical_classification
+     - file: labs/river_ml_introduction
+     - file: labs/concept_drift
+     - file: labs/classification_of_streaming_data
+     - file: labs/time_series
+     - file: labs/time_series_neural_networks
