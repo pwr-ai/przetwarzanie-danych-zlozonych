@@ -3,6 +3,7 @@
 
 title: Przetwarzanie danych złożonych
 author: Mateusz Nurek, Kamil Tagowski, Radosław Michalski, Piotr Bródka
+copyright: "2023"
 #logo: logo.png
 
 # Force re-execution of notebooks on each build.

@@ -5,7 +5,7 @@ description = ""
 authors = []
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9, <3.10"
 jupyter-book = "^0.13.1"
 toml = "^0.10.2"
 ghp-import = "^2.1.0"
@@ -20,6 +20,7 @@ setuptools = "^65.6.3"
 plotly = "^5.11.0"
 tqdm = "^4.64.1"
 scikit-learn = "^1.2.0"
+netCDF4 = "^1.6.2"
 
 [tool.poetry.dev-dependencies]
 
